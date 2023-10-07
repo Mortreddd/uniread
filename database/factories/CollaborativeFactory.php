@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Chapter>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Collaborative>
  */
-class ChapterFactory extends Factory
+class CollaborativeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +18,6 @@ class ChapterFactory extends Factory
     {
         return [
             
-            'bookID' => fake()->randomElement(Book::all()),
-            'title' => fake()->title(),
-            'content' => fake()->text(200)
         ];
     }
 }
