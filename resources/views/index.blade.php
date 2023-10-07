@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>UniRead</title>
-        
+        @vite('resources/css/app.css')
     </head>
     <body class="antialiased">
         <h1>Hello World</h1>
