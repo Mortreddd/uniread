@@ -4,6 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Author;
+use App\Models\Book;
+use App\Models\Bookmark;
+use App\Models\Chapter;
+use App\Models\Comment;
+use App\Models\Rating;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +24,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Author::factory(10)->create();
+        Author::factory(30)->create();
+        Book::factory(30)->create();
+        Comment::factory(30)->create();
+        Chapter::factory(30)->create();
+        Rating::factory(30)->create();
+        Bookmark::factory(10)->create();
     }
 }

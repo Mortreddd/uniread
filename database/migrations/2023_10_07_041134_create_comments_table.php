@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chapters', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('authorID');
             $table->unsignedBigInteger('bookID');
-            $table->string('title');
             $table->mediumText('content');
+            $table->foreign('authorID')->references('id')->on('authors');
             $table->foreign('bookID')->references('id')->on('books');
             $table->timestamps();
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chapters');
+        Schema::dropIfExists('comments');
     }
 };

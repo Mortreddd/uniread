@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Chapter>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bookmark>
  */
-class ChapterFactory extends Factory
+class BookmarkFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,10 +19,8 @@ class ChapterFactory extends Factory
     public function definition(): array
     {
         return [
-            
+            'authorID' => fake()->randomElement(Author::all()),
             'bookID' => fake()->randomElement(Book::all()),
-            'title' => fake()->title(),
-            'content' => fake()->text(200)
         ];
     }
 }
