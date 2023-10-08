@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,11 @@ use App\Http\Controllers\AuthorController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('authors.index');
 });
 
-
+Route::get('/books', [BookController::class, 'index']);
 Route::get('/authors', [AuthorController::class, 'index']);
 Route::get('/authors/{id}', [AuthorController::class, 'show']);
+
+Route::get('/books/{genre}', [BookController::class, 'searchGenre']);

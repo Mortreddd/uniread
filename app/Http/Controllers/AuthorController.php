@@ -9,11 +9,11 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        return view('table', ['authors' => Author::all()]);
+        return view('table');
     }
 
     public function show($id)
     {
-        return view('table', ['authors' => Author::findOrFail($id)]);
+        return view('table');
     }
 }
