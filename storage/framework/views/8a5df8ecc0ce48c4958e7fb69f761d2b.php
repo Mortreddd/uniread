@@ -7,8 +7,9 @@
         <title>UniRead</title>
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css','resources/js/app.js']); ?>
     </head>
-    <body class="box-border w-full p-0 m-0">
+    <body class="box-border w-full p-0 m-0 bg-fixed bg-center bg-no-repeat bg-cover">
         <?php echo $__env->make('partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <?php echo $__env->make('components.genreTable', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('components.recommended', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </body>
 </html><?php /**PATH C:\xampp\htdocs\uniread\resources\views/authors/genre.blade.php ENDPATH**/ ?>

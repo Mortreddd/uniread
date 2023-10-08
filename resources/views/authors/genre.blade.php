@@ -7,8 +7,9 @@
         <title>UniRead</title>
         @vite(['resources/css/app.css','resources/js/app.js'])
     </head>
-    <body class="box-border w-full p-0 m-0">
+    <body class="box-border w-full p-0 m-0 bg-fixed bg-center bg-no-repeat bg-cover">
         @include('partials.header')
-        @include('components.genreTable')
+        @include('components.recommended')
+        @include('partials.footer')
     </body>
 </html>

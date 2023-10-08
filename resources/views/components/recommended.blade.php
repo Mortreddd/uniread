@@ -9,7 +9,7 @@
         >
             <img
                 class="object-contain w-full rounded-t-lg h-96 md:h-auto md:w-60 md:rounded-none md:rounded-l-lg"
-                src="<?php echo e(asset('static/hell_university.jpg')); ?>"
+                src="{{ asset('static/hell_university.jpg') }}"
                 alt=""
             />
 
@@ -18,24 +18,20 @@
                     <h5
                         class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                     >
-                        <?php echo e($bestBook->title); ?>
-
+                        {{$bestBook->title}}
                     </h5>
                     <p
                         class="mb-3 font-normal text-gray-700 dark:text-gray-400"
                     >
-                        <?php echo e($bestBook->description); ?>
-
+                        {{$bestBook->description}}
                     </p>
                     <p
                         class="px-4 py-2 font-normal rounded-full bg-slate-500 text-slate-50 dark:text-gray-400"
                     >
-                        <?php echo e($bestBook->genre); ?>
-
+                        {{$bestBook->genre}}
                     </p>
                 </div>
             </div>
         </a>
     </div>
 </main>
-<?php /**PATH C:\xampp\htdocs\uniread\resources\views/components/genreTable.blade.php ENDPATH**/ ?>

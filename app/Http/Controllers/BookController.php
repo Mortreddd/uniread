@@ -13,6 +13,9 @@ class BookController extends Controller
 
     public function searchGenre($genre)
     {
-        return view('authors.genre', ['books' => Book::where('genre', $genre)->get()]);
+
+        return view('authors.genre', ['books' => Book::where('genre', $genre)->get(), 
+                                                'bestBook' => Book::all()->first()]);
     }
+
 }

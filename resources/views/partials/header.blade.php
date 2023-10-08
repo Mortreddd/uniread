@@ -1,6 +1,11 @@
 
-    <header class="p-2 pl-0 pr-0 bg-fuchsia-900">
-        <nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <header class="py-4 shadow bg-fuchsia-900">
+        <div class="flex flex-row pl-4">
+            <span class="flex w-5 h-5 mx-1 mb-2 bg-gray-200 rounded-full"></span>
+            <span class="flex w-5 h-5 mx-1 mb-2 bg-yellow-300 rounded-full"></span>
+            <span class="flex w-5 h-5 mx-1 mb-2 bg-yellow-400 rounded-full"></span>
+        </div>
+        <nav class="py-4 bg-white border-gray-200 rounded-lg dark:bg-gray-900">
             <div
                 class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto"
             >
@@ -287,3 +292,11 @@
         </nav>
     </header>
 
+    <div class="flex flex-col w-4/5 my-4 md:w-full sm:mx-auto">
+    <h1
+        class="my-2 text-2xl font-bold tracking-tight text-gray-900 md:p-10 display-5"
+    >
+        Welcome, Teythewriter
+    </h1>
+    <hr class="border-gray-300" />
+</div>
