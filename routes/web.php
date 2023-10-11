@@ -19,7 +19,3 @@ Route::get('/', function () {
 });
 
 Route::get('/books', [BookController::class, 'index']);
-Route::get('/authors', [AuthorController::class, 'index']);
-Route::get('/authors/{id}', [AuthorController::class, 'show']);
-
-Route::get('/books/{genre}', [BookController::class, 'searchGenre']);

@@ -6,9 +6,11 @@
 
         <title>UniRead</title>
         @vite(['resources/css/app.css','resources/js/app.js'])
+        <script src="../../js/app.js"></script>
     </head>
     <body class="box-border w-full p-0 m-0">
-        @include('partials.header')
+        @include("partials.nav")
+        @include("partials.footer")
     </body>
 </html>
 

@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card {
+    animation: fadeIn 4s ease-in;
+    animation-delay: 2s;
+    -webkit-animation: fadeIn 4s ease-in;
+    -moz-animation: fadeIn 4s ease-in;
+    -o-animation: fadeIn 4s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
