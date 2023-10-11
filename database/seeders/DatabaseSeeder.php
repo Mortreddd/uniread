@@ -8,6 +8,8 @@ use App\Models\Book;
 use App\Models\Bookmark;
 use App\Models\Chapter;
 use App\Models\Comment;
+use App\Models\Follower;
+use App\Models\Message;
 use App\Models\Rating;
 use Illuminate\Database\Seeder;
 
@@ -30,5 +32,7 @@ class DatabaseSeeder extends Seeder
         Chapter::factory(30)->create();
         Rating::factory(30)->create();
         Bookmark::factory(10)->create();
+        Follower::factory(100)->create();
+        Message::factory(40)->create();
     }
 }
