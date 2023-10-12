@@ -10,6 +10,7 @@
     </head>
     <body class="box-border w-full p-0 m-0">
         @include("partials.nav")
+        @include("partials.section")
         @include("partials.footer")
     </body>
 </html>

@@ -2,18 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+.card:hover {
+    scale: 1.03;
+}
 .card {
-    animation: fadeIn 4s ease-in;
-    animation-delay: 2s;
-    -webkit-animation: fadeIn 4s ease-in;
-    -moz-animation: fadeIn 4s ease-in;
-    -o-animation: fadeIn 4s ease-in;
+    transition: scale 0.2s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+    -webkit-animation: fadeIn 1s ease-in-out;
+    -moz-animation: fadeIn 1s ease-in-out;
+    -o-animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(20);
+        transform: translateY(20px);
     }
     100% {
         opacity: 1;
@@ -23,7 +26,7 @@
 @-webkit-keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(20);
+        transform: translateY(20px);
     }
     100% {
         opacity: 1;
@@ -34,7 +37,7 @@
 @-moz-keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(20);
+        transform: translateY(20px);
     }
     100% {
         opacity: 1;
@@ -44,7 +47,7 @@
 @-o-keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(20);
+        transform: translateY(20px);
     }
     100% {
         opacity: 1;
