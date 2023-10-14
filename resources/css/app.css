@@ -2,55 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.6s ease-in, opacity 0.6s ease-in,
+        scale 0.2s ease-in-out;
+}
+
 .card:hover {
     scale: 1.03;
 }
-.card {
-    transition: scale 0.2s ease-in-out;
-    animation: fadeIn 1s ease-in-out;
-    -webkit-animation: fadeIn 1s ease-in-out;
-    -moz-animation: fadeIn 1s ease-in-out;
-    -o-animation: fadeIn 1s ease-in-out;
-}
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-@-webkit-keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@-moz-keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-@-o-keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
 }
