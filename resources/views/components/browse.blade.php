@@ -29,7 +29,7 @@
             <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
                 <li>
                     <a
-                        href="#"
+                        href="#fantasy"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Fantasy
@@ -45,7 +45,7 @@
                 </li>
                 <li>
                     <a
-                        href="#"
+                        href="#thriller"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Thriller
@@ -53,7 +53,7 @@
                 </li>
                 <li>
                     <a
-                        href="#"
+                        href="#action"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Action
@@ -65,7 +65,7 @@
             <ul class="space-y-4">
                 <li>
                     <a
-                        href="#"
+                        href="#teen-fiction"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Teen Fiction
@@ -73,7 +73,7 @@
                 </li>
                 <li>
                     <a
-                        href="#"
+                        href="#science"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Science
@@ -81,18 +81,18 @@
                 </li>
                 <li>
                     <a
-                        href="#"
+                        href="#fiction"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
-                        General Fiction
+                        Fiction
                     </a>
                 </li>
                 <li>
                     <a
-                        href="#"
+                        href="#horror"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
-                        Historical Fiction
+                        Horror
                     </a>
                 </li>
             </ul>
@@ -101,7 +101,7 @@
             <ul class="space-y-4">
                 <li>
                     <a
-                        href="#"
+                        href="#romance"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Romance
@@ -109,7 +109,7 @@
                 </li>
                 <li>
                     <a
-                        href="#"
+                        href="#adventure"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Adventure
@@ -117,7 +117,7 @@
                 </li>
                 <li>
                     <a
-                        href="#"
+                        href="#spiritual"
                         class="text-gray-600 hover:text-fuchsia-900 "
                     >
                         Spiritual
@@ -125,7 +125,7 @@
                 </li>
                 <li>
                     <a
-                        href="#"
+                        href="#paranormal"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Paranormal

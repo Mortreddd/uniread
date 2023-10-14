@@ -1,4 +1,4 @@
-<div class="w-full py-5 bg-opacity-50 bg-fuchsia-900">
+<div class="w-full py-5 bg-fuchsia-900">
   <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
       <x-logo></x-logo>
@@ -14,7 +14,7 @@
           <x-search></x-search>
           <x-browse></x-browse>
           <x-write></x-write>
-          <x-button text="Login" color="bg-fuchsia-700" hover="hover:bg-fuchsia-800"></x-button>
+          <x-button text="Login" color="bg-fuchsia-700 text-white" hover="hover:bg-fuchsia-800"></x-button>
           <x-button text="Register" color=" border-2 border-solid text-fuchsia-400 border-fuchsia-400 bg-transparent" hover="hover:bg-fuchsia-500 hover:text-white"></x-button>
         </ul>
       </div>

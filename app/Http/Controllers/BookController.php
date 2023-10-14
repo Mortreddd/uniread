@@ -13,17 +13,22 @@ class BookController extends Controller
         
         $books = DB::table('books')
                     ->join('authors', 'books.authorID', '=', 'authors.id')
-                    ->select('books.title', 'authors.username')
-                    ->limit(5)
+                    ->select('books.*', 'authors.*')
+                    ->limit(10)
                     ->get();
 
-        $bestBook = Book::findOrFail(1);
-        return view('layouts.index', ['books' => $books, 'bestbook' => $bestBook]);
+        return view('layouts.index', ['books' => $books]);
     }
 
-    public function search($search)
+    public function search($id)
     {
-        $books = Book::where('title', 'like', '%', $search, '%')->get();
+        $books = DB::table('books')
+                    ->join('authors', 'books.authorID', '=', 'authors.id')
+                    ->select('books.*', 'authors.*')
+                    ->where('books.id', '=', $id)
+                    ->limit(10)
+                    ->get();
+
         return view('layouts.index', $books);
     }
 }

@@ -13,6 +13,7 @@ class Book extends Model
         'title',
         'genre',
         'description',
+        'image',
         'collaborative',
         'authorID'
     ];

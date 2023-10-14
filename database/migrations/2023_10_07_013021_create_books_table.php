@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('genre');
             $table->string('description');
+            $table->string('image');
             $table->boolean('collaborative');
             $table->unsignedBigInteger('authorID');
             $table->foreign('authorID')->references('id')->on('authors');
