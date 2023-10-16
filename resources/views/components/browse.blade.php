@@ -66,7 +66,7 @@
                 <li>
                     <a
                         href="#teen-fiction"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Teen Fiction
                     </a>
@@ -90,7 +90,7 @@
                 <li>
                     <a
                         href="#horror"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Horror
                     </a>
@@ -102,7 +102,7 @@
                 <li>
                     <a
                         href="#romance"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Romance
                     </a>
@@ -110,7 +110,7 @@
                 <li>
                     <a
                         href="#adventure"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Adventure
                     </a>
@@ -118,7 +118,7 @@
                 <li>
                     <a
                         href="#spiritual"
-                        class="text-gray-600 hover:text-fuchsia-900 "
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900 "
                     >
                         Spiritual
                     </a>
@@ -126,7 +126,7 @@
                 <li>
                     <a
                         href="#paranormal"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Paranormal
                     </a>

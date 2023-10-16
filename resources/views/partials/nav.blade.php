@@ -13,12 +13,15 @@
           
           <x-search></x-search>
           <x-browse></x-browse>
-          <x-write></x-write>
+          @auth
+            <x-write></x-write>
+            <x-library></x-library>
+          @endauth
           <x-button text="Login" color="bg-fuchsia-700 text-white" hover="hover:bg-fuchsia-800"></x-button>
           <x-button text="Register" color=" border-2 border-solid text-fuchsia-400 border-fuchsia-400 bg-transparent" hover="hover:bg-fuchsia-500 hover:text-white"></x-button>
         </ul>
       </div>
-      
+        
     </div>
   </nav>
 </div>

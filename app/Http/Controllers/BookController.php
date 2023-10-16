@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Book;
 use Illuminate\Support\Facades\DB;
 
 
@@ -12,7 +11,7 @@ class BookController extends Controller
     {
         
         $books = DB::table('books')
-                    ->join('authors', 'books.authorID', '=', 'authors.id')
+                    ->join('authors','books.authorID', '=', 'authors.id')
                     ->select('books.*', 'authors.*')
                     ->limit(10)
                     ->get();
