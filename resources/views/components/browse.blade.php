@@ -29,7 +29,7 @@
             <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
                 <li>
                     <a
-                        href="#fantasy"
+                        href="/books/fantasy"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Fantasy
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <a
-                        href="#mystery"
+                        href="/books/mystery"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Mystery
@@ -45,16 +45,16 @@
                 </li>
                 <li>
                     <a
-                        href="#thriller"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        href="/books/thriller"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Thriller
                     </a>
                 </li>
                 <li>
                     <a
-                        href="#action"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        href="/books/action"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Action
                     </a>
@@ -65,31 +65,31 @@
             <ul class="space-y-4">
                 <li>
                     <a
-                        href="#teen-fiction"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="/books/teen-fiction"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Teen Fiction
                     </a>
                 </li>
                 <li>
                     <a
-                        href="#science"
+                        href="/books/science-fiction"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
-                        Science
+                        Science Fiction
                     </a>
                 </li>
                 <li>
                     <a
-                        href="#fiction"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        href="/books/fiction"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Fiction
                     </a>
                 </li>
                 <li>
                     <a
-                        href="#horror"
+                        href="/books/horror"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Horror
@@ -101,15 +101,15 @@
             <ul class="space-y-4">
                 <li>
                     <a
-                        href="#romance"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="/books/romance"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Romance
                     </a>
                 </li>
                 <li>
                     <a
-                        href="#adventure"
+                        href="/books/adventure"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Adventure
@@ -117,7 +117,7 @@
                 </li>
                 <li>
                     <a
-                        href="#spiritual"
+                        href="/books/spiritual"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900 "
                     >
                         Spiritual
@@ -125,7 +125,7 @@
                 </li>
                 <li>
                     <a
-                        href="#paranormal"
+                        href="/books/paranormal"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Paranormal
