@@ -21,27 +21,19 @@ class BookController extends Controller
         return view('layouts.index', ['books' => $books]);
     }
 
-    public function search($id)
+    public function searchById($id)
     {
         $books = DB::table('books')
-                    ->join('authors', 'books.authorID', '=', 'authors.id')
+                    ->where('books.id', $id)
+                    ->join('authors','books.authorID', '=', 'authors.id')
                     ->select('books.*', 'authors.*')
-                    ->where('books.id', '=', $id)
-                    ->limit(1)
+                    ->limit(10)
                     ->get();
-
+                    
         return view('layouts.description', ['books' => $books]);
     }
-    public function find($id)
+    public function searchGenre()
     {
-        $book = DB::table('books')
-                    ->join('authors', 'books.authorID', '=', 'authors.id')
-                    ->select('books.*', 'authors.*')
-                    ->where('books.id', '=', $id)
-                    ->limit(1)
-                    ->get();
-
         
-        return response($book, 200);
     }
 }

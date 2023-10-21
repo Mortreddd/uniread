@@ -14,17 +14,17 @@
             
             @include('partials.nav')
             @foreach ($books as $book)
-            <main class="flex flex-col w-full h-full justify-normal md:justify-center md:flex-row ">
+            <main class="flex flex-col items-center w-full h-full py-4 rounded-md justify-normal md:items-start md:justify-center md:flex-row">
                 <figure class="inline-block float-left max-w-sm md:m-4">
                     <img
                       src="{{ asset($book->image) }}"
                       class="max-w-full mb-4 leading-none align-middle rounded-lg shadow-lg h-5/6"
                       alt="Taking up Water with a Spoon" />
-                    <figcaption class="text-lg text-center text-neutral-600 dark:text-neutral-400">
+                    <figcaption class="text-2xl text-center text-neutral-600 dark:text-neutral-400">
                       <a href="/authors/{{$book->authorID}}" class="underline">{{$book->username}}</a>
                     </figcaption>
                 </figure>
-                <section class="w-full rounded-sm md:m-4 ">
+                <section class="w-full md:m-4">
                     <x-information></x-information>
                 </section>
             </main>
