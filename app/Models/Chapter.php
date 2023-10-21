@@ -13,4 +13,9 @@ class Chapter extends Model
         'title',
         'content'
     ];
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
 }

@@ -17,4 +17,9 @@ class Book extends Model
         'collaborative',
         'authorID'
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
+    }
 }

@@ -17,7 +17,7 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
-        $genres = ['Fiction', 'Novel', 'Historical Fiction', 'Narrative', 'Thriller', 'Science Fiction', 'Mystery'];
+        $genres = ['Action', 'Horror', 'Mystery', 'Romance', 'Teen Fiction', 'Science Fiction'];
         $covers = ['covers/cover1.jpeg', 'covers/cover2.jpg', 'covers/cover3.jpg', 'covers/cover4.jpg', 'covers/cover5.jpg', 'covers/cover6.jpg'];
         return [
             'title' => fake()->text(30),
