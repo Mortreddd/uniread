@@ -13,7 +13,6 @@
         <main class="container box-border w-full min-h-full p-0 m-0">
             
             @include('partials.nav')
-            @foreach ($books as $book)
             <main class="flex flex-col items-center w-full h-full py-4 rounded-md justify-normal md:items-start md:justify-center md:flex-row">
                 <figure class="inline-block float-left max-w-sm md:m-4">
                     <img
@@ -26,10 +25,10 @@
                 </figure>
                 <section class="w-full md:m-4">
                     <x-information></x-information>
+                    <x-recommendation :recommendations = "recommendations"></x-recommendation>
                 </section>
             </main>
             
-            @endforeach
             @include('partials.footer')
         </main>
     </body>
