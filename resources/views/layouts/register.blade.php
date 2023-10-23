@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth scroll-p-40">
+<html
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    class="scroll-smooth scroll-p-40"
+>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,45 +12,186 @@
         <script src="../../js/app.js"></script>
     </head>
     <body>
-        <main class="container box-border w-full min-h-full p-0 m-0">
-                
-<form>
-    <div class="relative z-0 w-full mb-6 group">
-        <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
-    </div>
-    <div class="relative z-0 w-full mb-6 group">
-        <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
-    </div>
-    <div class="relative z-0 w-full mb-6 group">
-        <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
-    </div>
-    <div class="grid md:grid-cols-2 md:gap-6">
-      <div class="relative z-0 w-full mb-6 group">
-          <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
-      </div>
-      <div class="relative z-0 w-full mb-6 group">
-          <input type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
-      </div>
-    </div>
-    <div class="grid md:grid-cols-2 md:gap-6">
-      <div class="relative z-0 w-full mb-6 group">
-          <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
-      </div>
-      <div class="relative z-0 w-full mb-6 group">
-          <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
-      </div>
-    </div>
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-  </form>
-  
+        <div class="w-full py-5 bg-fuchsia-900">
+            <nav
+                class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"
+            >
+                <div
+                    class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto"
+                >
+                    <x-logo></x-logo>
+                </div>
+            </nav>
+        </div>
+        <main class="container box-border flex w-full h-[80vh]">
+            <div
+                class="w-0 h-full bg-no-repeat bg-cover md:w-screen"
+                style="background-image: url('{{
+                    asset('backgrounds/Register.svg')
+                }}');"
+            ></div>
+            <div class="flex items-center justify-center w-full p-5">
+                <div
+                    class="flex flex-col justify-center p-5 border-2 border-gray-300 border-solid rounded-lg shadow-lg"
+                >
+                    <h1
+                        class="font-serif text-4xl text-center text-bold text-fuchsia-900"
+                    >
+                        Register
+                    </h1>
+                    <form
+                        action="/login/process"
+                        class="flex flex-col justify-center px-10"
+                    >
+                        <div class="mb-3">
+                            <label
+                                for=""
+                                class="text-xl text-fuchsia-900 font serif"
+                                >Username</label
+                            >
+                            <div
+                                class="flex items-center border-2 border-gray-500 border-solid rounded-md"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="m-2 w-7 h-7"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                                    />
+                                </svg>
+
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id=""
+                                    placeholder="Enter Username"
+                                    class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label
+                                for=""
+                                class="text-xl text-fuchsia-900 font serif"
+                                >Email Address</label
+                            >
+                            <div
+                                class="flex items-center border-2 border-gray-500 border-solid rounded-md"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="m-2 w-7 h-7"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                                    />
+                                </svg>
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id=""
+                                    placeholder="Enter Email"
+                                    class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label
+                                for=""
+                                class="text-xl text-fuchsia-900 font serif"
+                                >Password</label
+                            >
+                            <div
+                                class="flex items-center border-2 border-gray-500 border-solid rounded-md"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="m-2 w-7 h-7"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+                                    />
+                                </svg>
+
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id=""
+                                    placeholder="Enter Password"
+                                    class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label
+                                for=""
+                                class="text-xl text-fuchsia-900 font serif"
+                                >Confirm Password</label
+                            >
+                            <div
+                                class="flex items-center border-2 border-gray-500 border-solid rounded-md"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="m-2 w-7 h-7"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+                                    />
+                                </svg>
+
+                                <input
+                                    type="password"
+                                    name="confirmation"
+                                    id=""
+                                    placeholder="Confirm Password"
+                                    class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
+                                />
+                            </div>
+                        </div>
+                        <button
+                            type="submit"
+                            class="py-2 my-5 text-xl text-white rounded-lg bg-fuchsia-800 hover:bg-fuchsia-900"
+                        >
+                            Register
+                        </button>
+                        <p class="font-sans text-center text-gray-700 text-md">
+                            Already have an account?
+                        </p>
+                        <a
+                            href="/login"
+                            class="font-sans text-center text-red-400 text-md hover:text-red-500 hover:cursor-pointer"
+                            >Login</a
+                        >
+                    </form>
+                </div>
+            </div>
         </main>
     </body>
 </html>
-

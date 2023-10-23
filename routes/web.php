@@ -7,9 +7,11 @@ use App\Http\Controllers\BookController;
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/',[BookController::class, 'index']);
-    Route::get('/books/{id}', [BookController::class, 'searchById'])->where(['id' => '[0-9]+']);
-    Route::get('/books/{genre}', [BookController::class, 'searchByGenre'])->whereIn('genre', ['fantasy', 'mystery', 'thriller', 'teen-fiction', 'science-fiction']);
+    Route::controller(BookController::class)->group(function () {
+        Route::get('/',[BookController::class, 'index']);
+        Route::get('/books/{id}', [BookController::class, 'searchById'])->where(['id' => '[0-9]+']);
+        Route::get('/books/{genre}', [BookController::class, 'searchByGenre'])->whereIn('genre', ['fantasy', 'mystery', 'thriller', 'teen-fiction', 'science-fiction']);
+    });
 });
 
 Route::middleware('guest')->group(function () {
@@ -18,7 +20,7 @@ Route::middleware('guest')->group(function () {
         Route::post('/login/process', 'process');
     });
     Route::controller(RegisterController::class)->group(function () {
-        Route::get('/register', 'show');
+        Route::get('/register', 'show')->name('register');
         Route::post('/register/process', 'store');  
     });
 });
