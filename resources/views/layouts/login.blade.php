@@ -38,7 +38,9 @@
                     <form
                         action="/login/process"
                         class="flex flex-col justify-center p-3 mx-2 my-2"
+                        method="POST"
                     >
+                    @csrf
                         <div class="mb-3">
                             <label
                                 for=""
@@ -97,7 +99,7 @@
                                 </svg>
 
                                 <input
-                                    type="email"
+                                    type="password"
                                     name="password"
                                     id=""
                                     placeholder="Enter Password"

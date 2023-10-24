@@ -40,9 +40,17 @@
                         Register
                     </h1>
                     <form
-                        action="/login/process"
+                        action="/register/process"
                         class="flex flex-col justify-center px-10"
+                        method="POST"
                     >
+                    @csrf
+                    @csrf
+                    @error('error')
+                        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                            <span class="font-medium">{{ $message }}</span>
+                        </div>
+                    @enderror
                         <div class="mb-3">
                             <label
                                 for=""
@@ -72,6 +80,7 @@
                                     name="username"
                                     id=""
                                     placeholder="Enter Username"
+                                    value="{{ old('username') }}"
                                     class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
                                 />
                             </div>
@@ -105,6 +114,7 @@
                                     name="email"
                                     id=""
                                     placeholder="Enter Email"
+                                    value="{{ old('email') }}"
                                     class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
                                 />
                             </div>
@@ -138,6 +148,7 @@
                                     name="password"
                                     id=""
                                     placeholder="Enter Password"
+                                    value="{{ old('password')}}"
                                     class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
                                 />
                             </div>
@@ -168,7 +179,7 @@
 
                                 <input
                                     type="password"
-                                    name="confirmation"
+                                    name="password_confirmation"
                                     id=""
                                     placeholder="Confirm Password"
                                     class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"

@@ -15,8 +15,10 @@
           <x-browse></x-browse>
           <x-write></x-write>
           <x-library></x-library>
-          <x-button url="/login" text="Login" color="bg-fuchsia-700 text-white" hover="hover:bg-fuchsia-800"></x-button>
-          <x-button url="/register" text="Register" color=" border-2 border-solid text-fuchsia-400 border-fuchsia-400 bg-transparent" hover="hover:bg-fuchsia-500 hover:text-white"></x-button>
+          <form action="/logout" method="post">
+            @csrf
+            <button type="submit" class="px-4 py-2 text-white rounded-md bg-fuchsia-800 hover:bg-fuchsia-900">Logout</button>
+          </form>
         </ul>
       </div>
         
