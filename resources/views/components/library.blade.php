@@ -1,7 +1,7 @@
 <li>
     <button
         id="mega-menu-dropdown-button"
-        data-dropdown-toggle="dropdownDivider"
+        data-dropdown-toggle="dropdownLibrary"
         class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-sm border-b md:text-lg md:hover:text-fuchsia-900 md:hover:bg-transparent md:text- md:text-gray-800 md:border-0 md:p-0 md:w-auto"
     >
         Library
@@ -21,7 +21,7 @@
             />
         </svg>
     </button>
-    <div id="dropdownDivider" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+    <div id="dropdownLibrary" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
           <li>
             <a href="#" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">Dashboard</a>
@@ -34,3 +34,4 @@
           </li>
         </ul>
     </div>
+  </li>

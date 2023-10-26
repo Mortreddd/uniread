@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::controller(BookController::class)->group(function () {
-        Route::get('/','index');
+        Route::get('/','index')->name('home');
         Route::get('/books/{id}', 'searchById')->where(['id' => '[0-9]+']);
         Route::get('/books/{genre}', 'searchByGenre')->whereIn('genre', ['fantasy', 'mystery', 'thriller', 'teen-fiction', 'science-fiction']);
     });

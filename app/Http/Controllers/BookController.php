@@ -11,22 +11,29 @@ class BookController extends Controller
     public function index()
     {
         
-        $books = Book::all();
+        $books = Book::all(['id', 'title', 'genre', 'image']);
         return view('layouts.index', ['books' => $books]);
     }
 
-    public function searchById($id)
-    {
         // $book = DB::table('books')
         //             ->where('books.id', $id)
         //             ->join('authors','books.authorID', '=', 'authors.id')
         //             ->select('books.*', 'authors.*')
         //             ->first();
         
-        $book = Book::find($id)->author();
-        $recommendations = Book::where('genre', 'genre')->get();         
+
+
+    public function searchById($id)
+    {
+        
+        $book = Book::with('author')->find($id);
+        $recommendations = Book::where('genre', $book->genre)
+            ->where('id', '!=', $id) // Exclude the current book
+            ->get();
+
         return view('layouts.description', ['book' => $book, 'recommendations' => $recommendations]);
     }
+
     public function searchGenre()
     {
         

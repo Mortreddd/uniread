@@ -1,8 +1,8 @@
 <li>
     <button
-        id="dropdownNavbarLink"
-        data-dropdown-toggle="dropdownNavbar"
-        class="flex items-center text-sm md:text-lg justify-between w-full py-2 pl-3 pr-4 md:hover:text-fuchsia-900 border-b  md:hover:bg-transparent md:text- md:text-gray-800 md:border-0 md:p-0 md:w-auto"
+        id="mega-menu-dropdown-button"
+        data-dropdown-toggle="dropdownWrite"
+        class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-sm border-b md:text-lg md:hover:text-fuchsia-900 md:hover:bg-transparent md:text- md:text-gray-800 md:border-0 md:p-0 md:w-auto"
     >
         Write
         <svg
@@ -21,28 +21,14 @@
             />
         </svg>
     </button>
-    <div
-        id="dropdownNavbar"
-        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
-    >
-        <ul
-            class="py-2 text-sm text-gray-700 dark:text-gray-400"
-            aria-labelledby="dropdownLargeButton"
-        >
-            <li>
-                <a
-                    href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >Create a new story</a
-                >
-            </li>
-            <li>
-                <a
-                    href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >My Stories</a
-                >
-            </li>
+    <div id="dropdownWrite" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
+          <li>
+            <a href="#" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">Create a new story</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">My stories</a>
+          </li>
         </ul>
     </div>
-</li>
+  </li>

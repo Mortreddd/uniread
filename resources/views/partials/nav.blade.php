@@ -15,10 +15,7 @@
           <x-browse></x-browse>
           <x-write></x-write>
           <x-library></x-library>
-          <form action="/logout" method="post">
-            @csrf
-            <button type="submit" class="px-4 py-2 text-white rounded-md bg-fuchsia-800 hover:bg-fuchsia-900">Logout</button>
-          </form>
+          <x-profile></x-profile>
         </ul>
       </div>
         

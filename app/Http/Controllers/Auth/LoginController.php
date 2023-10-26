@@ -26,9 +26,9 @@ class LoginController extends Controller
             return redirect()->intended('/');
         }
 
-        return Auth::flash()->back()->withErrors([
-            'email' => 'The provided credentials do not match our records.'
-        ])->withInput($request->only('email'));;
+        return redirect()->back()->withErrors([
+            'error' => 'The provided credentials do not match our records.',
+        ])->withInput($request->only('email'));
     }
 
 
