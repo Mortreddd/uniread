@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str;
 
 class BookController extends Controller
 {
@@ -12,14 +12,12 @@ class BookController extends Controller
     {
         
         $books = Book::all(['id', 'title', 'genre', 'image']);
-        return view('layouts.index', ['books' => $books]);
+        $trendingBooks = $books->take(10);
+        $groupedBooks = $books->groupBy('genre');
+                    
+        // return dd($books);
+        return view('layouts.index', ['trendingBooks' => $trendingBooks, 'groupedBooks' => $groupedBooks]);
     }
-
-        // $book = DB::table('books')
-        //             ->where('books.id', $id)
-        //             ->join('authors','books.authorID', '=', 'authors.id')
-        //             ->select('books.*', 'authors.*')
-        //             ->first();
         
 
 
@@ -34,8 +32,23 @@ class BookController extends Controller
         return view('layouts.description', ['book' => $book, 'recommendations' => $recommendations]);
     }
 
-    public function searchGenre()
+    public function searchByGenre($genre)
     {
         
+        $books = Book::where('genre', Str::title($genre))->get(['id', 'title', 'genre', 'image']);
+        $groupedBooks = $books->groupBy('genre');
+                    
+        // return dd($books);
+        return view('layouts.index', ['groupedBooks' => $groupedBooks]);
     }
+
+    // public function test()
+    // {
+        
+    //     $books = Book::all(['id', 'title', 'genre', 'image'])
+    //                 ->groupBy(['genre']);
+                    
+    //     // return dd($books);
+    //     return $books;
+    // }
 }

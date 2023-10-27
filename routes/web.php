@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
-
+use App\Http\Controllers\Auth\ProfileController;
 
 Route::middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::controller(BookController::class)->group(function () {
@@ -12,7 +12,7 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
         Route::get('/books/{id}', 'searchById')->where(['id' => '[0-9]+']);
         Route::get('/books/{genre}', 'searchByGenre')->whereIn('genre', ['fantasy', 'mystery', 'thriller', 'teen-fiction', 'science-fiction']);
     });
-    Route::controller(LoginController::class)->group(function () {
+    Route::controller(ProfileController::class)->group(function(){
         Route::post('/logout', 'logout');
     });
 });

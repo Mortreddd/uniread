@@ -13,19 +13,26 @@
         <main class="container box-border w-full min-h-full p-0 m-0">
             
             @include('partials.nav')
-            <main class="flex flex-col items-center w-full h-full py-4 rounded-md justify-normal md:items-start md:justify-center md:flex-row">
-                <figure class="inline-block float-left max-w-sm md:m-4">
+            <main class="flex flex-col items-center w-full h-full py-4 rounded-mdjustify-normal md:items-start md:justify-center md:flex-row">
+                <figure class="inline-block float-left w-[40vw] m-5">
                     <img
                       src="{{ asset($book->image) }}"
                       class="max-w-full mb-4 leading-none align-middle rounded-lg shadow-lg h-5/6"
                       alt="Taking up Water with a Spoon" />
                     <figcaption class="text-2xl text-center text-neutral-600 dark:text-neutral-400">
-                      <a href="/authors/{{$book->authorID}}" class="underline">{{$book->username}}</a>
+                      <a href="/authors/{{$book->authorID}}" class="underline">{{$book->author->username}}</a>
                     </figcaption>
                 </figure>
-                <section class="w-full md:m-4">
+                <section class="w-full">
                     <x-information></x-information>
-                    <x-recommendation :recommendations = "recommendations"></x-recommendation>
+                    <section class="w-full p-5 bg-gray-100 border-2 border-gray-200" recommendations="$recommendations">
+                        <h3 class="font-sans text-2xl text-gray-500">Recommendations</h3>
+                        <div class="flex flex-row overflow-hidden">
+                            @foreach($recommendations as $book)
+                                <x-card :book="$book"></x-card>
+                            @endforeach
+                        </div>
+                    </section>
                 </section>
             </main>
             

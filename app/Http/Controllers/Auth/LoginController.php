@@ -23,20 +23,14 @@ class LoginController extends Controller
 
         if (Auth::attempt($validated)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return to_route('home')->with('success', "Welcome back, ".Auth::user()->username);
         }
 
         return redirect()->back()->withErrors([
             'error' => 'The provided credentials do not match our records.',
+            'email' => 'Email must be unique',
         ])->withInput($request->only('email'));
     }
 
 
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('login');
-    }
 }

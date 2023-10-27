@@ -26,9 +26,9 @@
         <main
             class="container box-border flex w-full h-[80vh]"
         >
-            <div class="flex items-center justify-center w-full p-5">
+            <div class="flex items-center justify-center w-full p-2">
                 <div
-                    class="flex flex-col justify-center p-5 border-2 border-gray-300 border-solid rounded-lg shadow-lg md:p-10"
+                    class="flex flex-col justify-center p-2 border-2 border-gray-300 border-solid rounded-lg shadow-lg md:p-5"
                 >
                     <h1
                         class="font-serif text-4xl text-center text-bold text-fuchsia-900"
@@ -48,6 +48,11 @@
                         </div>
                     @enderror
                         <div class="mb-3">
+                            @error('email')
+                                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                    <span class="font-medium">{{ $message }}</span>
+                                </div>
+                            @enderror
                             <label
                                 for=""
                                 class="text-2xl text-fuchsia-900 font serif"
@@ -81,6 +86,11 @@
                             </div>
                         </div>
                         <div class="mb-3">
+                            @error('password')
+                                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                    <span class="font-medium">{{ $message }}</span>
+                                </div>
+                            @enderror
                             <label
                                 for=""
                                 class="text-2xl text-fuchsia-900 font serif"
