@@ -10,14 +10,14 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::controller(BookController::class)->group(function () {
         Route::get('/','index')->name('home');
         Route::get('/books/{id}', 'searchById')->where(['id' => '[0-9]+']);
-        Route::get('/books/{genre}', 'searchByGenre')->whereIn('genre', ['fantasy', 'mystery', 'thriller', 'teen-fiction', 'science-fiction']);
+        Route::get('/books/{genre}', 'searchByGenre')->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
     });
     Route::controller(ProfileController::class)->group(function(){
         Route::post('/logout', 'logout');
     });
 });
 
-Route::middleware('guest')->group(function () {
+Route::middleware(['guest', 'preventBackHistory'])->group(function () {
     Route::controller(LoginController::class)->group(function () {
         Route::get('/login', 'show')->name('login');
         Route::post('/login/process', 'process');

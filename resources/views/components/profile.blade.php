@@ -40,7 +40,7 @@
         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
     >
         <ul
-            class="flex flex-col py-2 text-sm text-gray-700 dark:text-gray-200"
+            class="flex flex-col items-center text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownInformationButton"
         >
             <li>
@@ -51,7 +51,7 @@
                 >
                     <button
                         type="submit"
-                        class="px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        class="w-full px-10 py-2 text-sm text-gray-700 rounded-md px-auto hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                         My Profile
                     </button>
@@ -60,16 +60,16 @@
             <li>
                 <a
                     href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="w-full px-10 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >Settings</a
                 >
             </li>
             <li>
-                <form action="/logout" method="POST" class="py-2">
+                <form action="/logout" method="POST">
                     @csrf
                     <button
                         type="submit"
-                        class="px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        class="w-full px-10 py-2 text-sm text-gray-700 rounded-md px-auto hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                         Sign out
                     </button>

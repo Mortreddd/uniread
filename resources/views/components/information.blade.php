@@ -1,7 +1,7 @@
 <section class="w-full p-5 bg-gray-100 border-2 border-gray-200 rounded-lg md:w-full">
     <div class="mx-3">
         <h1 class="text-4xl text-slate-400">The Curse of the Crying Boy</h1>
-        <div class="flex flex-row w-full my-1 md:my-3">
+        <div class="flex flex-row flex-wrap w-full my-1 md:my-3">
             <div class="mr-4">
                 <h4 class="flex gap-2 text-xl text-gray-400">
                     <svg

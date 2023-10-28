@@ -15,4 +15,10 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login');
     }
+
+    public function profile()
+    {
+        Auth::id();
+        return view('layouts.profile.author');
+    }
 }

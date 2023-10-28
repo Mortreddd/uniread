@@ -10,7 +10,6 @@ class BookController extends Controller
     
     public function index()
     {
-        
         $books = Book::all(['id', 'title', 'genre', 'image']);
         $trendingBooks = $books->take(10);
         $groupedBooks = $books->groupBy('genre');
@@ -18,8 +17,6 @@ class BookController extends Controller
         // return dd($books);
         return view('layouts.index', ['trendingBooks' => $trendingBooks, 'groupedBooks' => $groupedBooks]);
     }
-        
-
 
     public function searchById($id)
     {
@@ -34,21 +31,26 @@ class BookController extends Controller
 
     public function searchByGenre($genre)
     {
-        
+        $genre = implode(' ', explode('-', $genre));
         $books = Book::where('genre', Str::title($genre))->get(['id', 'title', 'genre', 'image']);
         $groupedBooks = $books->groupBy('genre');
                     
-        // return dd($books);
         return view('layouts.index', ['groupedBooks' => $groupedBooks]);
     }
 
+    public function searchByTitle($title)
+    {
+        $books = Book::where('title', 'like', '%'.$title.'%')->get(['id', 'title', 'genre', 'image']);
+        $groupedBooks = $books->groupBy('genre');
+                    
+        return view('layouts.index', ['groupedBooks' => $groupedBooks]);
+    }
     // public function test()
     // {
         
     //     $books = Book::all(['id', 'title', 'genre', 'image'])
     //                 ->groupBy(['genre']);
                     
-    //     // return dd($books);
     //     return $books;
     // }
 }

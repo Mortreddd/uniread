@@ -14,12 +14,12 @@
             
             @include('partials.nav')
             <main class="flex flex-col items-center w-full h-full py-4 rounded-mdjustify-normal md:items-start md:justify-center md:flex-row">
-                <figure class="inline-block float-left w-[40vw] m-5">
+                <figure class="inline-block float-left w-[35vw] m-5">
                     <img
                       src="{{ asset($book->image) }}"
-                      class="max-w-full mb-4 leading-none align-middle rounded-lg shadow-lg h-5/6"
+                      class="w-full mb-4 leading-none align-middle rounded-lg shadow-lg h-5/6"
                       alt="Taking up Water with a Spoon" />
-                    <figcaption class="text-2xl text-center text-neutral-600 dark:text-neutral-400">
+                    <figcaption class="w-full text-2xl text-center text-neutral-600 dark:text-neutral-400">
                       <a href="/authors/{{$book->authorID}}" class="underline">{{$book->author->username}}</a>
                     </figcaption>
                 </figure>

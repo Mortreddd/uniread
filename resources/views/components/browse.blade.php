@@ -30,7 +30,7 @@
                 <li>
                     <a
                         href="/books/fantasy"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Fantasy
                     </a>
@@ -74,7 +74,7 @@
                 <li>
                     <a
                         href="/books/science-fiction"
-                        class="text-gray-600 hover:text-fuchsia-900"
+                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Science Fiction
                     </a>
@@ -90,7 +90,7 @@
                 <li>
                     <a
                         href="/books/horror"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Horror
                     </a>
