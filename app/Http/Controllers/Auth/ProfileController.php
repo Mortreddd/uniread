@@ -16,9 +16,8 @@ class ProfileController extends Controller
         return redirect()->route('login');
     }
 
-    public function profile()
+    public function profile($username)
     {
-        Auth::id();
-        return view('layouts.profile.author');
+        
     }
 }

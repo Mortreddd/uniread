@@ -143,7 +143,7 @@
             <div
                 class="w-0 h-full bg-no-repeat bg-cover md:w-screen"
                 style="background-image: url('{{
-                    asset('backgrounds/Login.svg')
+                    asset('backgrounds/Login.webp')
                 }}');"
             ></div>
         </main>

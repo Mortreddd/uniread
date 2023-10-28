@@ -25,11 +25,11 @@ class Book extends Model
 
     public function chapters()
     {
-        return $this->hasMany(Chapter::class);
+        return $this->hasMany(Chapter::class, 'id', 'bookID');
     }
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'id', 'bookID');
     }
 }

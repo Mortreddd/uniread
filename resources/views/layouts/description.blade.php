@@ -20,7 +20,7 @@
                       class="w-full mb-4 leading-none align-middle rounded-lg shadow-lg h-5/6"
                       alt="Taking up Water with a Spoon" />
                     <figcaption class="w-full text-2xl text-center text-neutral-600 dark:text-neutral-400">
-                      <a href="/authors/{{$book->authorID}}" class="underline">{{$book->author->username}}</a>
+                      <a href="/authors/{{$book->authorID}}" class="underline">{{'@'}}{{$book->author->username}}</a>
                     </figcaption>
                 </figure>
                 <section class="w-full">
