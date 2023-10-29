@@ -9,6 +9,7 @@ use App\Models\Bookmark;
 use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\Message;
+use App\Models\Follower;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
         Comment::factory(30)->create();
         Chapter::factory(30)->create();
         Bookmark::factory(10)->create();
+        Follower::factory(30)->create();
         Message::factory(40)->create();
     }
 }

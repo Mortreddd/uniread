@@ -18,8 +18,8 @@ class FollowerFactory extends Factory
     public function definition(): array
     {
         return [
-            'followerAuthorID' => fake()->randomElement(Author::all()),
-            'followedAuthorID' => fake()->randomElement(Author::all())
+            'followerAuthorID' => fake()->randomElement(Author::all(['id'])),
+            'followedAuthorID' => fake()->randomElement(Author::all(['id']))
         ];
     }
 }

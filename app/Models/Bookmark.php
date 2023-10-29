@@ -12,4 +12,9 @@ class Bookmark extends Model
         'chapterID',
         'authorID'
     ]; 
+
+    public function chapter()
+    {
+        return $this->belongsTo(Chapter::class, 'chapterID', 'id');
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +14,9 @@ return new class extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bookID');
             $table->string('title');
             $table->mediumText('content');
-            $table->foreign('bookID')->references('id')->on('books');
+            $table->foreignIdFor(Book::class, 'bookID')->constrained('books');
             $table->timestamps();
         });
     }

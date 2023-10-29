@@ -23,18 +23,18 @@ class Author extends Model implements AuthenticatableContract
         'password' => 'hashed'
     ];
 
+
+    public $timestamps = true;
+
     public function books()
     {
         return $this->hasMany(Book::class);
     }
 
-    public function follows()
+    public function followed()
     {
-        return $this->belongsToMany(Author::class, 'followers', 'followerAuthorID', 'followedAuthorID');
+        return $this->hasMany(Follower::class, 'id', 'followerAuthorID');
     }
 
-    public function followers()
-    {
-        return $this->belongsToMany(Author::class, 'followers', 'followedAuthorID', 'followerAuthorID');
-    }
+
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Author;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,8 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('image');
             $table->boolean('collaborative');
-            $table->unsignedBigInteger('authorID');
-            $table->foreign('authorID')->references('id')->on('authors');
+            $table->foreignIdFor(Author::class, 'authorID')->constrained('authors');
             $table->timestamps();
         });
     }

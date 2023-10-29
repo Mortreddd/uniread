@@ -48,11 +48,6 @@
                         </div>
                     @enderror
                         <div class="mb-3">
-                            @error('email')
-                                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
                             <label
                                 for=""
                                 class="text-2xl text-fuchsia-900 font serif"

@@ -45,7 +45,7 @@
         >
             <li>
                 <form
-                    action="/{{ auth()->user()->username }}"
+                    action="/profile/{{ auth()->user()->username }}"
                     method="GET"
                     class="py-2"
                 >

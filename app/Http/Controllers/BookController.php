@@ -31,8 +31,7 @@ class BookController extends Controller
 
     public function searchByGenre($genre)
     {
-        $genre = implode(' ', explode('-', $genre));
-        $books = Book::where('genre', Str::title($genre))->get(['id', 'title', 'genre', 'image']);
+        $books = Book::where('genre', Str::headline($genre))->get(['id', 'title', 'genre', 'image']);
         $groupedBooks = $books->groupBy('genre');
                     
         return view('layouts.index', ['groupedBooks' => $groupedBooks]);

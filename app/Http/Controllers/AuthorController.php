@@ -18,4 +18,9 @@ class AuthorController extends Controller
     {
         return view();
     }
+
+    public function follower()
+    {
+        
+    }
 }

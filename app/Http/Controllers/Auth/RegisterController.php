@@ -27,7 +27,6 @@ class RegisterController extends Controller
         {
             return redirect()->back()->withErrors([
                 'error' => 'Cannot use this credentials',
-                'email' => 'Email must be unique',
                 'password' => 'Password must be at least 8 characters long',
                 'username' => 'Username must be at least 4 characters long'
             ]);
