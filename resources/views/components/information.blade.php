@@ -1,4 +1,4 @@
-<section class="w-full p-5 bg-gray-100 border-2 border-gray-200 rounded-lg md:w-full">
+<section class="w-full p-2 mb-4 bg-gray-100 border-2 border-gray-200 rounded-lg md:p-5 ">
     <div class="mx-3">
         <h1 class="text-4xl text-slate-400">The Curse of the Crying Boy</h1>
         <div class="flex flex-row flex-wrap w-full my-1 md:my-3">

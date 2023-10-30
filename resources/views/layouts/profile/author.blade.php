@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
         <title>UniRead</title>
         @vite(['resources/css/app.css','resources/js/app.js'])
         <script src="../../js/app.js"></script>
@@ -15,7 +15,7 @@
         <x-nav></x-nav>
         <main class="container box-border w-full h-full">
             <section
-                class="flex justify-center items-end h-[60vh] w-screen bg-cover bg-no-repeat bg-center"
+                class="flex justify-center items-end h-[60vh] bg-cover w-full bg-no-repeat bg-center"
                 style="background-image: url({{
                     asset('backgrounds/Profile.webp')
                 }})"
@@ -119,21 +119,21 @@
                 </div>
             </section>
 
-            <section class="px-20 mb-4 border-b border-gray-200 dark:border-gray-700">
+            <section class="mx-3 mb-4 border-b border-gray-200 md:mx-14 dark:border-gray-700">
                 <ul
                     class="flex flex-wrap -mb-px text-lg font-medium text-center"
-                    id="default-tab"
+                    id="profile-tab"
                     data-tabs-toggle="#default-tab-content"
                     role="tablist"
                 >
                     <li class="mr-2" role="presentation">
                         <button
-                            class="inline-block p-4 border-b-2 rounded-t-lg"
-                            id="profile-tab"
+                            class="inline-block p-4 border-b-2 rounded-t-lg "
+                            id="works-tab"
                             data-tabs-target="#works"
                             type="button"
                             role="tab"
-                            aria-controls="profile"
+                            aria-controls="works"
                             aria-selected="false"
                         >
                             Works
@@ -141,12 +141,12 @@
                     </li>
                     <li class="mr-2" role="presentation">
                         <button
-                            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                            id="dashboard-tab"
+                            class="inline-block p-4 border-b-2 rounded-t-lg "
+                            id="about-tab"
                             data-tabs-target="#about"
                             type="button"
                             role="tab"
-                            aria-controls="dashboard"
+                            aria-controls="about"
                             aria-selected="false"
                         >
                             About
@@ -155,7 +155,7 @@
                     
                 </ul>
             </section>
-            <section id="default-tab-content">
+            <section id="profile-tab-content">
                 <div
                     class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
                     id="works"

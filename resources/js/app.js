@@ -1,6 +1,6 @@
 import "./bootstrap";
 import "flowbite";
-
+import { Tabs } from "flowbite";
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".card");
     const checkBoxes = () => {

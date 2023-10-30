@@ -23,7 +23,8 @@ class BookFactory extends Factory
             'title' => fake()->text(30),
             'genre' => fake()->randomElement($genres),
             'description' => fake()->text(200),
-            'image' => fake()->randomElement($covers),
+    //        'image' => fake()->randomElement($covers),
+            'image' => fake()->imageUrl(),
             'collaborative' => fake()->boolean(),
             'authorID' => fake()->randomElement(Author::all())
         ];

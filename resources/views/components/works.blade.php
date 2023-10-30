@@ -1,6 +1,6 @@
 <section class="w-full p-3 h-fit" :works="$works">
     @unless(empty($works))
-    <div class="flex items-end h-full py-3 overflow-hidden">
+    <div class="flex items-start h-full py-3 overflow-x-scroll no-scrollbar">
         @foreach ($works as $work)
             <x-card :book="$work"/>
         @endforeach

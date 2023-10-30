@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Author;
 use App\Models\Book;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -14,7 +16,6 @@ class BookController extends Controller
         $trendingBooks = $books->take(10);
         $groupedBooks = $books->groupBy('genre');
                     
-        // return dd($books);
         return view('layouts.index', ['trendingBooks' => $trendingBooks, 'groupedBooks' => $groupedBooks]);
     }
 
@@ -37,12 +38,15 @@ class BookController extends Controller
         return view('layouts.index', ['groupedBooks' => $groupedBooks]);
     }
 
-    public function searchByTitle($title)
+    public function search($word)
     {
-        $books = Book::where('title', 'like', '%'.$title.'%')->get(['id', 'title', 'genre', 'image']);
-        $groupedBooks = $books->groupBy('genre');
-                    
-        return view('layouts.index', ['groupedBooks' => $groupedBooks]);
+        $result = Author::with('book')
+                    ->where('username', 'LIKE', '%'.$word.'%')
+                    ->orWhere('title', 'LIKE', '%'.$word.'%')
+                    ->get();
+
+
+        return dd($result);
     }
     // public function test()
     // {

@@ -28,7 +28,7 @@ class Author extends Model implements AuthenticatableContract
 
     public function books()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Book::class, 'authorID', 'id');
     }
 
     public function followed()

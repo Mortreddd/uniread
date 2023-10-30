@@ -12,3 +12,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/books', [BookController::class, 'test']);
+Route::middleware('api')->get('/books/{word}', [BookController::class, 'search']);
