@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         Author::factory(30)->create();
-        Book::factory(30)->create();
-        Comment::factory(30)->create();
-        Chapter::factory(30)->create();
-        Bookmark::factory(10)->create();
-        Follower::factory(30)->create();
+        Book::factory(300)->create();
+        Comment::factory(200)->create();
+        Chapter::factory(1000)->create();
+        Bookmark::factory(300)->create();
+        Follower::factory(200)->create();
         Message::factory(40)->create();
     }
 }

@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
 
 // *---------------------------------
 // * Routes for guest only *
-// * Handling Profile Routes *
+// * Handling login and registration *
 // *---------------------------------
 Route::middleware(['guest', 'preventBackHistory'])->group(function () {
     Route::controller(LoginController::class)->group(function () {

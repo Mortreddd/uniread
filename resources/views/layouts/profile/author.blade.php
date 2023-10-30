@@ -13,7 +13,7 @@
     </head>
     <body>
         <x-nav></x-nav>
-        <main class="container box-border flex w-full h-full">
+        <main class="container box-border w-full h-full">
             <section
                 class="flex justify-center items-end h-[60vh] w-screen bg-cover bg-no-repeat bg-center"
                 style="background-image: url({{
@@ -21,8 +21,16 @@
                 }})"
             >
                 <div class="flex flex-col items-center p-3 m-4 bg-transparent">
-                    <img src="{{ asset('profiles/gojo.jpg') }}" alt="" class="w-48 h-48 mb-3 border-4 border-gray-500 rounded-full ">
-                    <h3 class="mb-3 font-serif text-4xl text-center text-gray-200 font-weight text-bold">{{'@'}}{{ auth()->user()->username }}</h3>
+                    <img
+                        src="{{ asset('profiles/gojo.jpg') }}"
+                        alt=""
+                        class="w-48 h-48 mb-3 border-4 border-gray-500 rounded-full"
+                    />
+                    <h3
+                        class="mb-3 font-serif text-4xl text-center text-gray-200 font-weight text-bold"
+                    >
+                        {{ "@" }}{{ auth()->user()->username }}
+                    </h3>
                     <div class="flex flex-row justify-between w-auto">
                         <div class="flex flex-col items-center mx-3">
                             <a
@@ -110,6 +118,71 @@
                     </div>
                 </div>
             </section>
+
+            <section class="px-20 mb-4 border-b border-gray-200 dark:border-gray-700">
+                <ul
+                    class="flex flex-wrap -mb-px text-lg font-medium text-center"
+                    id="default-tab"
+                    data-tabs-toggle="#default-tab-content"
+                    role="tablist"
+                >
+                    <li class="mr-2" role="presentation">
+                        <button
+                            class="inline-block p-4 border-b-2 rounded-t-lg"
+                            id="profile-tab"
+                            data-tabs-target="#works"
+                            type="button"
+                            role="tab"
+                            aria-controls="profile"
+                            aria-selected="false"
+                        >
+                            Works
+                        </button>
+                    </li>
+                    <li class="mr-2" role="presentation">
+                        <button
+                            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                            id="dashboard-tab"
+                            data-tabs-target="#about"
+                            type="button"
+                            role="tab"
+                            aria-controls="dashboard"
+                            aria-selected="false"
+                        >
+                            About
+                        </button>
+                    </li>
+                    
+                </ul>
+            </section>
+            <section id="default-tab-content">
+                <div
+                    class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+                    id="works"
+                    role="tabpanel"
+                    aria-labelledby="profile-tab"
+                >
+                    <x-works :works="$works"></x-works>
+                </div>
+                <div
+                    class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+                    id="about"
+                    role="tabpanel"
+                    aria-labelledby="dashboard-tab"
+                >
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        This is some placeholder content the
+                        <strong
+                            class="font-medium text-gray-800 dark:text-white"
+                            >Dashboard tab's associated content</strong
+                        >. Clicking another tab will toggle the visibility of
+                        this one for the next. The tab JavaScript swaps classes
+                        to control the content visibility and styling.
+                    </p>
+                </div>
+                
+            </section>
         </main>
+        @include('partials.footer')
     </body>
 </html>
