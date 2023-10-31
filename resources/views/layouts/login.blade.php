@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
         <title>UniRead</title>
         @vite(['resources/css/app.css','resources/js/app.js'])
         <script src="../../js/app.js"></script>
@@ -81,11 +81,6 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            @error('password')
-                                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
                             <label
                                 for=""
                                 class="text-2xl text-fuchsia-900 font serif"

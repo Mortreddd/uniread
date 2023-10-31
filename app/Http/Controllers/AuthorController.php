@@ -9,10 +9,7 @@ use Illuminate\Http\Request;
 class AuthorController extends Controller
 {
     
-    public function profile()
-    { 
-        
-    }
+    
 
     public function create()
     {
@@ -23,4 +20,9 @@ class AuthorController extends Controller
     {
         
     }
+
+    // public function libraries()
+    // {
+    //     return view('layouts.profile.library');
+    // }
 }

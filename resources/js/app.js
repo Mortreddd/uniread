@@ -1,6 +1,5 @@
 import "./bootstrap";
 import "flowbite";
-import { Tabs } from "flowbite";
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".card");
     const checkBoxes = () => {
@@ -19,4 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", checkBoxes);
     checkBoxes();
+
+    const listItems = document.querySelectorAll(".items");
+    listItems[0].classList.add("border-fuchsia-900");
+    listItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+            listItems.forEach(function (item) {
+                item.classList.remove("border-fuchsia-900");
+            });
+            this.classList.add("border-fuchsia-900");
+        });
+    });
 });

@@ -9,17 +9,17 @@
               <div>
                   <ul class="font-medium text-white">
                       <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline">Home</a>
+                          <a href="/" class="hover:underline">Home</a>
                       </li>
                       <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline">About Us</a>
+                          <a href="/about#about" class="hover:underline">About Us</a>
                       </li>
                   </ul>
               </div>
               <div>
                   <ul class="font-medium text-white dark:text-gray-400">
                       <li class="mb-4">
-                          <a href="/" class="hover:underline ">Terms &amp; Conditions</a>
+                          <a href="" class="hover:underline ">Terms &amp; Conditions</a>
                       </li>
                       <li>
                           <a href="/" class="hover:underline">Privacy Policy</a>

@@ -16,7 +16,7 @@ class BookController extends Controller
         $trendingBooks = $books->take(10);
         $groupedBooks = $books->groupBy('genre');
                     
-        return view('layouts.index', ['trendingBooks' => $trendingBooks, 'groupedBooks' => $groupedBooks]);
+        return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'groupedBooks' => $groupedBooks]);
     }
 
     public function searchById($id)
@@ -27,7 +27,7 @@ class BookController extends Controller
             ->where('id', '!=', $id) // Exclude the current book
             ->get();
 
-        return view('layouts.description', ['book' => $book, 'recommendations' => $recommendations]);
+        return view('layouts.author.description', ['book' => $book, 'recommendations' => $recommendations]);
     }
 
     public function searchByGenre($genre)
@@ -35,18 +35,16 @@ class BookController extends Controller
         $books = Book::where('genre', Str::headline($genre))->get(['id', 'title', 'genre', 'image']);
         $groupedBooks = $books->groupBy('genre');
                     
-        return view('layouts.index', ['groupedBooks' => $groupedBooks]);
+        return view('layouts.author.index', ['groupedBooks' => $groupedBooks]);
     }
 
     public function search($word)
     {
-        $result = Author::with('book')
-                    ->where('username', 'LIKE', '%'.$word.'%')
-                    ->orWhere('title', 'LIKE', '%'.$word.'%')
-                    ->get();
+        $books = Book::where('title', 'LIKE', '%'. $word .'%')->get(['id', 'title', 'genre']);
+        $authors = Author::where('username', 'LIKE', '%'. $word .'%')->get(['username', 'id']);
 
-
-        return dd($result);
+        
+        return Json::encode([$books, $authors]);
     }
     // public function test()
     // {

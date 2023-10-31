@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterAuthorRequest;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,15 +15,9 @@ class RegisterController extends Controller
     {
         return view('layouts.register');
     }
-    public function store(Request $request)
+    public function store(RegisterAuthorRequest $request)
     {
-        $validated = $request->validate([
-            "username" => 'required|unique:authors|min:4',
-            "email" => "required|email|unique:authors",
-            "password" => "required|min:8",
-        ]);
-        
-        $author = Author::create($validated);
+        $author = Author::create($request->validated());
         if(!$author)
         {
             return redirect()->back()->withErrors([

@@ -25,8 +25,10 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     // *---------------------------------
     Route::controller(BookController::class)->group(function () {
         Route::get('/','index')->name('home');
-        Route::get('/books/{id}', 'searchById')->where(['id' => '[0-9]+']);
-        Route::get('/books/{genre}', 'searchByGenre')->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
+        Route::get('/books/{id}', 'searchById')
+            ->where(['id' => '[0-9]+']);
+        Route::get('/books/{genre}', 'searchByGenre')
+            ->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
     });
 
     // *---------------------------------
@@ -40,6 +42,13 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
 
         Route::post('/logout', 'logout');
 
+    });
+
+    // *---------------------------------
+    // * Routes for for the footer only *
+    // *---------------------------------
+    Route::get('/about', function(){
+        return view('layouts.author.about');
     });
 });
 
