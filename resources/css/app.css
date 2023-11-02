@@ -26,3 +26,17 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.active {
+    border-style: solid;
+    border-bottom-width: 2px;
+    --tw-text-opacity: 1;
+    color: rgb(134 25 143 / var(--tw-text-opacity));
+    --tw-border-opacity: 1;
+    border-color: rgb(134 25 143 / var(--tw-border-opacity));
+}
+
+.active:hover {
+    --tw-text-opacity: 1;
+    color: rgb(112 26 117 / var(--tw-text-opacity));
+}

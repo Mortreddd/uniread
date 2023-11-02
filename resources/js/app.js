@@ -1,5 +1,6 @@
 import "./bootstrap";
 import "flowbite";
+
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".card");
     const checkBoxes = () => {

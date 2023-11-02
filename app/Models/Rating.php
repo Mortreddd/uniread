@@ -5,22 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Rating extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    public $fillable = [
         'authorID',
         'bookID',
-        'content'
+        'rating'
     ];
+
+    public function authors()
+    {
+        return $this->hasMany(Author::class, 'authorID', 'id');
+    }
 
     public function book()
     {
         return $this->belongsTo(Book::class, 'bookID', 'id');
-    }
-    public function authors()
-    {
-        return $this->hasMany(Author::class, 'authorID', 'id');
     }
 }

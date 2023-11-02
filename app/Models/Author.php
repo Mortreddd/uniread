@@ -36,5 +36,8 @@ class Author extends Model implements AuthenticatableContract
         return $this->hasMany(Follower::class, 'id', 'followerAuthorID');
     }
 
-
+    public function rate()
+    {
+        return $this->belongsTo(Rating::class, 'id', 'authorID');
+    }
 }

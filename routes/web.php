@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\ProfileController;
-
+use App\Http\Controllers\SearchController;
 
 Route::group(['middleware' => ['admin', 'auth', 'preventBackHistory']], function() {
 
@@ -22,6 +22,8 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
 
     // *---------------------------------
     // * Handle the Books to be displayed *
+    // * Navigating all about books are all here *
+    // * This BookController is responsible for retrieving and displaying books *
     // *---------------------------------
     Route::controller(BookController::class)->group(function () {
         Route::get('/','index')->name('home');
@@ -32,13 +34,19 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     });
 
     // *---------------------------------
+    // * Reponsible for making a search request through search bar
+    // *---------------------------------
+    Route::controller(SearchController::class)->group(function () {
+        Route::get('/search', 'search');
+    });
+    // *---------------------------------
     // * Profile Routes *
     // * Handling Profile Routes *
     // * @params only accepts the username
     // *---------------------------------
     Route::controller(ProfileController::class)->group(function(){
 
-        Route::get('/profile/{username}', 'profile')->where(['username' => '[a-z0-9]+']);
+        Route::get('/profile/{username}', 'profile')->where(['username' => '[a-zA-Z0-9]+']);
 
         Route::post('/logout', 'logout');
 

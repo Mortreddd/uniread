@@ -10,6 +10,7 @@ use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\Message;
 use App\Models\Follower;
+use App\Models\Rating;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,12 +26,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Author::factory(30)->create();
-        Book::factory(300)->create();
-        Comment::factory(200)->create();
+        Author::factory(100)->create();
+        Book::factory(2000)->create();
+        Comment::factory(500)->create();
         Chapter::factory(1000)->create();
         Bookmark::factory(300)->create();
-        Follower::factory(200)->create();
+        Follower::factory(1000)->create();
         Message::factory(40)->create();
+        Rating::factory(5000)->create();
     }
 }

@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
         <title>UniRead</title>
-        @vite(['resources/css/app.css','resources/js/app.js'])
+        @vite(['resources/css/app.css','resources/js/app.js', 'resources/js/tabs.js'])
         <script src="../../js/app.js"></script>
     </head>
     <body>
@@ -29,7 +29,7 @@
                     <h3
                         class="mb-3 font-serif text-4xl text-center text-gray-200 font-weight text-bold"
                     >
-                        {{ "@" }}{{ auth()->user()->username }}
+                        {{ "@" }}{{ $username }}
                     </h3>
                     <div class="flex flex-row justify-between w-auto">
                         <div class="flex flex-col items-center mx-3">
@@ -123,31 +123,27 @@
                 <ul
                     class="flex flex-wrap -mb-px text-lg font-medium text-center"
                     id="profile-tab"
-                    data-tabs-toggle="#default-tab-content"
+                    data-tabs-toggle="#profile-tab-content"
                     role="tablist"
                 >
                     <li class="mr-2" role="presentation">
                         <button
-                            class="inline-block p-4 border-b-2 rounded-t-lg "
+                            class="inline-block py-4 mr-3 font-sans text-2xl border-solid tab-button active"
                             id="works-tab"
-                            data-tabs-target="#works"
+                            data-tab="#works"
                             type="button"
                             role="tab"
-                            aria-controls="works"
-                            aria-selected="false"
                         >
                             Works
                         </button>
                     </li>
                     <li class="mr-2" role="presentation">
                         <button
-                            class="inline-block p-4 border-b-2 rounded-t-lg "
+                            class="inline-block py-4 mr-3 font-sans text-2xl border-solid tab-button"
                             id="about-tab"
-                            data-tabs-target="#about"
+                            data-tab="#about"
                             type="button"
                             role="tab"
-                            aria-controls="about"
-                            aria-selected="false"
                         >
                             About
                         </button>
@@ -157,30 +153,25 @@
             </section>
             <section id="profile-tab-content">
                 <div
-                    class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+                    class="p-4 rounded-lg tab-content bg-gray-50 dark:bg-gray-800"
                     id="works"
-                    role="tabpanel"
-                    aria-labelledby="profile-tab"
                 >
                     <x-works :works="$works"></x-works>
                 </div>
                 <div
-                    class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+                    class="hidden p-4 rounded-lg tab-content bg-gray-50 "
                     id="about"
-                    role="tabpanel"
-                    aria-labelledby="dashboard-tab"
                 >
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                    <p class="text-sm text-gray-500 ">
                         This is some placeholder content the
                         <strong
-                            class="font-medium text-gray-800 dark:text-white"
+                            class="font-medium text-gray-800 "
                             >Dashboard tab's associated content</strong
                         >. Clicking another tab will toggle the visibility of
                         this one for the next. The tab JavaScript swaps classes
                         to control the content visibility and styling.
                     </p>
                 </div>
-                
             </section>
         </main>
         @include('partials.footer')

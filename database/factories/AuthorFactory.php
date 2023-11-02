@@ -19,8 +19,8 @@ class AuthorFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => fake()->unique()->userName(),
-            'email' => fake()->unique()->safeEmail(),
+            'username' => fake()->unique(true)->userName(),
+            'email' => fake()->unique(true)->safeEmail(),
             'password' => Hash::make(Str::random(8)), // password
         ];
     }

@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterAuthorRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Follower;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,15 +27,14 @@ class ProfileController extends Controller
 
     public function profile($username)
     {
-        // Get the currently authenticated user's ID
-        $userID = Auth::id();
-
-        $workCount = Book::where('authorID', $userID)->get(['id'])->count();
-        $followerCount = Follower::where('followedAuthorID', $userID)->get(['followerAuthorID'])->count();
-        $followedCount = Follower::where('followerAuthorID', $userID)->get(['followedAuthorID'])->count();
+        $author = Author::where('username', $username)->get(['id', 'username']);
+        // $workCount = Book::where('authorID', $author->id)->get(['id'])->count();
+        // $followerCount = Follower::where('followedAuthorID', $author->id)->get(['followerAuthorID'])->count();
+        // $followedCount = Follower::where('followerAuthorID', $author->id)->get(['followedAuthorID'])->count();
         
-        $works = Book::where('authorID', $userID)->get(['id', 'title', 'genre', 'image']);
-        return view('layouts.profile.author',['works' => $works], compact(['workCount', 'followerCount', 'followedCount']));
+        // $works = Book::where('authorID', $author->id)->get(['id', 'title', 'genre', 'image']);
+        return Json::encode([$author]);
+        // return view('layouts.profile.author',['works' => $works], compact(['workCount', 'followerCount', 'followedCount']));
     }
 
 }   

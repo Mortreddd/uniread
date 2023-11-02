@@ -42,11 +42,11 @@
                                 />
                             </svg>
                             <a
-                            href="/authors/{{$book->authorID}}"
+                            href="/profile/{{ $book->author->username }}"
                             class="underline"
                         >
                             
-                            {{$book->author->username}}
+                            {{ $book->author->username }}
                             </a>
                         </div>
                     </figcaption>

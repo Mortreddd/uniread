@@ -38,14 +38,7 @@ class BookController extends Controller
         return view('layouts.author.index', ['groupedBooks' => $groupedBooks]);
     }
 
-    public function search($word)
-    {
-        $books = Book::where('title', 'LIKE', '%'. $word .'%')->get(['id', 'title', 'genre']);
-        $authors = Author::where('username', 'LIKE', '%'. $word .'%')->get(['username', 'id']);
 
-        
-        return Json::encode([$books, $authors]);
-    }
     // public function test()
     // {
         
