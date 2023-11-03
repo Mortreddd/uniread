@@ -31,7 +31,9 @@ class LoginAuthorRequest extends FormRequest
     public function messages()
     {
         return [
-            'error' => 'The provided credentials do not match our records.'
+            'error' => 'The provided credentials do not match our records.',
+            'email' => 'The provided credentials do not match our records.',
+            'password' => 'The provided credentials do not match our records.'
         ];
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\Bookmark;
 use App\Models\Chapter;
 use App\Models\Comment;
+use App\Models\Library;
 use App\Models\Message;
 use App\Models\Follower;
 use App\Models\Rating;
@@ -27,12 +28,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         Author::factory(100)->create();
-        Book::factory(2000)->create();
+        Book::factory(200)->create();
         Comment::factory(500)->create();
-        Chapter::factory(1000)->create();
+        Chapter::factory(200)->create();
         Bookmark::factory(300)->create();
-        Follower::factory(1000)->create();
+        Follower::factory(100)->create();
         Message::factory(40)->create();
-        Rating::factory(5000)->create();
+        Rating::factory(500)->create();
+        Library::factory(20)->create();
     }
 }

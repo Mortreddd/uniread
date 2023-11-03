@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LibraryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\ProfileController;
@@ -47,9 +48,14 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     Route::controller(ProfileController::class)->group(function(){
 
         Route::get('/profile/{username}', 'profile')->where(['username' => '[a-zA-Z0-9]+']);
-
+        
         Route::post('/logout', 'logout');
 
+    });
+
+
+    Route::controller(LibraryController::class)->group(function (){
+        Route::get('/library', 'library');
     });
 
     // *---------------------------------

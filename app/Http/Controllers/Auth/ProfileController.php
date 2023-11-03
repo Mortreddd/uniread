@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterAuthorRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Follower;
@@ -27,14 +26,14 @@ class ProfileController extends Controller
 
     public function profile($username)
     {
-        $author = Author::where('username', $username)->get(['id', 'username']);
-        // $workCount = Book::where('authorID', $author->id)->get(['id'])->count();
-        // $followerCount = Follower::where('followedAuthorID', $author->id)->get(['followerAuthorID'])->count();
-        // $followedCount = Follower::where('followerAuthorID', $author->id)->get(['followedAuthorID'])->count();
+        $author = Author::where('username', $username)->get(['id']);
+        $workCount = Book::where('authorID', $author->pluck('id'))->get(['id'])->count();
+        $followerCount = Follower::where('followedAuthorID', $author->pluck('id'))->get(['followerAuthorID'])->count();
+        $followedCount = Follower::where('followerAuthorID', $author->pluck('id'))->get(['followedAuthorID'])->count();
         
-        // $works = Book::where('authorID', $author->id)->get(['id', 'title', 'genre', 'image']);
-        return Json::encode([$author]);
-        // return view('layouts.profile.author',['works' => $works], compact(['workCount', 'followerCount', 'followedCount']));
+        $works = Book::where('authorID', $author->pluck('id'))->get(['id', 'title', 'genre', 'image']);
+        return view('layouts.profile.author',['works' => $works], compact(['username', 'workCount', 'followerCount', 'followedCount']));
     }
 
+    
 }   
