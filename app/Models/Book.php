@@ -18,6 +18,8 @@ class Book extends Model
         'authorID'
     ];
 
+    
+
     public function author()
     {
         return $this->belongsTo(Author::class, 'authorID', 'id');
@@ -38,5 +40,8 @@ class Book extends Model
         return $this->hasMany(Rating::class, 'bookID', 'id');
     }
 
-    
+    public function libraries()
+    {
+        return $this->belongsTo(Library::class, 'id', 'bookID');
+    }
 }

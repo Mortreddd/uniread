@@ -161,9 +161,9 @@
                 </button>
             </div>
             <!--  -->
-            <div class="flex justify-center w-full px-10 border-2 border-solid">
+            <div class="flex w-full px-5 py-10">
                 <div class="px-2 tab-content" id="readlist">
-                    Content for Authors
+                    <x-readinglist :library="$library"></x-readinglist>
                 </div>
                 <div class="hidden px-2 tab-content" id="bookmarks">
                     Content for bookmarks

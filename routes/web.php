@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
 
 
     Route::controller(LibraryController::class)->group(function (){
-        Route::get('/library', 'library');
+        Route::get('/library', 'index');
     });
 
     // *---------------------------------
