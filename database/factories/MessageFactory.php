@@ -20,7 +20,7 @@ class MessageFactory extends Factory
         return [
             'senderAuthorID' => fake()->randomElement(Author::all()),
             'receiverAuthorID' => fake()->randomElement(Author::all()),
-            'content' => fake()->text()
+            'content' => fake()->text(200)
         ];
     }
 }

@@ -20,8 +20,8 @@ class ChapterFactory extends Factory
         return [
             
             'bookID' => fake()->randomElement(Book::all()),
-            'title' => fake()->title(),
-            'content' => fake()->text(200)
+            'title' => fake()->text(50),
+            'content' => fake()->realText(200)
         ];
     }
 }

@@ -52,7 +52,7 @@
                     </figcaption>
                 </figure>
                 <section class="w-[75vw]">
-                    <x-information></x-information>
+                    <x-information :book="$book" :ratings="$ratings" :parts=$parts></x-information>
                     <section
                         class="w-full p-5 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-lg shadow-gray-300"
                         recommendations="$recommendations"

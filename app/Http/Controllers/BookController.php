@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Database\Eloquent\Casts\Json;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class BookController extends Controller
@@ -22,12 +20,19 @@ class BookController extends Controller
     public function searchById($id)
     {
         
-        $book = Book::with('author')->find($id);
+        $book = Book::with(['author', 'chapters', 'ratings'])->find($id);
+        $parts = $book->chapters->count();
+        $ratings = $book->ratings->count();
         $recommendations = Book::where('genre', $book->genre)
             ->where('id', '!=', $id) // Exclude the current book
             ->get();
 
-        return view('layouts.author.description', ['book' => $book, 'recommendations' => $recommendations]);
+        // return Json::encode($parts);
+        return view('layouts.author.description', [
+            'book' => $book, 
+            'recommendations' => $recommendations,
+            
+        ], compact(['parts', 'ratings']));
     }
 
     public function searchByGenre($genre)

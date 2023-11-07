@@ -28,13 +28,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         Author::factory(100)->create();
-        Book::factory(300)->create();
-        Comment::factory(200)->create();
-        Chapter::factory(500)->create();
+        Book::factory(2300)->create();
+        Comment::factory(1200)->create();
+        Chapter::factory(5000)->create();
         Bookmark::factory(300)->create();
-        Follower::factory(300)->create();
+        Follower::factory(1000)->create();
         Message::factory(40)->create();
-        Rating::factory(200)->create();
-        Library::factory(200)->create();
+        Rating::factory(Author::all()->count())->create();
+        Library::factory(400)->create();
     }
 }

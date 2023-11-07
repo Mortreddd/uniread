@@ -15,6 +15,7 @@ class Book extends Model
         'description',
         'image',
         'collaborative',
+        'reads',
         'authorID'
     ];
 
@@ -27,7 +28,7 @@ class Book extends Model
 
     public function chapters()
     {
-         $this->hasMany(Chapter::class, 'id', 'bookID');
+        return $this->hasMany(Chapter::class, 'bookID', 'id');
     }
 
     public function comments()
@@ -44,4 +45,5 @@ class Book extends Model
     {
         return $this->belongsTo(Library::class, 'id', 'bookID');
     }
+
 }
