@@ -28,9 +28,9 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     // *---------------------------------
     Route::controller(BookController::class)->group(function () {
         Route::get('/','index')->name('home');
-        Route::get('/books/{id}', 'searchById')
+        Route::get('/books/{id}', 'id')
             ->where(['id' => '[0-9]+']);
-        Route::get('/books/{genre}', 'searchByGenre')
+        Route::get('/books/{genre}', 'genre')
             ->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
     });
 
@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     // * Reponsible for making a search request through search bar
     // *---------------------------------
     Route::controller(SearchController::class)->group(function () {
-        Route::get('/search', 'search');
+        Route::get('/search', 'index');
     });
     // *---------------------------------
     // * Profile Routes *

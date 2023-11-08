@@ -17,7 +17,7 @@ class BookController extends Controller
         return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'groupedBooks' => $groupedBooks]);
     }
 
-    public function searchById($id)
+    public function id($id)
     {
         
         $book = Book::with(['author', 'chapters', 'ratings'])->find($id);
@@ -35,7 +35,7 @@ class BookController extends Controller
         ], compact(['parts', 'ratings']));
     }
 
-    public function searchByGenre($genre)
+    public function genre($genre)
     {
         $books = Book::where('genre', Str::headline($genre))->get(['id', 'title', 'genre', 'image']);
         $groupedBooks = $books->groupBy('genre');
