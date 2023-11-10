@@ -6,6 +6,7 @@ use App\Http\Controllers\LibraryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\SearchController;
 
 Route::group(['middleware' => ['admin', 'auth', 'preventBackHistory']], function() {
@@ -35,6 +36,12 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     });
 
     // *---------------------------------
+    // * Responsible for navigating another author
+    // *---------------------------------
+    Route::controller(AuthorController::class)->group(function () {
+        Route::get('/user/profile/{id}', 'index');
+    });
+    // *---------------------------------
     // * Reponsible for making a search request through search bar
     // *---------------------------------
     Route::controller(SearchController::class)->group(function () {
@@ -43,16 +50,15 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     // *---------------------------------
     // * Profile Routes *
     // * Handling Profile Routes *
-    // * @params only accepts the username
     // *---------------------------------
     Route::controller(ProfileController::class)->group(function(){
-
-        Route::get('/profile/{username}', 'profile')->where(['username' => '[a-zA-Z0-9]+']);
-        
+        Route::get('/profile/{username}', 'index')->where(['username' => '[a-zA-Z0-9]+']);
         Route::post('/logout', 'logout');
-
     });
 
+    // *---------------------------------
+    // * Handling the routes for the authenticated user's library
+    // *---------------------------------
 
     Route::controller(LibraryController::class)->group(function (){
         Route::get('/library', 'index');

@@ -24,16 +24,21 @@ class ProfileController extends Controller
         return redirect()->route('login');
     }
 
-    public function profile($username)
+    public function index()
     {
-        $author = Author::where('username', $username)->get(['id']);
-        $workCount = Book::where('authorID', $author->pluck('id'))->get(['id'])->count();
-        $followerCount = Follower::where('followedAuthorID', $author->pluck('id'))->get(['followerAuthorID'])->count();
-        $followedCount = Follower::where('followerAuthorID', $author->pluck('id'))->get(['followedAuthorID'])->count();
+        // $author = Author::find(Auth::id());
+        // $workCount = Book::where('authorID', $author->pluck('id'))->get(['id'])->count();
+        // $followerCount = Follower::where('followedAuthorID', $author->pluck('id'))->get(['followerAuthorID'])->count();
+        // $followedCount = Follower::where('followerAuthorID', $author->pluck('id'))->get(['followedAuthorID'])->count();
         
-        $works = Book::where('authorID', $author->pluck('id'))->get(['id', 'title', 'genre', 'image']);
+        $author = Author::with(['books', 'followers', 'followed'])->findOrFail(Auth::id());
+        $username = $author->username;
+        $workCount = $author->books->count();
+        $followerCount = $author->followers->count();
+        $followedCount = $author->followed->count();
+        $works = Book::where('authorID', $author->id)->get(['id', 'title', 'genre', 'image']);
         return view('layouts.profile.author',['works' => $works], compact(['username', 'workCount', 'followerCount', 'followedCount']));
+        
     }
-
     
 }   

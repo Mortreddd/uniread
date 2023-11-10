@@ -6,9 +6,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+        <link
+            rel="icon"
+            href="{{ asset('favicon.ico') }}"
+            type="image/x-icon"
+        />
         <title>UniRead</title>
-        @vite(['resources/css/app.css','resources/js/app.js', 'resources/js/tabs.js'])
+        @vite(['resources/css/app.css','resources/js/app.js',
+        'resources/js/tabs.js'])
         <script src="../../js/app.js"></script>
     </head>
     <body>
@@ -119,7 +124,9 @@
                 </div>
             </section>
 
-            <section class="mx-3 mb-4 border-b border-gray-200 md:mx-14 dark:border-gray-700">
+            <section
+                class="flex justify-between mx-3 mb-4 border-b border-gray-200 md:mx-14 dark:border-gray-700"
+            >
                 <ul
                     class="flex flex-wrap -mb-px text-lg font-medium text-center"
                     id="profile-tab"
@@ -148,8 +155,76 @@
                             About
                         </button>
                     </li>
-                    
                 </ul>
+                @if(auth()->user()->username !== $username)
+                <ul class="flex">
+                    <li class="py-2 mr-4">
+                        @if(in_array( auth()->user()->id, $followers))
+                        <button
+                            class="flex px-4 py-2 font-sans text-2xl text-white rounded-lg bg-fuchsia-900 hover:bg-fuchsia-950"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="mr-2 w-7 h-7"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
+                                />
+                            </svg>
+                            Following
+                        </button>
+                        @else
+                        <button
+                            class="flex px-4 py-2 font-sans text-2xl text-white rounded-lg bg-fuchsia-900 hover:bg-fuchsia-950"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="mr-2 w-7 h-7"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
+                                />
+                            </svg>
+                            Follow
+                        </button>
+                        @endif
+
+                    </li>
+                    <li class="py-2">
+                        <button
+                            class="flex px-4 py-2 font-sans text-2xl text-white rounded-lg bg-fuchsia-900 hover:bg-fuchsia-950"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="mr-2 w-7 h-7"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+                                />
+                            </svg>
+                            Message
+                        </button>
+                    </li>
+                </ul>
+                @endif
             </section>
             <section id="profile-tab-content">
                 <div
@@ -159,13 +234,12 @@
                     <x-works :works="$works"></x-works>
                 </div>
                 <div
-                    class="hidden p-4 rounded-lg tab-content bg-gray-50 "
+                    class="hidden p-4 rounded-lg tab-content bg-gray-50"
                     id="about"
                 >
-                    <p class="text-sm text-gray-500 ">
+                    <p class="text-sm text-gray-500">
                         This is some placeholder content the
-                        <strong
-                            class="font-medium text-gray-800 "
+                        <strong class="font-medium text-gray-800"
                             >Dashboard tab's associated content</strong
                         >. Clicking another tab will toggle the visibility of
                         this one for the next. The tab JavaScript swaps classes

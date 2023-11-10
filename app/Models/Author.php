@@ -11,6 +11,7 @@ class Author extends Model implements AuthenticatableContract
     use HasFactory, Authenticatable;
     protected $fillable = [
         'username',
+        'image',
         'email',
         'password'
     ];
@@ -33,10 +34,13 @@ class Author extends Model implements AuthenticatableContract
 
     public function followed()
     {
-        return $this->hasMany(Follower::class, 'id', 'followerAuthorID');
+        return $this->hasMany(Follower::class, 'followerAuthorID', 'id');
     }
 
-    
+    public function followers()
+    {
+        return $this->hasMany(Follower::class, 'followedAuthorID', 'id');
+    }
     public function rate()
     {
         return $this->belongsTo(Rating::class, 'id', 'authorID');

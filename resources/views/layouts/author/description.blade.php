@@ -42,7 +42,7 @@
                                 />
                             </svg>
                             <a
-                            href="/profile/{{ $book->author->username }}"
+                            href="/user/profile/{{ $book->author->id }}"
                             class="underline"
                         >
                             

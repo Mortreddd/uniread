@@ -18,14 +18,14 @@ class SearchController extends Controller
         if($request->filled('search'))
         {
             $books = Book::with(['author', 'ratings', 'chapters'])->where('title', 'LIKE', '%'. $search .'%')->get();
-            $authors = Author::where('username', 'LIKE', '%'. $search .'%')->get();
+            $authors = Author::with(['books'])->where('username', 'LIKE', '%'. $search .'%')->get();
             // $authors = Author::with(['books', 'followers'])->where('username', 'LIKE', '%'. $search .'%')
             //                 ->orWhere('email', 'LIKE', '%'. $search .'%')->get();
         
             // return Json::encode($books->pluck('author'));
             return view('layouts.author.search', [
                 'books' => $books,
-                'authors' => $books->pluck('author') ?? $authors 
+                'authors' => $books->pluck('author') ?? $authors
             ]);
         }
         
