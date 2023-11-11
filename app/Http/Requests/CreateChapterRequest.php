@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterAuthorRequest extends FormRequest
+class CreateChapterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,18 @@ class RegisterAuthorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "username" => 'required|unique:authors|min:4',
-            "email" => "required|email|unique:authors",
-            "password" => "required|min:8"
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'book_id' => 'required|integer|exists:books,id',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Title is required!',
+            'content.required' => 'Content is required!',
+            'title.max' => 'Title is too long!'
         ];
     }
 }

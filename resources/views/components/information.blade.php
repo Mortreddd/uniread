@@ -64,7 +64,7 @@
             </div>
             <div class="mr-4">
                 <h4 href="" class="text-xl text-gray-400 underline">
-                    Completed
+                    @if($book->status === 1) Completed @else Ongoing @endif
                 </h4>
             </div>
         </div>
@@ -77,11 +77,15 @@
                 >
             </div>
             <div class="mr-4">
-                <a
-                    href=""
+                @if($belongsToLibrary)
+
+                @endif
+                <form action="{{ route('library.add')}}" method="post"></form>
+                <button
+                    type="submit"
                     class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
-                    >Add to your Library</a
-                >
+                    >Add to your Library
+                </button>
             </div>
         </div>
         <div class="w-full my-1 md:my-3">

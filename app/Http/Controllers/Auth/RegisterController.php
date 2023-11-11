@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterAuthorRequest;
+use App\Http\Requests\CreateAuthorRequest;
 use App\Models\Author;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -15,20 +14,18 @@ class RegisterController extends Controller
     {
         return view('layouts.register');
     }
-    public function store(RegisterAuthorRequest $request)
+    public function store(CreateAuthorRequest $request)
     {
         $author = Author::create($request->validated());
         if(!$author)
         {
-            return redirect()->back()->withErrors([
-                'error' => 'Cannot use this credentials',
-                'password' => 'Password must be at least 8 characters long',
-                'username' => 'Username must be at least 4 characters long'
-            ]);
+            return redirect()->back()->withErrors($request->messages());
         }
 
         Auth::login($author);
 
         return to_route('home')->with('success', "Welcome, ".Auth::user()->username);
     }
+
+
 }

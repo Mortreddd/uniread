@@ -32,8 +32,8 @@ class DatabaseSeeder extends Seeder
         Comment::factory(1200)->create();
         Chapter::factory(5000)->create();
         Bookmark::factory(300)->create();
-        Follower::factory(1000)->create();
-        Message::factory(40)->create();
+        Follower::factory(3000)->create();
+        Message::factory(400)->create();
         Rating::factory(Author::all()->count())->create();
         Library::factory(400)->create();
     }

@@ -14,6 +14,7 @@ class Book extends Model
         'genre',
         'description',
         'image',
+        'completed',
         'collaborative',
         'reads',
         'authorID'
@@ -38,9 +39,9 @@ class Book extends Model
     {
         return $this->hasMany(Rating::class, 'bookID', 'id');
     }
-    public function libraries()
+    public function library()
     {
-        return $this->belongsTo(Library::class, 'id', 'bookID');
+        return $this->belongsTo(Library::class, 'bookID', 'id');
     }
 
 }

@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
         Route::get('/','index')->name('home');
         Route::get('/books/{id}', 'id')
             ->where(['id' => '[0-9]+']);
-        Route::get('/books/{genre}', 'genre')
+        Route::get('/books/{genre}', 'search')
             ->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
     });
 
@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
 
     Route::controller(LibraryController::class)->group(function (){
         Route::get('/library', 'index');
+        Route::post('/library/add', 'store')->name('library.add');
     });
 
     // *---------------------------------

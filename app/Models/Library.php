@@ -22,6 +22,6 @@ class Library extends Model
 
     public function books()
     {
-        return $this->hasMany(Book::class, 'id', 'bookID');
+        return $this->hasMany(Book::class, 'bookID', 'id');
     }
 }
