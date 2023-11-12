@@ -21,7 +21,7 @@ class CommentFactory extends Factory
         return [
             'authorID' => fake()->randomElement(Author::all()),
             'bookID' => fake()->randomElement(Book::all()),
-            'content' => fake()->text(200)
+            'content' => fake()->realText(200)
         ];
     }
 }

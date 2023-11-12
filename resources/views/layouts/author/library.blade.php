@@ -162,16 +162,19 @@
             </div>
             <!--  -->
             <div class="flex w-full px-5 py-10">
-                <div class="px-2 tab-content" id="readlist">
+                <div class="px-2 tab-content w-full" id="readlist">
                     <x-readinglist :library="$library"></x-readinglist>
+                    <x-toast :message="Session::get('success')"></x-toast>
                 </div>
-                <div class="hidden px-2 tab-content" id="bookmarks">
+                <div class="hidden px-2 tab-content w-full" id="bookmarks">
                     Content for bookmarks
                 </div>
-                <div class="hidden px-2 tab-content" id="archive">
-                    Content for archive
+                <div class="hidden px-2 tab-content w-full" id="archive">
+                    <x-archives :archives="$archives"></x-archives>
                 </div>
             </div>
+            
+
         </main>
     </body>
 </html>

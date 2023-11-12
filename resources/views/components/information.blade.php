@@ -1,4 +1,4 @@
-<section class="w-full p-2 mb-4 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-lg shadow-gray-300 md:p-5 " :book="$book" :ratigns="$ratings" :parts="$parts">
+<section class="w-full p-2 mb-4 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-lg shadow-gray-300 md:p-5 " :book="$book" :ratigns="$ratings" :parts="$parts" :belongsToLibrary="$belongsToLibrary">
     <div class="mx-3">
         <h1 class="text-4xl text-slate-400">{{ $book->title }}</h1>
         <div class="flex flex-row flex-wrap w-full my-1 md:my-3">
@@ -71,21 +71,28 @@
         <div class="flex flex-row w-full my-1 md:my-3">
             <div class="mr-4">
                 <a
-                    href=""
+                    href="/author/{{ $book->authorID }}/books/{{ $book->id }}/read"
                     class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
                     >Start Reading</a
                 >
             </div>
             <div class="mr-4">
-                @if($belongsToLibrary)
-
-                @endif
-                <form action="{{ route('library.add')}}" method="post"></form>
-                <button
-                    type="submit"
-                    class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
-                    >Add to your Library
-                </button>
+                @unless($belongsToLibrary || Session::has('success'))
+                    
+                    <form action="{{ route('library.add') }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <input type="number" name="authorID" value="{{ Auth::id() }}" class="hidden">
+                        <input type="number" name="bookID" value="{{ $book->id }}" class="hidden">
+                        <button
+                            type="submit"
+                            class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
+                        >
+                            Add to your Library
+                        </button>
+                    </form>
+                @endunless
+                
             </div>
         </div>
         <div class="w-full my-1 md:my-3">

@@ -44,4 +44,9 @@ class Book extends Model
         return $this->belongsTo(Library::class, 'bookID', 'id');
     }
 
+    public function archive()
+    {
+        return $this->belongsTo(Library::class, 'bookID', 'id');
+    }
+
 }

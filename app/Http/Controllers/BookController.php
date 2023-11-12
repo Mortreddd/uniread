@@ -12,7 +12,7 @@ class BookController extends Controller
     
     public function index()
     {
-        $books = Book::all(['id', 'title', 'genre', 'image']);
+        $books = Book::all(['id', 'title', 'genre', 'image'])->take(100);
         $trendingBooks = $books->take(10);
         $groupedBooks = $books->groupBy('genre');
                     
@@ -23,18 +23,20 @@ class BookController extends Controller
     {
         
         $book = Book::with(['author', 'chapters', 'ratings', 'library'])->find($id);
-        $belongsToLibrary = in_array(Auth::id(), $book->library);
+        $belongsToLibrary = Library::where('authorID', Auth::id())->where('bookID', $id)->exists();
         $parts = $book->chapters->count();
         $ratings = $book->ratings->count();
         $recommendations = Book::where('genre', $book->genre)
-            ->where('id', '!=', $id) // Exclude the current book
+            ->where('id', '!=', $id)
             ->get();
 
-        return Json::encode($belongsToLibrary);
-        // return view('layouts.author.description', [
-        //     'book' => $book, 
-        //     'recommendations' => $recommendations,
-        // ], compact(['parts', 'ratings']));
+        // return Json::encode($belongsToLibrary);
+        return view('layouts.author.description', [
+            'book' => $book, 
+            'recommendations' => $recommendations,
+        ], compact(['parts', 'ratings', 'belongsToLibrary']));
+
+        
     }
 
     public function search($genre)
@@ -45,13 +47,10 @@ class BookController extends Controller
         return view('layouts.author.index', ['groupedBooks' => $groupedBooks]);
     }
 
+    public function read($authorID, $bookID)
+    {
+        $book = Book::with(['chapters'])->where('authorID', $authorID)->find($bookID);
+        return Json::encode($book->chapters);
+    }
 
-    // public function test()
-    // {
-        
-    //     $books = Book::all(['id', 'title', 'genre', 'image'])
-    //                 ->groupBy(['genre']);
-                    
-    //     return $books;
-    // }
 }

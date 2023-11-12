@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LibraryController;
@@ -33,6 +34,7 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
             ->where(['id' => '[0-9]+']);
         Route::get('/books/{genre}', 'search')
             ->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
+        Route::get('/author/{authorID}/books/{bookID}/read', 'read')->name('read.book');
     });
 
     // *---------------------------------
@@ -62,9 +64,14 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
 
     Route::controller(LibraryController::class)->group(function (){
         Route::get('/library', 'index');
-        Route::post('/library/add', 'store')->name('library.add');
+        Route::put('/library/add', 'store')->name('library.add');
+        Route::delete('/library/remove', 'destroy')->name('library.remove');
     });
 
+    Route::controller(ArchiveController::class)->group(function (){
+        Route::put('/archive/add', 'store')->name('archive.add');
+        Route::delete('/archive/remove', 'destroy')->name('archive.remove');
+    });
     // *---------------------------------
     // * Routes for for the footer only *
     // *---------------------------------

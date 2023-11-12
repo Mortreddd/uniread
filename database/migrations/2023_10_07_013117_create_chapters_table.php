@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->mediumText('content');
-            $table->foreignIdFor(Book::class, 'bookID')->constrained('books');
+            $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();;
             $table->timestamps();
         });
     }

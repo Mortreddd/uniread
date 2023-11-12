@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Author::class, 'authorID')->constrained('authors');
-            $table->foreignIdFor(Book::class, 'bookID')->constrained('books');
+            $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();;
+            $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();;
             $table->mediumText('content');
             $table->timestamps();
         });

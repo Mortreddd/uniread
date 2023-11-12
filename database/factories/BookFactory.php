@@ -20,9 +20,9 @@ class BookFactory extends Factory
         $genres = ['Action', 'Horror', 'Mystery', 'Romance', 'Teen Fiction', 'Science Fiction'];
         $covers = ['covers/cover1.jpeg', 'covers/cover2.jpg', 'covers/cover3.jpg', 'covers/cover4.jpg', 'covers/cover5.jpg', 'covers/cover6.jpg'];
         return [
-            'title' => fake()->text(30),
+            'title' => fake()->realText(30),
             'genre' => fake()->randomElement($genres),
-            'description' => fake()->text(200),
+            'description' => fake()->realText(200),
             'image' => fake()->randomElement($covers),
             'completed' => fake()->boolean(),
             'collaborative' => fake()->boolean(),

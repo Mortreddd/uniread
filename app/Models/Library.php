@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Library extends Model
 {
     use HasFactory;
 
-    public $fillable = [
-        'authorID',
-        'bookID'
-    ];
+    protected $fillable = ['authorID', 'bookID'];
 
+    public $timestamps = true;
     public function author()
     {
         return $this->belongsTo(Author::class, 'authorID', 'id');
@@ -22,6 +21,6 @@ class Library extends Model
 
     public function books()
     {
-        return $this->hasMany(Book::class, 'bookID', 'id');
+        return $this->hasMany(Book::class, 'id', 'bookID');
     }
 }

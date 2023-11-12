@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Author::class, 'authorID')->constrained('authors');
-            $table->foreignIdFor(Book::class, 'bookID')->constrained('books');
+            $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();;
+            $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();;
             $table->integer('rating');
             $table->timestamps();
         });

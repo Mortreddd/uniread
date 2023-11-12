@@ -51,8 +51,8 @@
                         </div>
                     </figcaption>
                 </figure>
-                <section class="w-[75vw]">
-                    <x-information :book="$book" :ratings="$ratings" :parts=$parts></x-information>
+                <section class="w-full md:w-[75vw] p-5 md:p-0">
+                    <x-information :book="$book" :ratings="$ratings" :parts="$parts" :belongsToLibrary="$belongsToLibrary"></x-information>
                     <section
                         class="w-full p-5 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-lg shadow-gray-300"
                         recommendations="$recommendations"
@@ -69,8 +69,8 @@
                         </div>
                     </section>
                 </section>
+                <x-toast :message="'Successfully added to the library'"></x-toast>
             </main>
-
             @include('partials.footer')
         </main>
     </body>
