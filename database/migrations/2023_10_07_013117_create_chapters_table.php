@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('chapterNumber');
             $table->string('title');
             $table->mediumText('content');
             $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();;

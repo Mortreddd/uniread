@@ -74,7 +74,6 @@
                                 <input
                                     type="email"
                                     name="email"
-                                    id=""
                                     placeholder="Enter Email"
                                     class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
                                 />
@@ -107,7 +106,6 @@
                                 <input
                                     type="password"
                                     name="password"
-                                    id=""
                                     placeholder="Enter Password"
                                     class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
                                 />

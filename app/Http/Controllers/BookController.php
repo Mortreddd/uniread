@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Book;
+use App\Models\Chapter;
+use App\Models\Comment;
 use App\Models\Library;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Auth;
@@ -47,10 +49,13 @@ class BookController extends Controller
         return view('layouts.author.index', ['groupedBooks' => $groupedBooks]);
     }
 
-    public function read($authorID, $bookID)
+    public function read($bookID)
     {
-        $book = Book::with(['chapters'])->where('authorID', $authorID)->find($bookID);
-        return Json::encode($book->chapters);
+        $chapters = Chapter::orderBy('chapterNumber', 'asc')->where('bookID', $bookID)->get();
+        $comments = Comment::with('authors')->where('bookID', $bookID)->get();
+        // return Json::encode($comments);
+        $chapter = $chapters->first();
+        return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['chapter']));
     }
 
 }

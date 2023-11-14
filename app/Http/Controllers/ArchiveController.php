@@ -21,10 +21,9 @@ class ArchiveController extends Controller
     
     }
 
-
     public function destroy(CreateArchiveRequest $request)
     {
         Archive::where('authorID', Auth::id())->where('bookID', $request->input('bookID'))->delete();
-        return to_route('read.book');
+        return redirect("/author/".$request->input('authorID')."/books/".$request->input('bookID')."/read");
     }
 }

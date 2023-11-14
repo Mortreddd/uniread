@@ -1,8 +1,9 @@
 
-<form class="flex items-center mx-2" action="{{ route('library.remove') }}" method="POST">
+<form class="flex items-center mx-2" action="{{ route('archive.remove') }}" method="POST" :archive="$archive">
     @csrf
     @method('DELETE')
-    
+    <input type="number" name="authorID" value="{{ $archive->authorID }}" class="hidden">
+    <input type="number" name="bookID" value="{{ $archive->id }}" class="hidden">
     <button type="submit" class="inline-block p-3" :archive="$archive">
         <div class="w-40 overflow-hidden text-left rounded-md shadow-lg card h-fit" style="background-color: rgba(235, 235, 235, 0.7)">
           <img class="w-full" src="{{ asset($archive->image) }}"/>

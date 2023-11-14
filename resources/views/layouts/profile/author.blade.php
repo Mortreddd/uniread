@@ -27,7 +27,7 @@
             >
                 <div class="flex flex-col items-center p-3 m-4 bg-transparent">
                     <img
-                        src="{{ asset('profiles/gojo.jpg') }}"
+                        src="{{ asset(auth()->user()->image) }}"
                         alt=""
                         class="w-48 h-48 mb-3 border-4 border-gray-500 rounded-full"
                     />

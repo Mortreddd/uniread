@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
             ->where(['id' => '[0-9]+']);
         Route::get('/books/{genre}', 'search')
             ->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
-        Route::get('/author/{authorID}/books/{bookID}/read', 'read')->name('read.book');
+        Route::get('/books/{bookID}/read', 'read')->name('read.book');
     });
 
     // *---------------------------------
@@ -77,6 +77,9 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     // *---------------------------------
     Route::get('/about', function(){
         return view('layouts.author.about');
+    });
+    Route::get('/terms-and-agreement', function () {
+        return view('layouts.author.terms');
     });
 });
 

@@ -15,6 +15,7 @@ class AuthorSeeder extends Seeder
     {
         DB::table('authors')->insert([
             'username' => 'emmanuel',
+            'image' => 'profiles/default-profile.jpg',
             'email' => 'emmanmale@gmail.com',
             'password' => bcrypt('emmanuelmale25')
         ]);

@@ -173,8 +173,6 @@
                     <x-archives :archives="$archives"></x-archives>
                 </div>
             </div>
-            
-
         </main>
     </body>
 </html>

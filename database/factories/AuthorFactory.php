@@ -20,6 +20,7 @@ class AuthorFactory extends Factory
     {
         return [
             'username' => fake()->unique(true)->userName(),
+            'image' => 'profiles/default-profile.jpg',
             'email' => fake()->unique(true)->safeEmail(),
             'password' => Hash::make(Str::random(8)), // password
         ];

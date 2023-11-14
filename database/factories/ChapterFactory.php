@@ -18,10 +18,10 @@ class ChapterFactory extends Factory
     public function definition(): array
     {
         return [
-            
-            'bookID' => fake()->randomElement(Book::all()),
+            'chapterNumber' => fake()->numberBetween(1, 100),
             'title' => fake()->realText(50),
-            'content' => fake()->realText(200)
+            'content' => fake()->realText(200),
+            'bookID' => fake()->randomElement(Book::all(['id']))
         ];
     }
 }

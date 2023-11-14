@@ -58,7 +58,7 @@
                             d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
                         />
                     </svg>
-                    {{ number_format($parts, 0, '.', ',') }} {{ Str::plural('part', $parts)}}
+                    {{ number_format($parts, 0, '.', ',') }}@if($parts < 1) part @else parts @endif
                     <!-- count-->
                 </h4>
             </div>
@@ -70,11 +70,23 @@
         </div>
         <div class="flex flex-row w-full my-1 md:my-3">
             <div class="mr-4">
-                <a
-                    href="/author/{{ $book->authorID }}/books/{{ $book->id }}/read"
+                @if($parts < 1)
+
+                    <a
+                        href="/books/{{ $book->id }}/read"
+                        class="hidden px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
+                        >
+                        Start Reading
+                    </a>
+                @else
+                    <a
+                    href="/books/{{ $book->id }}/read"
                     class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
-                    >Start Reading</a
-                >
+                    >
+                        Start Reading
+                    </a>
+                @endif
+                
             </div>
             <div class="mr-4">
                 @unless($belongsToLibrary || Session::has('success'))

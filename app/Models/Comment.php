@@ -21,6 +21,6 @@ class Comment extends Model
     }
     public function authors()
     {
-        return $this->hasMany(Author::class, 'authorID', 'id');
+        return $this->hasMany(Author::class, 'id', 'authorID');
     }
 }

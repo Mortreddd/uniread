@@ -29,7 +29,7 @@
             <div class="h-full p-10 overflow-y-auto ">
                 <ul class="space-y-2 font-medium">
                     <li class="flex justify-center p-2 my-3 border-l-4 border-solid items">
-                        <a href="#about" class="font-sans text-2xl text-black">About Us</a>
+                        <a href="#about" class="font-sans text-3xl text-black">About Us</a>
                     </li>
                     <li class="flex justify-center p-2 my-3 border-l-4 border-solid items">
                         <a href="#missions" class="font-sans text-2xl text-black">Mission</a>
