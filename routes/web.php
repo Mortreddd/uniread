@@ -9,6 +9,10 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Read\BookmarkController;
+use App\Http\Controllers\Read\ChapterController;
+
+
 
 Route::group(['middleware' => ['admin', 'auth', 'preventBackHistory']], function() {
 
@@ -34,7 +38,14 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
             ->where(['id' => '[0-9]+']);
         Route::get('/books/{genre}', 'search')
             ->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
-        Route::get('/books/{bookID}/read', 'read')->name('read.book');
+    });
+
+    Route::controller(ChapterController::class)->group( function () {
+        Route::get('/books/{bookID}/read', 'index')->name('read.book');
+        Route::get('/books/{bookID}/read/{chapterID}', 'read')->name('read.chapter');
+    });
+    Route::controller(BookmarkController::class)->group(function () {
+        Route::post('/books/{bookID}/read', 'store')->name('bookmark.add');
     });
 
     // *---------------------------------

@@ -14,6 +14,7 @@ class BookController extends Controller
     
     public function index()
     {
+        
         $books = Book::all(['id', 'title', 'genre', 'image'])->take(100);
         $trendingBooks = $books->take(10);
         $groupedBooks = $books->groupBy('genre');
@@ -49,13 +50,5 @@ class BookController extends Controller
         return view('layouts.author.index', ['groupedBooks' => $groupedBooks]);
     }
 
-    public function read($bookID)
-    {
-        $chapters = Chapter::orderBy('chapterNumber', 'asc')->where('bookID', $bookID)->get();
-        $comments = Comment::with('authors')->where('bookID', $bookID)->get();
-        // return Json::encode($comments);
-        $chapter = $chapters->first();
-        return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['chapter']));
-    }
 
 }

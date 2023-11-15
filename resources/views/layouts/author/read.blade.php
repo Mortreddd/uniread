@@ -36,7 +36,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    <form action="" method="post">
+                    <form action="{{ route('bookmark.add', ['bookID' => $chapter->id]) }}" method="post">
                         @csrf
                         <button data-popover-target="bookmark" type="submit" class="flex flex-row items-center justify-center p-3 font-sans text-lg font-semibold rounded-full hover:bg-gray-200 md:hidden text-fucshia-900 text-fuchsia-900 hover:text-fuchsia-950">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -111,7 +111,7 @@
                             <x-comment :comment="$comment"></x-comment>
                         @endforeach
                     @else
-                        <p class="font-sans text-2xl my-10 text-center text-gray-500">No comments yet.</p>
+                        <p class="my-10 font-sans text-2xl text-center text-gray-500">No comments yet.</p>
                     @endunless
                     <form action="" method="post" class="mb-5">
                         <div class="relative flex flex-row items-center bg-transparent border-2 border-gray-200 border-solid rounded-full outline-none">

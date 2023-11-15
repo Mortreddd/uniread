@@ -14,9 +14,7 @@
     <body>
         <main class="container box-border w-full min-h-screen p-0 m-0">
             @include('partials.nav')
-            <section class="flex h-[80vh] bg-gray-300 justify-center items-center w-full">
-                <h1 class="font-sans text-5xl text-gray-600 text-bold">Please enter text to search for</h1>
-            </section>
+            
             
             @include('partials.footer')
         </main>

@@ -9,6 +9,6 @@ class CommentController extends Controller
 {
     public function store(Request $request)
     {
-        $comment = Comment::where("bookID", $request->input('authorID'))->increment('likes', 1); 
+        $comment = Comment::where("bookID", $request->input('authorID')); 
     }
 }
