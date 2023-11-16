@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Author;
-use App\Models\Book;
+use App\Models\Chapter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +19,8 @@ class BookmarkFactory extends Factory
     public function definition(): array
     {
         return [
-            'authorID' => fake()->randomElement(Author::all()),
-            'bookID' => fake()->randomElement(Book::all()),
+            'authorID' => fake()->randomElement(Author::all(['id'])),
+            'chapterID' => fake()->randomElement(Chapter::all(['id'])),
         ];
     }
 }

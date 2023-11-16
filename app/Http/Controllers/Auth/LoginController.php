@@ -17,8 +17,8 @@ class LoginController extends Controller
     public function process(LoginAuthorRequest $request)
     {
         
-
-        if (Auth::attempt($request->validated())) {
+        $isRembembered = $request->has('remember');
+        if (Auth::attempt($request->validated(), $isRembembered)) {
             $request->session()->regenerate();
             return to_route('home')->with('success', "Welcome back, ".Auth::user()->username);
         }

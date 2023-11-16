@@ -19,6 +19,16 @@ class Chapter extends Model
     public $timestamps = true;
     public function book()
     {
-        return $this->belongsTo(Book::class);
+        return $this->belongsTo(Book::class, 'bookID', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'chapterID', 'id');
+    }
+
+    public function bookmark()
+    {
+        return $this->belongsTo(Bookmark::class, 'id', 'chapterID');
     }
 }

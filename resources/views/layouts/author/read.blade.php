@@ -36,7 +36,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    <form action="{{ route('bookmark.add', ['bookID' => $chapter->id]) }}" method="post">
+                    <form action="{{ route('bookmark.add', ['chapterID' => $chapter->id]) }}" method="post">
                         @csrf
                         <button data-popover-target="bookmark" type="submit" class="flex flex-row items-center justify-center p-3 font-sans text-lg font-semibold rounded-full hover:bg-gray-200 md:hidden text-fucshia-900 text-fuchsia-900 hover:text-fuchsia-950">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">

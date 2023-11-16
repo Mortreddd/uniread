@@ -9,12 +9,12 @@ class Bookmark extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'chapterID',
-        'authorID'
+        'authorID',
+        'chapterID'
     ]; 
 
-    public function chapter()
+    public function chapters()
     {
-        return $this->belongsTo(Chapter::class, 'chapterID', 'id');
+        return $this->hasMany(Chapter::class, 'id', 'chapterID');
     }
 }

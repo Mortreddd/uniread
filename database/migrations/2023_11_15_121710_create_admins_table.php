@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Author;
-use App\Models\Chapter;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();;
-            $table->foreignIdFor(Chapter::class, 'chapterID')->constrained('chapters')->cascadeOnDelete();;
+            $table->string('fullname');
+            $table->string('username')->unique();
+            $table->string('email')->unique();
+            $table->string('password')->unique();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookmarks');
+        Schema::dropIfExists('admins');
     }
 };

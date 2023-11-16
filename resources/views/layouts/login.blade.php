@@ -111,12 +111,19 @@
                                 />
                             </div>
                         </div>
+                        <div class="flex items-center mb-4">
+                            <input id="default-checkbox" type="checkbox" value="" name="remember" class="w-4 h-4 active:outline-fuchsia-950 text-fuchsia-900 mr-1 bg-transparent rounded-md border-2 border-solid border-fuchsia-900>
+                            <label for="default-checkbox" class="text-sm font-medium text-fuchsia-900 dark:text-gray-300">Remember Me</label>
+                        </div>
                         <button
                             type="submit"
-                            class="py-2 my-5 text-2xl text-white rounded-lg bg-fuchsia-800 hover:bg-fuchsia-900"
+                            class="py-2 mb-4 text-2xl text-white rounded-lg bg-fuchsia-800 hover:bg-fuchsia-900"
                         >
                             Login
                         </button>
+                        <div class="flex justify-start">
+                            
+                        </div>
                         <p class="font-sans text-lg text-center text-gray-700">
                             Doesn't have an account?
                         </p>

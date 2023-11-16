@@ -26,7 +26,7 @@ class BookFactory extends Factory
             'image' => fake()->randomElement($covers),
             'completed' => fake()->boolean(),
             'collaborative' => fake()->boolean(),
-            'reads' => fake()->numberBetween(0, 1000000),
+            'votes' => fake()->numberBetween(0, 1000000),
             'authorID' => fake()->randomElement(Author::all(['id']))
         ];
     }

@@ -3,20 +3,19 @@
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\Read\LibraryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\Read\BookmarkController;
 use App\Http\Controllers\Read\ChapterController;
+use App\Http\Controllers\Read\BookmarkController;
 
-
-
-Route::group(['middleware' => ['admin', 'auth', 'preventBackHistory']], function() {
-
-});
+// Route::prefix('admin')->controller(AdminController::class)->group(['middleware' => ['admin', 'auth', 'preventBackHistory']],
+//     Route::get('/', 'index')->name('admin');
+// );
 
 
 
@@ -42,10 +41,10 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
 
     Route::controller(ChapterController::class)->group( function () {
         Route::get('/books/{bookID}/read', 'index')->name('read.book');
-        Route::get('/books/{bookID}/read/{chapterID}', 'read')->name('read.chapter');
+        Route::get('/books/read/{chapterID}', 'read')->name('read.chapter');
     });
     Route::controller(BookmarkController::class)->group(function () {
-        Route::post('/books/{bookID}/read', 'store')->name('bookmark.add');
+        Route::post('/books/{bookID}/bookmark-add', 'store')->name('bookmark.add');
     });
 
     // *---------------------------------

@@ -14,7 +14,10 @@ class AuthorSeeder extends Seeder
     public function run(): void
     {
         DB::table('authors')->insert([
+            'fullname' => 'Emmanuel',
             'username' => 'emmanuel',
+            'gender' => 'Male',
+            'birthday' => '2002-09-25',
             'image' => 'profiles/default-profile.jpg',
             'email' => 'emmanmale@gmail.com',
             'password' => bcrypt('emmanuelmale25')

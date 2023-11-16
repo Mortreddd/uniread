@@ -13,7 +13,7 @@
         />
         <title>Library</title>
         @vite(['resources/css/app.css','resources/js/app.js',
-        'resources/js/tabs.js'])
+        'resources/js/tabs.js', 'resources/js/bookmarks.js'])
         <script src="../../js/app.js"></script>
     </head>
     <body>
@@ -106,7 +106,7 @@
             </div>
             <div class="flex w-full justify-evenly">
                 <button
-                    class="py-4 mr-3 font-sans text-xl md:text-2xl flex flex-col md:flex-row items-center md:items-start border-solid tab-button active"
+                    class="flex flex-col items-center py-4 mr-3 font-sans text-xl border-solid md:text-2xl md:flex-row md:items-start tab-button active"
                     data-tab="#readlist"
                 >
                     <svg
@@ -123,7 +123,7 @@
                     Current Reading List
                 </button>
                 <button
-                    class="py-4 md:mr-3 flex flex-col md:flex-row text-xl items-center md:items-start font-sans md:text-2xl border-solid tab-button"
+                    class="flex flex-col items-center py-4 font-sans text-xl border-solid md:mr-3 md:flex-row md:items-start md:text-2xl tab-button"
                     data-tab="#bookmarks"
                 >
                     <svg
@@ -142,7 +142,7 @@
                     Bookmarks
                 </button>
                 <button
-                    class="py-4 mr-3 flex flex-col md:flex-row items-center md:items-start text-xl font-sans md:text-2xl border-solid tab-button"
+                    class="flex flex-col items-center py-4 mr-3 font-sans text-xl border-solid md:flex-row md:items-start md:text-2xl tab-button"
                     data-tab="#archive"
                 >
                     <svg
@@ -160,16 +160,14 @@
                     Archive
                 </button>
             </div>
-            <!--  -->
             <div class="flex w-full px-5 py-10">
-                <div class="px-2 tab-content w-full" id="readlist">
+                <div class="w-full px-2 tab-content" id="readlist">
                     <x-readinglist :library="$library"></x-readinglist>
-                    <x-toast :message="Session::get('success')"></x-toast>
                 </div>
-                <div class="hidden px-2 tab-content w-full" id="bookmarks">
-                    Content for bookmarks
+                <div class="hidden w-full px-2 tab-content" id="bookmarks">
+                    <x-bookmarks :bookmarks="$bookmarks"></x-bookmarks>
                 </div>
-                <div class="hidden px-2 tab-content w-full" id="archive">
+                <div class="hidden w-full px-2 tab-content" id="archive">
                     <x-archives :archives="$archives"></x-archives>
                 </div>
             </div>

@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
+            $table->string('fullname');
             $table->string('username')->unique();
+            $table->enum('gender', ['Male', 'Female', 'Other'])->default('Other');
+            $table->date('birthday');
             $table->string('image')->default('profile/default-profile.jpg');
             $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

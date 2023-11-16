@@ -13,4 +13,14 @@ class Collaborative extends Model
         'authorID',
         'bookID'
     ];
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class, 'bookID', 'id');
+    }
+
+    public function authors()
+    {
+        return $this->hasMany(Author::class, 'authorID', 'id');
+    }
 }

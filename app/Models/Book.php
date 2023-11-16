@@ -16,7 +16,7 @@ class Book extends Model
         'image',
         'completed',
         'collaborative',
-        'reads',
+        'votes',
         'authorID'
     ];
 

@@ -15,8 +15,8 @@ class BookController extends Controller
     public function index()
     {
         
-        $books = Book::all(['id', 'title', 'genre', 'image'])->take(100);
-        $trendingBooks = $books->take(10);
+        $books = Book::all()->take(100);
+        $trendingBooks = $books->sortByDesc('votes')->take(10);
         $groupedBooks = $books->groupBy('genre');
                     
         return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'groupedBooks' => $groupedBooks]);
@@ -24,7 +24,6 @@ class BookController extends Controller
 
     public function id($id)
     {
-        
         $book = Book::with(['author', 'chapters', 'ratings', 'library'])->find($id);
         $belongsToLibrary = Library::where('authorID', Auth::id())->where('bookID', $id)->exists();
         $parts = $book->chapters->count();
