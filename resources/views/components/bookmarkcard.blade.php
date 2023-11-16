@@ -1,4 +1,4 @@
-<div class="w-full my-3 md:my-5 card" :bookmark="$bookmark">
+<a href="/bookmarks/chapter/{{ $bookmark->id }}" class="w-full my-3 md:my-5 card" :bookmark="$bookmark">
     <div class="flex items-start w-full h-full px-5 py-2 rounded-lg shadow-md md:shadow-lg bookmark-border md:items-center md:min-h-32 shadow-gray-200 md:shadow-gray-200">
         <div class="flex flex-col justify-start py-2">
             <h2 class="block font-sans text-xl text-black line-clamp-3 md:text-2xl">{{ $bookmark->content }}</h2>
@@ -13,4 +13,4 @@
             </svg>
         </button>
     </div>
-</d>
+</a>

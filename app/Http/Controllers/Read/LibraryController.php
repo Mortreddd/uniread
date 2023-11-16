@@ -17,14 +17,16 @@ class LibraryController extends Controller
     {
         $library = Library::with(['books'])->where('authorID', Auth::id())->get();
         $archives = Archive::with(['books'])->where('authorID', Auth::id())->get();
-        $bookmarks = Bookmark::with(['chapters'])->where('authorID', Auth::id())->get();
+        $bookmarks = Bookmark::with(['chapters'])->where('authorID', Auth::id())->orderBy('created_at')->get(['authorID', 'chapterID']);
 
         return view('layouts.author.library', [
             'library' => $library->pluck('books')->collapse(),
             'archives' => $archives->pluck('books')->collapse(),
             'bookmarks' => $bookmarks->pluck('chapters')->collapse()
         ]);
-        // return Json::encode($archives);
+
+
+        // return Json::encode($bookmarks);
     }
 
     public function store(LibraryRequest $request)

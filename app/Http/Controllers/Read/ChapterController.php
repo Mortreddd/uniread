@@ -16,10 +16,25 @@ class ChapterController extends Controller
     {
         $chapters = Chapter::orderBy('chapterNumber', 'asc')->where('bookID', $bookID)->get();
         $comments = Comment::with('authors')->where('bookID', $bookID)->get();
-        $inBookmarks = Bookmark::where('authorID', Auth::id())->exists();
-        // $inBookmarks = $request->user()->bookmarks()->where('authorID', Auth::id())->exists();
-        return Json::encode($inBookmarks);
-        // $chapter = $chapters->first();
-        // return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['inBookmarks', 'chapter']));
+        $inBookmarks = Bookmark::where('authorID', Auth::id())->whereIn('chapterID', $chapters->pluck('id'))->exists();
+        // return Json::encode($chapters);
+        if( $chapters->isEmpty())
+        {
+            return redirect()->back()->with('error', 'The book has no chapters yet');
+        }
+        $chapter = $chapters->first();
+        return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['inBookmarks', 'chapter']));
     }
+
+    public function read(Request $request, $bookID, $chapterID)
+    {
+        $chapters = Chapter::where('bookID', $bookID)->orderBy('chapterNumber', 'asc')->get();
+        $comments = Comment::with('authors')->where('bookID', $chapterID)->get();
+        $inBookmarks = Bookmark::where('authorID', Auth::id())->whereIn('chapterID', $chapters->pluck('id'))->exists();
+        $chapter = Chapter::where('id', $chapterID)->where('bookID', $bookID);
+        
+        // return Json::encode(Auth::id());
+        return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['chapter', 'inBookmarks']));
+    }
+    
 }

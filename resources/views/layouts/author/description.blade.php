@@ -14,6 +14,12 @@
     <body>
         <main class="container box-border w-full min-h-full p-0 m-0">
             @include('partials.nav')
+            @if ( Session::has('error'))
+                <x-toast :message="Session::get('error')"></x-toast>
+            @endif
+            @if ( Session::has('error'))
+                <x-toast :message="Session::get('error')"></x-toast>
+            @endif
             <main
                 class="flex flex-col items-center w-full h-full py-2 md:py-4 rounded-mdjustify-normal md:items-start md:justify-center md:flex-row"
             >
@@ -69,7 +75,10 @@
                         </div>
                     </section>
                 </section>
-                <x-toast :message="'Successfully added to the library'"></x-toast>
+                @if ( Session::has('success') )
+                    
+                    <x-toast :message="Session::get('success')"></x-toast>
+                @endif
             </main>
             @include('partials.footer')
         </main>

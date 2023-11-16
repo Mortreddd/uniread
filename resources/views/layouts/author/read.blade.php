@@ -20,6 +20,9 @@
     </head>
     <body>
         @include('partials.nav')
+        @if(Session::has('success'))
+            <x-toast :message="Session::get('success')"></x-toast>
+        @endif
         <main class="container box-border w-full min-h-full p-0 m-0">
             <section class="flex items-center justify-between w-full px-3 py-5 border-b-2 border-gray-200 border-solid shadow-lg shadow-gray-100">
                 <div class="flex flex-row items-center">
@@ -31,13 +34,16 @@
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownChapters">
                             @foreach($chapters as $chapter)
                                 <li>
-                                    <a href="/books/{{ $chapter->bookID }}/read/chapter/{{ $chapter->chapterNumber }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chapter {{ $chapter->chapterNumber }}</a>
+                                    <a href="{{ route('read.chapter', ['bookID' => $bookID, 'chapterID' => $chapterID]) }}?timestamp={{ time() }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chapter {{ $chapter->chapterNumber }}</a>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
-                    <form action="{{ route('bookmark.add', ['chapterID' => $chapter->id]) }}" method="post">
+                    @unless($inBookmarks)
+                    <form action="{{ route('bookmark.add') }}" method="post">
                         @csrf
+                        <input type="number" name="authorID" value="{{ Auth::id() }}" class="hidden">
+                        <input type="number" name="chapterID" value="{{ $chapter->id }}" class="hidden">
                         <button data-popover-target="bookmark" type="submit" class="flex flex-row items-center justify-center p-3 font-sans text-lg font-semibold rounded-full hover:bg-gray-200 md:hidden text-fucshia-900 text-fuchsia-900 hover:text-fuchsia-950">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                 <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z" clip-rule="evenodd" />
@@ -57,6 +63,7 @@
                             <div data-popper-arrow></div>
                         </div>
                     </form>
+                    @endunless
                 </div>
                 <div class="flex items-center">
                     <button id="talk" data-popover-target="voice-speech" type="button" class="flex items-center p-3 mx-1 bg-transparent rounded-full md:p-5 md:mx-3 text-fuchsia-900 hover:text-fuchsia-950 hover:bg-gray-200">
@@ -98,12 +105,7 @@
                 </div>
             </section>
             <article class="flex flex-col items-center w-full h-full py-5">
-                <div class="min-h-[90vh] w-full md:w-[60vw] px-5 md:p-0">
-                    <div>
-                        <h1 class="mb-5 font-sans text-3xl font-semibold text-center text-black">{{ $chapter->title }}</h1>
-                        <p id="content" class="font-serif text-xl text-left text-gray-700">{!! $chapter->content !!}</p>
-                    </div>
-                </div>
+                <x-page :chapter="$chapter"></x-page>
                 <div class="w-full md:w-[60vw] px-2 md:px-10 border-2 border-gray-200 rounded-md shadow-xl h-fit shadow-gray-200">
                     
                     @unless($comments->isEmpty())

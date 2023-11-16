@@ -41,10 +41,11 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
 
     Route::controller(ChapterController::class)->group( function () {
         Route::get('/books/{bookID}/read', 'index')->name('read.book');
-        Route::get('/books/read/{chapterID}', 'read')->name('read.chapter');
+        Route::get('/books/{bookID}/read/chapter/{chapterID}', 'read')->name('read.chapter');
     });
     Route::controller(BookmarkController::class)->group(function () {
-        Route::post('/books/{bookID}/bookmark-add', 'store')->name('bookmark.add');
+        Route::get('/bookmarks/chapter/{chapterID}', 'index')->name('trace.chapter');
+        Route::post('/books/bookmark-add', 'store')->name('bookmark.add');
     });
 
     // *---------------------------------

@@ -22,7 +22,9 @@
             * ITERATE ALL THE BOOKS BASED ON THEIR GENRES
             * -------------------------------------------------------
             *--}}  
-            
+            @if(Session::has('success'))
+                <x-toast :message="Session::get('success')"></x-toast>
+            @endif
                 {{-- ! THIS IS A SECTION OF MYSTERY GENRE --}}
             @if(request()->is('books/mystery') || request()->is('/'))
                 @include("components.heading", ['id' => 'mystery',
