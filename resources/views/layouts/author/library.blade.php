@@ -166,15 +166,11 @@
                 </div>
                 <div class="hidden w-full px-2 tab-content" id="bookmarks">
                     <x-bookmarks :bookmarks="$bookmarks"></x-bookmarks>
-                    @if( Session::has('error') )
-                        <x-toast :message="Session::get('error')"></x-toast>
-                    @endif
+                    
                 </div>
                 <div class="hidden w-full px-2 tab-content" id="archive">
                     <x-archives :archives="$archives"></x-archives>
-                    @if( Session::has('error') )
-                        <x-toast :message="Session::get('error')"></x-toast>
-                    @endif
+                    
                 </div>
             </div>
         </main>

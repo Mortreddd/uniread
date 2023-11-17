@@ -31,10 +31,11 @@ class ChapterController extends Controller
         $chapters = Chapter::where('bookID', $bookID)->orderBy('chapterNumber', 'asc')->get();
         $comments = Comment::with('authors')->where('bookID', $chapterID)->get();
         $inBookmarks = Bookmark::where('authorID', Auth::id())->whereIn('chapterID', $chapters->pluck('id'))->exists();
-        $chapter = Chapter::where('id', $chapterID)->where('bookID', $bookID);
+        $chapter = Chapter::findOrFail($chapterID);
         
         // return Json::encode(Auth::id());
+        // return to_route('read.chapter')
         return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['chapter', 'inBookmarks']));
     }
-    
+
 }

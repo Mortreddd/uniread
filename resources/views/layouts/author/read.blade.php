@@ -11,9 +11,9 @@
             href="{{ asset('favicon.ico') }}"
             type="image/x-icon"
         />
-        <title>Read - {{ $chapter->title }}</title>
+        <title>{{ $chapter->title }}</title>
         @vite(['resources/css/app.css','resources/js/app.js',
-        'resources/js/tabs.js', 'resources/js/voice.js'])
+        'resources/js/tabs.js', 'resources/js/voice.js', 'resources/js/page.js'])
         <script src="../../js/app.js"></script>
         <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
 
@@ -32,9 +32,9 @@
                     </button>
                     <div id="chapters" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownChapters">
-                            @foreach($chapters as $chapter)
-                                <li>
-                                    <a href="{{ route('read.chapter', ['bookID' => $bookID, 'chapterID' => $chapterID]) }}?timestamp={{ time() }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chapter {{ $chapter->chapterNumber }}</a>
+                            @foreach($chapters as $dropdownChapter)
+                                <li class="w-full">
+                                    <a href="{{ route('read.chapter', ['bookID' => $dropdownChapter->bookID, 'chapterID' => $dropdownChapter->id]) }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chapter {{ $dropdownChapter->chapterNumber }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -105,7 +105,8 @@
                 </div>
             </section>
             <article class="flex flex-col items-center w-full h-full py-5">
-                <x-page :chapter="$chapter"></x-page>
+                
+                <x-page :title="$chapter->title" :content="$chapter->content"></x-page>
                 <div class="w-full md:w-[60vw] px-2 md:px-10 border-2 border-gray-200 rounded-md shadow-xl h-fit shadow-gray-200">
                     
                     @unless($comments->isEmpty())
