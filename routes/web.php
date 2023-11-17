@@ -13,9 +13,9 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Read\ChapterController;
 use App\Http\Controllers\Read\BookmarkController;
 
-// Route::prefix('admin')->controller(AdminController::class)->group(['middleware' => ['admin', 'auth', 'preventBackHistory']],
-//     Route::get('/', 'index')->name('admin');
-// );
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+});
 
 
 
