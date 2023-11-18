@@ -10,7 +10,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.dashboard') }}" class="flex flex-row items-center w-full px-3 py-2 bg-transparent rounded-lg hover:bg-fuchsia-950 hover:text-gray-100">
+            <a href="{{ route('admin.authors') }}" class="flex flex-row items-center w-full px-3 py-2 bg-transparent rounded-lg hover:bg-fuchsia-950 hover:text-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
@@ -23,10 +23,8 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
-                  </svg>
-                  
-                  
-                Authors           
+                </svg>
+                Books           
             </a>
         </li>
     </ul>

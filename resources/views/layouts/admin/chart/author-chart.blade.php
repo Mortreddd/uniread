@@ -1,4 +1,4 @@
-<div class="flex flex-col items-center w-full h-full">
+<div class="flex flex-col items-center w-full h-full card">
     <div class="flex justify-center w-full gap-3 mb-3">
         <h1 class="flex flex-row items-center text-2xl text-black font sans"><span class="flex w-3 h-3 mr-2 bg-green-500 rounded-full me-3"></span>Active Authors</h1>
         <h1 class="flex flex-row items-center text-2xl text-black font sans"><span class="flex w-3 h-3 mr-2 bg-red-500 rounded-full me-3"></span>Inactive Authors</h1>
