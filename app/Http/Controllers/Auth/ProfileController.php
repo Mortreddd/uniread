@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $workCount = $author->books->count();
         $followerCount = $author->followers->count();
         $followedCount = $author->followed->count();
-        $works = Book::where('authorID', $author->id)->get(['id', 'title', 'genre', 'image']);
+        $works = Book::with('genre')->where('authorID', $author->id)->get();
         return view('layouts.profile.author',['works' => $works], compact(['username', 'workCount', 'followerCount', 'followedCount']));
         
     }

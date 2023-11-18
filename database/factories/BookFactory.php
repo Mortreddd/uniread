@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Author;
+use App\Models\Genre;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,10 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
-        $genres = ['Action', 'Horror', 'Mystery', 'Romance', 'Teen Fiction', 'Science Fiction'];
         $covers = ['covers/cover1.jpeg', 'covers/cover2.jpg', 'covers/cover3.jpg', 'covers/cover4.jpg', 'covers/cover5.jpg', 'covers/cover6.jpg'];
         return [
             'title' => fake()->realText(30),
-            'genre' => fake()->randomElement($genres),
+            'genreID' => fake()->randomElement(Genre::all('id')),
             'description' => fake()->realText(200),
             'image' => fake()->randomElement($covers),
             'completed' => fake()->boolean(),

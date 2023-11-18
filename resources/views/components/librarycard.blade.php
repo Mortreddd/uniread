@@ -7,7 +7,7 @@
         </blockquote>
       </figure>
       <div class="px-6 pb-2">
-        <span class="block px-3 py-1 text-sm font-semibold text-center text-gray-700 bg-gray-200 rounded-full align-self-center">{{ $book->genre }}</span>
+        <span class="block px-3 py-1 text-sm font-semibold text-center text-gray-700 bg-gray-200 rounded-full align-self-center">{{ $book->genre->name }}</span>
       </div>
     </div>
 </button>
@@ -33,7 +33,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                   </svg>
-                <a data-modal-hide="{{ $book->id }}" href="/books/{{ $book->id }}" class="font-sans text-lg text-white hover:text gray-100">Info</a>
+                <a data-modal-hide="{{ $book->id }}" href="{{ route('') }}" class="font-sans text-lg text-white hover:text gray-100">Info</a>
             </div>
             <form class="flex items-center mx-2" method=POST action="{{ route('archive.add') }}">
               @csrf

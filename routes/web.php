@@ -8,13 +8,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BookMonitorController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Read\ChapterController;
 use App\Http\Controllers\Read\BookmarkController;
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/books', [BookMonitorController::class, 'index'])->name('admin.books');
 });
 
 
@@ -35,8 +40,10 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
         Route::get('/','index')->name('home');
         Route::get('/books/{id}', 'id')
             ->where(['id' => '[0-9]+']);
-        Route::get('/books/{genre}', 'search')
-            ->whereIn('genre', ['mystery', 'thriller', 'teen-fiction', 'horror', 'romance']);
+    });
+
+    Route::controller(GenreController::class)->group( function () {
+        Route::get('/books/genre/{genreID}', 'index')->name('genre.search');
     });
 
     Route::controller(ChapterController::class)->group( function () {

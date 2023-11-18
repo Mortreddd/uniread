@@ -20,7 +20,7 @@ class AuthorController extends Controller
         $followerCount = $author->followers->count();
         $followedCount = $author->followed->count();
         $followers = $author->followers->toArray();
-        $works = Book::where('authorID', $author->id)->get(['id', 'title', 'genre', 'image']);
+        $works = Book::with('genre')->where('authorID', $author->id)->get();
         return view('layouts.profile.author',['works' => $works, 'followers' => $followers], compact(['username', 'workCount', 'followerCount', 'followedCount']));
         
     }

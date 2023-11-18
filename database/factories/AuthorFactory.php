@@ -26,6 +26,8 @@ class AuthorFactory extends Factory
             'image' => 'profiles/default-profile.jpg',
             'email' => fake()->unique(true)->safeEmail(),
             'password' => Hash::make(Str::random(8)), // password
+            'remember_token' => Str::random(10),
+            'last_login' => fake()->dateTimeBetween('-1 years', 'now'),
         ];
     }
 }

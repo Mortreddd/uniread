@@ -10,13 +10,12 @@ class Author extends Model implements AuthenticatableContract
 {
     use HasFactory, Authenticatable;
     protected $fillable = [
-        'fullname',
-        'username',
-        'gender',
-        'birthday',
-        'image',
-        'email',
-        'password'
+            'fullname' ,
+            'username',
+            'gender',
+            'birthday',
+            'email',
+            'password',
     ];
 
     protected $hidden = [

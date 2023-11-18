@@ -15,8 +15,8 @@ class LibraryController extends Controller
 {
     public function index()
     {
-        $library = Library::with(['books'])->where('authorID', Auth::id())->get();
-        $archives = Archive::with(['books'])->where('authorID', Auth::id())->get();
+        $library = Library::with(['books.genre'])->where('authorID', Auth::id())->get();
+        $archives = Archive::with(['books.genre'])->where('authorID', Auth::id())->get();
         $bookmarks = Bookmark::with(['chapters'])->where('authorID', Auth::id())->orderBy('created_at')->get(['authorID', 'chapterID']);
 
         return view('layouts.author.library', [

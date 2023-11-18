@@ -8,11 +8,8 @@
         @vite(['resources/css/app.css','resources/js/app.js', 'resources/js/charts.js'])
     </head>
     <body>
-        <main class="container mx-auto p-auto">
-        @yield('sidebar') 
-        {{-- <div class="m-auto w-autfull">
-            <canvas id="myChart"></canvas>
-        </div> --}}
+        <main class="container flex mx-auto p-auto">
+            @yield('content') 
         </main>
     </body>
 </html>
