@@ -3,7 +3,7 @@
     @unless(empty($books))
     <div class="flex items-start h-full py-3 overflow-x-scroll no-scrollbar">
         @foreach ($books as $book)
-            <x-card :book="$book"/>
+            <x-card :book="$book" :genre="$genre"></x-card>
         @endforeach
     </div>
     @else

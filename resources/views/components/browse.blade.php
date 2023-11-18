@@ -29,7 +29,7 @@
             <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
                 <li>
                     <a
-                        href="/books/fantasy"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Fantasy
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/mystery"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Mystery
@@ -45,7 +45,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/thriller"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Thriller
@@ -53,7 +53,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/action"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Action
@@ -65,7 +65,7 @@
             <ul class="space-y-4">
                 <li>
                     <a
-                        href="/books/teen-fiction"
+                        href="{{ route('genre.search', ['genreID' => 2])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Teen Fiction
@@ -73,7 +73,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/science-fiction"
+                        href="/books{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Science Fiction
@@ -81,7 +81,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/fiction"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Fiction
@@ -89,7 +89,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/horror"
+                        href="{{ route('genre.search', ['genreID' => 13])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Horror
@@ -101,7 +101,7 @@
             <ul class="space-y-4">
                 <li>
                     <a
-                        href="/books/romance"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Romance
@@ -109,7 +109,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/adventure"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Adventure
@@ -117,7 +117,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/spiritual"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900 "
                     >
                         Spiritual
@@ -125,7 +125,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books/paranormal"
+                        href="{{ route('genre.search', ['genreID' => 1])}}"
                         class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
                     >
                         Paranormal

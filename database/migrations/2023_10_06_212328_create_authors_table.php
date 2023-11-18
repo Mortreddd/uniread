@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('image')->default('profile/default-profile.jpg');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('status')->default('Active');
+            $table->timestamp('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

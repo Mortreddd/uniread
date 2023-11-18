@@ -2,7 +2,7 @@
     @unless($works->isEmpty())
     <div class="flex items-start h-full py-3 overflow-x-scroll no-scrollbar">
         @foreach ($works as $work)
-            <x-card :book="$work"/>
+            <x-card :book="$work" :genre="$work->genre->name"/>
         @endforeach
     </div>
     @else

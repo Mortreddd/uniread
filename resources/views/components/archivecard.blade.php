@@ -13,7 +13,7 @@
           </blockquote>
         </figure>
         <div class="px-6 pb-2">
-          <span class="block px-3 py-1 text-sm font-semibold text-center text-gray-700 bg-gray-200 rounded-full align-self-center">{{ $archive->genre }}</span>
+          <span class="block px-3 py-1 text-sm font-semibold text-center text-gray-700 bg-gray-200 rounded-full align-self-center">{{ $archive->genre->name }}</span>
         </div>
       </div>
   </button>

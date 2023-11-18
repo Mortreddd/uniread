@@ -11,7 +11,7 @@ class Book extends Model
 
     protected $fillable = [
         'title',
-        'genre',
+        'genreID',
         'description',
         'image',
         'completed',
@@ -20,7 +20,10 @@ class Book extends Model
         'authorID'
     ];
 
-
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class, 'genreID', 'id');
+    }
     public function author()
     {
         return $this->belongsTo(Author::class, 'authorID', 'id');

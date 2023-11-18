@@ -12,7 +12,8 @@ class Card extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public $book
+        public $book,
+        public $genre
     ){}
     /**
      * Get the view / contents that represent the component.

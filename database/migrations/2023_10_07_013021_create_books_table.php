@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Author;
+use App\Models\Genre;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('genre');
+            $table->foreignIdFor(Genre::class, 'genreID')->constrained('genres')->cascadeOnDelete();
             $table->string('description');
             $table->string('image');
             $table->boolean('completed')->default(false);
