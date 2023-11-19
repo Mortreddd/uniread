@@ -1,7 +1,7 @@
 <section class="w-full p-2 mb-4 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-lg shadow-gray-300 md:p-5 " :book="$book" :ratigns="$ratings" :parts="$parts" :belongsToLibrary="$belongsToLibrary">
     <div class="mx-3">
         <h1 class="text-4xl text-slate-400">{{ $book->title }}</h1>
-        <div class="flex flex-row flex-wrap w-full my-1 md:my-3">
+        <div class="flex flex-row flex-wrap items-center w-full my-1 md:my-3">
             <div class="mr-4">
                 <h4 class="flex gap-2 text-xl text-gray-400">
                     <svg
@@ -63,25 +63,32 @@
                 </h4>
             </div>
             <div class="mr-4">
-                <h4 href="" class="text-xl text-gray-400 underline">
+                <h4 href="" class="px-5 py-1 font-sans text-white rounded-l-full rounded-r-full bg-fuchsia-900">
                     @if($book->status === 1) Completed @else Ongoing @endif
                 </h4>
             </div>
+            {{-- @if($book->mature === 1)
+                <div class="mr-4">
+                    <h4 href="" class="px-5 py-1 font-sans text-white bg-orange-600 rounded-l-full rounded-r-full text-md ">
+                        Mature
+                    </h4>
+                </div>
+            @endif --}}
         </div>
-        <div class="flex flex-row w-full my-1 md:my-3">
+        <div class="flex flex-row items-center w-full my-1 md:my-3">
             <div class="mr-4">
                 @if($parts < 1)
 
                     <a
                         href="/books/{{ $book->id }}/read"
-                        class="hidden px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
+                        class="hidden px-4 py-2 text-white rounded-full bg-fuchsia-900 hover:bg-fuchsia-950"
                         >
                         Start Reading
                     </a>
                 @else
                     <a
                     href="/books/{{ $book->id }}/read"
-                    class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
+                    class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-900 hover:bg-fuchsia-950"
                     >
                         Start Reading
                     </a>
@@ -98,9 +105,9 @@
                         <input type="number" name="bookID" value="{{ $book->id }}" class="hidden">
                         <button
                             type="submit"
-                            class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-800 hover:bg-fuchsia-900"
+                            class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-900 hover:bg-fuchsia-950"
                         >
-                            Add to your Library
+                            Add to your library
                         </button>
                     </form>
                 @endunless

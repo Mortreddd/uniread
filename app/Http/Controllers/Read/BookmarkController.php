@@ -26,6 +26,14 @@ class BookmarkController extends Controller
             'chapterID' => $chapterID,
         ]);
         
-        return redirect()->back()->withInput(['inBookmarks' => true])->with($request->messages());
+        return redirect()->back()->withInput(['inBookmarks' => true]);
+    }
+
+    public function destroy(Request $request)
+    {
+        $chapterID = $request->input('chapterID');
+        $authorID = $request->input('authorID');
+        Bookmark::where('authorID', $authorID)->where('chapterID', $chapterID)->delete();
+        return redirect()->back()->withInput(['inBookmarks' => false]);
     }
 }

@@ -16,6 +16,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Read\ChapterController;
 use App\Http\Controllers\Read\BookmarkController;
+use App\Http\Controllers\VotesController;
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
@@ -40,12 +41,12 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     // *---------------------------------
     Route::controller(BookController::class)->group(function () {
         Route::get('/','index')->name('home');
-        Route::get('/books/{id}', 'id')
+        Route::get('/books/{id}', 'id')->name('book.description')
             ->where(['id' => '[0-9]+']);
     });
 
     Route::controller(GenreController::class)->group( function () {
-        Route::get('/books/genre/{genreID}', 'index')->name('genre.search');
+        Route::get('/books/genres/{genreID}', 'index')->name('genre.index');
     });
 
     Route::controller(ChapterController::class)->group( function () {
@@ -54,9 +55,15 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     });
     Route::controller(BookmarkController::class)->group(function () {
         Route::get('/bookmarks/chapter/{chapterID}', 'index')->name('trace.chapter');
-        Route::post('/books/bookmark-add', 'store')->name('bookmark.add');
+        Route::put('/books/bookmark-add', 'store')->name('bookmark.add');
+        Route::delete('/books/bookmark-remove', 'destroy')->name('bookmark.remove');
     });
 
+    
+    Route::controller(VotesController::class)->group(function () {
+        Route::put('/books/vote-add', 'store')->name('vote.add');
+        Route::delete('/books/vote-remove', 'destroy')->name('vote.remove');
+    });
     // *---------------------------------
     // * Responsible for navigating another author
     // *---------------------------------

@@ -1,30 +1,22 @@
-<!DOCTYPE html>
-<html
-    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    class="scroll-smooth scroll-p-40"
->
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-        <title>UniRead</title>
-        @vite(['resources/css/app.css','resources/js/app.js'])
-        <script src="../../js/app.js"></script>
-    </head>
-    <body>
-        @include('partials.nav')
-        <div class="container w-full p-0 m-0">
-            <div
-            class="w-fit flex justify-center  items-center h-[50vh] bg-no-repeat bg-cover bg-center md:w-screen"
-            style="background-image: url('{{
-                asset('about.webp')
-            }}');">
-            <h1 class="font-serif font-bold text-center text-white text-9xl">UniRead Platform</h1>
+@extends('index')
 
-            </div>
+@section('title', 'UniRead - About')
+
+
+@section('content')
+    @include('partials.nav')
+    <div class="container w-full p-0 m-0">
+        <div
+        class="w-fit flex justify-center  items-center h-[50vh] bg-no-repeat bg-cover bg-center md:w-screen"
+        style="background-image: url('{{
+            asset('about.webp')
+        }}');">
+        <h1 class="font-serif font-bold text-center text-white text-9xl">UniRead Platform</h1>
+
         </div>
+    </div>
 
-        <main class="container flex p-4">
+    <main class="container flex p-4">
         <aside id="default-sidebar" class="sticky h-screen transition-transform w-[40vw]" aria-label="Sidebar">
             <div class="h-full p-10 overflow-y-auto ">
                 <ul class="space-y-2 font-medium">
@@ -83,5 +75,4 @@
         </section>
 
     </main>
-    </body>
-</html>
+@endsection

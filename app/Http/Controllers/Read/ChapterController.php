@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Bookmark;
 use App\Models\Comment;
+use App\Models\Votes;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,10 +33,13 @@ class ChapterController extends Controller
         $comments = Comment::with('authors')->where('bookID', $chapterID)->get();
         $inBookmarks = Bookmark::where('authorID', Auth::id())->whereIn('chapterID', $chapters->pluck('id'))->exists();
         $chapter = Chapter::findOrFail($chapterID);
-        
+        $isVoted = Votes::where('authorID', Auth::id())->where('bookID', $bookID)->exists();
         // return Json::encode(Auth::id());
         // return to_route('read.chapter')
-        return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['chapter', 'inBookmarks']));
+        return view('layouts.author.read', [
+            'chapters' => $chapters, 
+            'comments' => $comments], 
+            compact(['chapter', 'inBookmarks', 'isVoted']));
     }
 
 }

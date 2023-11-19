@@ -8,7 +8,7 @@
             @foreach($publishedBooks as $published)
                 <div class="flex items-center justify-between w-full h-full my-3">
                     <div>
-                        {{-- TODO replace the stories and date published for real record --}}
+                        
                         <h1 class="font-sans text-2xl font-semibold text-black">{{ $published->book->title }}</h1>
                         <h1 class="text-xl text-black">{{'@'}}{{ $published->author->username }}</h1>
                     </div>

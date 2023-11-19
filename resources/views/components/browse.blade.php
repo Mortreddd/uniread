@@ -29,15 +29,15 @@
             <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="{{ route('genre.index', ['genreID' => 6])}}"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Fantasy
                     </a>
                 </li>
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
+                        href="{{ route('genre.index', ['genreID' => 1])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Mystery
@@ -45,18 +45,26 @@
                 </li>
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="{{ route('genre.index', ['genreID' => 7])}}"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Thriller
                     </a>
                 </li>
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="{{ route('genre.index', ['genreID' => 8])}}"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Action
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="{{ route('genre.index', ['genreID' => 5])}}"
+                        class="text-gray-600 hover:text-fuchsia-900"
+                    >
+                        Historical Fiction
                     </a>
                 </li>
             </ul>
@@ -65,7 +73,7 @@
             <ul class="space-y-4">
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 2])}}"
+                        href="{{ route('genre.index', ['genreID' => 2])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Teen Fiction
@@ -73,23 +81,23 @@
                 </li>
                 <li>
                     <a
-                        href="/books{{ route('genre.search', ['genreID' => 1])}}"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="/books{{ route('genre.index', ['genreID' => 3])}}"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Science Fiction
                     </a>
                 </li>
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="{{ route('genre.index', ['genreID' => 4])}}"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
-                        Fiction
+                        General Fiction
                     </a>
                 </li>
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 13])}}"
+                        href="{{ route('genre.index', ['genreID' => 13])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Horror
@@ -101,7 +109,7 @@
             <ul class="space-y-4">
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
+                        href="{{ route('genre.index', ['genreID' => 9])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Romance
@@ -109,24 +117,24 @@
                 </li>
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="{{ route('genre.index', ['genreID' => 10])}}"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Adventure
                     </a>
                 </li>
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900 "
+                        href="{{ route('genre.index', ['genreID' => 12])}}"
+                        class="text-gray-600 hover:text-fuchsia-900 "
                     >
                         Spiritual
                     </a>
                 </li>
                 <li>
                     <a
-                        href="{{ route('genre.search', ['genreID' => 1])}}"
-                        class="text-gray-600 line-through opacity-50 cursor-default pointer-events-none hover:text-fuchsia-900"
+                        href="{{ route('genre.index', ['genreID' => 11])}}"
+                        class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Paranormal
                     </a>
