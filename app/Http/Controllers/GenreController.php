@@ -6,15 +6,24 @@ use App\Models\Book;
 use App\Models\Genre;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class GenreController extends Controller
 {
     private $backgrounds = [
-        1 => 'backgrounds\Mystery.webp', 
-        2 => 'backgrounds\Teenfiction.webp',
-        3 => 'backgrounds\Sciencefiction.webp',
-        4 => 'backgrounds\General.webp',
-        5 => 'backgrounds\Sciencefiction.webp',
+        1 => 'backgrounds/Mystery.webp', 
+        2 => 'backgrounds/Teenfiction.webp',
+        3 => 'backgrounds/Sciencefiction.webp',
+        4 => 'backgrounds/Generalfiction.webp',
+        5 => 'backgrounds/Sciencefiction.webp',
+        6 => 'backgrounds/Fantasy.webp',
+        7 => 'backgrounds/Thriller.webp',
+        8 => 'backgrounds/Action.webp',
+        9 => 'backgrounds/Romance.webp',
+        10 => 'backgrounds/Adventure.webp',
+        11 => 'backgrounds/Paranormal.webp',
+        12 => 'backgrounds/Spiritual.webp',
+        13 => 'backgrounds/Horror.webp'
     ];
     private $captions = [
             1 => [
@@ -64,10 +73,13 @@ class GenreController extends Controller
         // return Json::encode($books);         
         // return view('layouts.author.index', ['groupedBooks' => $groupedBooks]);
 
-        $genre = Genre::find($genreID);
-        $caption = $this->captions[$genreID];
-        return Json::encode($caption);
-        // return view('layouts.author.browse', compact(['genre']));
+        $genres = Genre::with('books')->where('id', $genreID)->get();
+        $books = Book::with('author')->where('genreID', $genreID)->limit(20)->get();
+        $title = $genres->first();
+        $captions = $this->captions[$genreID];
+        $background = $this->backgrounds[$genreID];
+        // return Json::encode($books);
+        return view('layouts.author.browse',['books' => $books], compact(['title', 'genres', 'captions', 'background']));
     }
 
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('completed')->default(false);
             $table->boolean('collaborative')->default(false);
             $table->unsignedBigInteger('votes')->default(0);
+            $table->boolean('mature')->default(false);
             $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();;
             $table->timestamps();
         });

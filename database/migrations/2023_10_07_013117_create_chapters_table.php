@@ -14,10 +14,11 @@ return new class extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('chapterNumber');
+            $table->string('chapterNumber');
             $table->string('title');
             $table->mediumText('content');
-            $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();;
+            $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();
+            $table->unsignedBigInteger('reads')->dafault(0);
             $table->timestamps();
         });
     }
