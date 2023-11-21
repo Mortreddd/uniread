@@ -5,24 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Votes extends Model
+class Read extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'authorID',
-        'bookID',
-        'chapterID'
+        'chapterID',
     ];
 
     public function author()
     {
-        return $this->hasOne(Author::class, 'authorID', 'id');
+        return $this->belongsTo(Author::class, 'authorID', 'id');
     }
 
-    public function votes()
+    public function chapters()
     {
-        return $this->hasMany(Book::class, 'bookID', 'id');
+        return $this->hasMany(Chapter::class, 'chapterID', 'id');
     }
 }

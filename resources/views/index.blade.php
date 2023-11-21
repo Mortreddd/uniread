@@ -8,7 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
         <title>@yield('title', 'UniRead')</title>
-        @vite(['resources/css/app.css','resources/js/app.js', 'resources/js/tabs.js', 'resources/js/page.js', 'resources/js/voice.js', 'resources/js/bookmarks.js'])
+        @vite(['resources/css/app.css','resources/js/app.js', 
+        'resources/js/tabs.js', 'resources/js/page.js', 
+        'resources/js/voice.js', 'resources/js/bookmarks.js'])
     </head>
     <body>
         @yield('content')

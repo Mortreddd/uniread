@@ -12,6 +12,8 @@ use App\Models\Library;
 use App\Models\Message;
 use App\Models\Follower;
 use App\Models\Rating;
+use App\Models\Read;
+use App\Models\Votes;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -32,9 +34,11 @@ class DatabaseSeeder extends Seeder
         Comment::factory(1200)->create();
         Chapter::factory(5000)->create();
         Bookmark::factory(300)->create();
-        Follower::factory(3000)->create();
+        Follower::factory(1200)->create();
         Message::factory(400)->create();
-        Rating::factory(Author::all()->count())->create();
+        Rating::factory(500)->create();
         Library::factory(400)->create();
+        Read::factory(700)->create();
+        Votes::factory(500)->create();
     }
 }

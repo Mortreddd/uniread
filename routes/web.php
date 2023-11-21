@@ -32,7 +32,7 @@ Route::prefix('admin')->group(function () {
 // * Handling Profile Routes *
 // *---------------------------------
 
-Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
+Route::middleware(['auth.session', 'auth'])->group( function () {
 
     // *---------------------------------
     // * Handle the Books to be displayed *
@@ -41,8 +41,9 @@ Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
     // *---------------------------------
     Route::controller(BookController::class)->group(function () {
         Route::get('/','index')->name('home');
-        Route::get('/books/{id}', 'id')->name('book.description')
-            ->where(['id' => '[0-9]+']);
+        Route::get('/books/{bookID}', 'search')->name('book.description')->where(['bookID' => '[0-9]+']);
+        Route::get('/books/new-story', 'show')->name('book.add');
+        Route::put('/books/new-story/created', 'store');
     });
 
     Route::controller(GenreController::class)->group( function () {

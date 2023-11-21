@@ -24,7 +24,7 @@
     <div id="dropdownWrite" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
           <li>
-            <a href="#" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">Create a new story</a>
+            <a href="{{ route('book.add') }}" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">Create a new story</a>
           </li>
           <li>
             <a href="#" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">My stories</a>

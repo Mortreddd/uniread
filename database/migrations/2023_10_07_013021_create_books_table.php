@@ -23,7 +23,8 @@ return new class extends Migration
             $table->boolean('collaborative')->default(false);
             $table->unsignedBigInteger('votes')->default(0);
             $table->boolean('mature')->default(false);
-            $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();;
+            $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();
+            $table->enum('copyright', ['Public Domain', 'All Rights Reserved', 'Creative Commons (CC) Attribution']);
             $table->timestamps();
         });
     }

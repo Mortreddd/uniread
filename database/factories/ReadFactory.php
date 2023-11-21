@@ -3,14 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Author;
-use App\Models\Book;
 use App\Models\Chapter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Votes>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Read>
  */
-class VotesFactory extends Factory
+class ReadFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,8 +20,7 @@ class VotesFactory extends Factory
     {
         return [
             'authorID' => fake()->randomElement(Author::all(['id'])),
-            'bookID' => fake()->randomElement(Book::all(['id'])),
-            'chapterID' => fake()->randomElement(Chapter::all(['id']))
+            'chapterID' => fake()->randomElement(Chapter::all(['id'])),
         ];
     }
 }

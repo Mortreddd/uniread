@@ -13,13 +13,13 @@ class Publisher extends Model
         'bookID',   
     ];
     
-    public function author()
+    public function authors()
     {   
-        return $this->belongsTo(Author::class, 'authorID', 'id');
+        return $this->hasMany(Author::class, 'authorID', 'id');
     }
 
-    public function book()
+    public function books()
     {
-        return $this->belongsTo(Book::class, 'bookID', 'id');
+        return $this->hasMany(Book::class, 'bookID', 'id');
     }
 }
