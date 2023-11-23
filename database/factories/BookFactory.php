@@ -24,9 +24,6 @@ class BookFactory extends Factory
             'genreID' => fake()->randomElement(Genre::all('id')),
             'description' => fake()->realText(200),
             'image' => fake()->randomElement($covers),
-            'completed' => fake()->boolean(),
-            'collaborative' => fake()->boolean(),
-            'votes' => fake()->numberBetween(0, 1000000),
             'authorID' => fake()->randomElement(Author::all(['id']))
         ];
     }

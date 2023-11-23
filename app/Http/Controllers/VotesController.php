@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Chapter;
 use App\Models\Votes;
 use Illuminate\Http\Request;
 
@@ -10,13 +11,17 @@ class VotesController extends Controller
 {
     public function store(Request $request)
     {
-        Votes::create([
-            'authorID' => $request->input('authorID'),
-            'bookID' => $request->input('bookID')
-        ]);
-
-        Book::where('id', $request->input('bookID'))->increment('votes');
-
+        $authorID = $request->input('authorID');
+        $bookID = $request->input('bookID');
+        $chapterID = $request->input('chapterID');
+        if(!Votes::where('authorID', $authorID)->where('chapterID', $chapterID)->exists())
+        {
+            Votes::create([
+                'authorID' => $authorID,
+                'bookID' => $bookID,
+                'chapterID' => $chapterID
+            ]);
+        }
         return redirect()->back()->with('isVoted', true);
     }
 
@@ -24,9 +29,14 @@ class VotesController extends Controller
     public function destroy(Request $request)
 
     {
-        Votes::where('authorID', $request->input('authorID'))->where('bookID', $request->input('bookID'))->delete();
+        $authorID = $request->input('authorID');
+        $bookID = $request->input('bookID');
+        $chapterID = $request->input('chapterID');
+        if(Votes::where('authorID', $authorID)->where('chapterID', $chapterID)->exists())
+        {
+            Votes::where('authorID', $authorID)->where('chapterID', $chapterID)->delete();
+        }
         return redirect()->back()->with('isVoted', false);
     }
-
     
 }

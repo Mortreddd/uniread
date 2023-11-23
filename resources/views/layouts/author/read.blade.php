@@ -83,7 +83,7 @@
                     <div data-popper-arrow></div>
                 </div>
                 @unless($isVoted)
-                    <form action="{{ route('vote.add', ['authorID' => auth()->user()->id, 'bookID' => $chapter->bookID ])}}" method="post" class="mx-1 md:mx-3">
+                    <form action="{{ route('vote.add', ['authorID' => auth()->user()->id, 'bookID' => $chapter->bookID, 'chapterID' => $chapter->id ])}}" method="post" class="mx-1 md:mx-3">
                         @csrf
                         @method('PUT')
                         <button type="submit" class="flex items-center px-2 py-2 text-white bg-gray-500 rounded-lg md:px-4 hover:bg-gray-600">
@@ -95,7 +95,7 @@
                         </button>
                     </form>
                 @else
-                    <form action="{{ route('vote.remove', ['authorID' => auth()->user()->id, 'bookID' => $chapter->bookID ])}}" method="post" class="mx-1 md:mx-3">
+                    <form action="{{ route('vote.remove', ['authorID' => auth()->user()->id, 'bookID' => $chapter->bookID, 'chapterID' => $chapter->id])}}" method="post" class="mx-1 md:mx-3">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="flex items-center px-2 py-2 text-white bg-gray-500 rounded-lg md:px-4 hover:bg-gray-600">

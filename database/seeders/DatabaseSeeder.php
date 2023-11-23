@@ -12,7 +12,6 @@ use App\Models\Library;
 use App\Models\Message;
 use App\Models\Follower;
 use App\Models\Rating;
-use App\Models\Read;
 use App\Models\Votes;
 use Illuminate\Database\Seeder;
 
@@ -38,7 +37,6 @@ class DatabaseSeeder extends Seeder
         Message::factory(400)->create();
         Rating::factory(500)->create();
         Library::factory(400)->create();
-        Read::factory(700)->create();
-        Votes::factory(500)->create();
+        Votes::factory(500)->create(); 
     }
 }

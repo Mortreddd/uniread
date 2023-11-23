@@ -22,11 +22,12 @@ class StoreBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|filled',
-            'description' => 'required|filled',
-            'genreiD' => 'required|filled',
+            'title' => 'required|filled|string',
+            'description' => 'required|string|filled',
+            'genreID' => 'required|filled|integer',
             'mature' => 'required|boolean',
-            'image' => 'required|image'
+            'copyright' => 'required|string|filled',
+            'image' => 'required|image|max:255',
         ];
     }
 }

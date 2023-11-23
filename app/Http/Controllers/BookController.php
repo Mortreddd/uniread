@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookRequest;
 use App\Models\Book;
+use App\Models\Chapter;
+use App\Models\Draft;
 use App\Models\Genre;
 use App\Models\Library;
 use Illuminate\Database\Eloquent\Casts\Json;
@@ -16,10 +18,11 @@ class BookController extends Controller
     
     public function index()
     {
-        $trendingBooks = Book::with('genre')->orderBy('votes', 'desc')->limit(10)->get();
+        
+        $trendingBooks = Chapter::with(['book.genre'])->sum('reads')->groupBy('bookID')->limit(15)->get();
         $genres = Genre::with('books')->take(100)->get(['id', 'name']);
-        // return Json::encode($trendingBooks);         
-        return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'genres' => $genres]);
+        return Json::encode($trendingBooks);         
+        // return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'genres' => $genres]);
     }
 
     public function search(Request $request, $bookID)
@@ -42,6 +45,7 @@ class BookController extends Controller
 
     public function store(StoreBookRequest $request)
     {
+        $book = Book::create($request->validated());
         //
     }
 

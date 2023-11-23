@@ -46,7 +46,7 @@
                     </svg>
                                           
                       Category / Genre
-                    <select id="countries" class="bg-gray-50 ml-3 border w-fit border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
+                    <select id="countries" name="genreID" class="bg-gray-50 ml-3 border w-fit border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
                         @foreach($genres as $genre)
                             <option value="{{$genre->id}}" {!! $loop->first ? 'selected' : ''!!}>{{$genre->name}}</option>
                         @endforeach
@@ -60,7 +60,7 @@
                                           
                     Classification(Mature)
                     <label class="relative inline-flex items-center ml-3 cursor-pointer">
-                        <input type="checkbox" value="" name="mature" class="sr-only peer">
+                        <input type="checkbox" value="mature" name="mature" class="sr-only peer">
                         <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-600"></div>
                     </label>
                 </h2>
@@ -121,7 +121,7 @@
                 reader.readAsDataURL(input.files[0]);
             } else {
                 preview.src = "{{ asset('covers/default-cover.png') }}";
-                preview.style.display = "none";
+                preview.style.display = "block";
             }
         }
 

@@ -16,8 +16,10 @@ class Book extends Model
         'image',
         'completed',
         'collaborative',
-        'votes',
-        'authorID'
+        'mature',
+        'authorID',
+        'copyright'
+
     ];
 
     public function genre()
@@ -52,4 +54,8 @@ class Book extends Model
         return $this->belongsTo(Library::class, 'bookID', 'id');
     }
 
-}
+    public function drafts()
+    {
+        return $this->hasMany(Draft::class, 'bookID', 'id');
+    }
+}   
