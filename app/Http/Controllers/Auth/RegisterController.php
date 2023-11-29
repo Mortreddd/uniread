@@ -12,7 +12,7 @@ class RegisterController extends Controller
 {
     public function show()
     {
-        return view('layouts.register');
+        return view('layouts.auth.register');
     }
     public function store(CreateAuthorRequest $request)
     {

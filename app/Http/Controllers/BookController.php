@@ -18,11 +18,12 @@ class BookController extends Controller
     
     public function index()
     {
-        
-        $trendingBooks = Chapter::with(['book.genre'])->sum('reads')->groupBy('bookID')->limit(15)->get();
+        // $trendingBooks = Chapter::with(['book.genre'])->orderByDesc('reads')->groupBy('bookID')->limit(15)->get();
+        $trendingBooks = Book::with(['chapters', 'genre'])->take(15);
+        // $trendingBooks = Chapter::with(['book.genre'])->sum('reads')->groupBy('bookID')->limit(15)->get();
         $genres = Genre::with('books')->take(100)->get(['id', 'name']);
-        return Json::encode($trendingBooks);         
-        // return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'genres' => $genres]);
+        // return Json::encode($trendingBooks);         
+        return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'genres' => $genres]);
     }
 
     public function search(Request $request, $bookID)

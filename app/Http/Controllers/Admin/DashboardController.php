@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Votes;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\DB;
 
@@ -19,8 +20,7 @@ class DashboardController extends Controller
         $inactive = Author::groupBy('last_login')
                         ->where('last_login', '<=', now()->subMonths(3))
                         ->get(['last_login']);
-        $totalVotes = Book::all(['votes'])
-                        ->sum('votes');
+        $totalVotes = Votes::sum('chapterID');
                         
         $activeAuthors = $active->count();
         $inActiveAuthors = $inactive->count();

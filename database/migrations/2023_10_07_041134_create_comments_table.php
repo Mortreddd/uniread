@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();;
             $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();;
             $table->mediumText('content');
+            $table->unsignedBigInteger('likes')->default(0);
             $table->timestamps();
         });
     }

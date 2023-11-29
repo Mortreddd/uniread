@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Mail\MailVerficationForgotPasswordController;
 use App\Http\Controllers\Read\LibraryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
@@ -123,5 +124,14 @@ Route::middleware(['guest', 'preventBackHistory'])->group(function () {
     Route::controller(RegisterController::class)->group(function () {
         Route::get('/register', 'show');
         Route::post('/register/process', 'store');  
+    });
+
+    // *---------------------------------
+    // *  FORGOT PASSWORD ROUTES
+    // *---------------------------------
+    Route::controller(MailVerficationForgotPasswordController::class)->group( function () {
+        Route::post('/profile/verify-email', 'send')->name('verify.email');
+        Route::post('/profile/verify-token', 'verify')->name('verify.token');
+        Route::post('/profile/reset-password', 'update')->name('update.password');
     });
 });

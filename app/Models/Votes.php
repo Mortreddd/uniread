@@ -21,8 +21,13 @@ class Votes extends Model
         return $this->hasOne(Author::class, 'authorID', 'id');
     }
 
-    public function votes()
+    public function book()
     {
-        return $this->hasMany(Book::class, 'bookID', 'id');
+        return $this->belongsTo(Book::class, 'bookID', 'id');
+    }
+
+    public function chapters()
+    {
+        return $this->hasOne(Chapter::class, 'chapterID', 'id');
     }
 }

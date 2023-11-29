@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function show()
     {
-        return view('layouts.login');
+        return view('layouts.auth.login');
     }
 
     public function process(LoginAuthorRequest $request)
