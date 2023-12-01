@@ -11,7 +11,7 @@
 
     <p>To proceed with the password reset, please click the following link:</p>
 {{-- TODO modify the link --}}
-    <p><a href="/profile/reset-password/{{$author->id}}/{{$token}}">{{ route('reset.password', ['id' => $author->id, 'token' =>]) }}</a></p>
+    <p><a href="/profile/reset-password/{{$author->id}}/{{$token}}">{{ route('reset.password', ['id' => $author->id, 'token' => $token]) }}</a></p>
 
     <p>If you did not request a password reset, please ignore this email.</p>
 
