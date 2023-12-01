@@ -11,19 +11,19 @@ use Illuminate\Support\Arr;
 class GenreController extends Controller
 {
     private $backgrounds = [
-        1 => 'backgrounds/Mystery.webp', 
-        2 => 'backgrounds/Teenfiction.webp',
-        3 => 'backgrounds/Sciencefiction.webp',
-        4 => 'backgrounds/Generalfiction.webp',
-        5 => 'backgrounds/Sciencefiction.webp',
-        6 => 'backgrounds/Fantasy.webp',
-        7 => 'backgrounds/Thriller.webp',
-        8 => 'backgrounds/Action.webp',
-        9 => 'backgrounds/Romance.webp',
-        10 => 'backgrounds/Adventure.webp',
-        11 => 'backgrounds/Paranormal.webp',
-        12 => 'backgrounds/Spiritual.webp',
-        13 => 'backgrounds/Horror.webp'
+        1 => 'storage/backgrounds/Mystery.webp', 
+        2 => 'storage/backgrounds/Teenfiction.webp',
+        3 => 'storage/backgrounds/Sciencefiction.webp',
+        4 => 'storage/backgrounds/Generalfiction.webp',
+        5 => 'storage/backgrounds/Sciencefiction.webp',
+        6 => 'storage/backgrounds/Fantasy.webp',
+        7 => 'storage/backgrounds/Thriller.webp',
+        8 => 'storage/backgrounds/Action.webp',
+        9 => 'storage/backgrounds/Romance.webp',
+        10 => 'storage/backgrounds/Adventure.webp',
+        11 => 'storage/backgrounds/Paranormal.webp',
+        12 => 'storage/backgrounds/Spiritual.webp',
+        13 => 'storage/backgrounds/Horror.webp'
     ];
     private $captions = [
             1 => [
