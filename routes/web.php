@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Mail\MailVerficationForgotPasswordController;
 use App\Http\Controllers\Read\LibraryController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Read\ChapterController;
 use App\Http\Controllers\Read\BookmarkController;
 use App\Http\Controllers\VotesController;
+use App\Mail\MailVerificationForgotPassword;
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
@@ -44,7 +46,7 @@ Route::middleware(['auth.session', 'auth'])->group( function () {
         Route::get('/','index')->name('home');
         Route::get('/books/{bookID}', 'search')->name('book.description')->where(['bookID' => '[0-9]+']);
         Route::get('/books/new-story', 'show')->name('book.add');
-        Route::put('/books/new-story/created', 'store');
+        Route::post('/books/new-story/create', 'store')->name('book.create');
     });
 
     Route::controller(GenreController::class)->group( function () {
@@ -131,7 +133,10 @@ Route::middleware(['guest', 'preventBackHistory'])->group(function () {
     // *---------------------------------
     Route::controller(MailVerficationForgotPasswordController::class)->group( function () {
         Route::post('/profile/verify-email', 'send')->name('verify.email');
-        Route::post('/profile/verify-token', 'verify')->name('verify.token');
-        Route::post('/profile/reset-password', 'update')->name('update.password');
+    });
+    
+    Route::controller(ResetPasswordController::class)->group(function () {
+        Route::get('/profile/reset-password/{id}/{token}', 'show')->name('reset.password');
+        Route::post('/profile/reset-password/process', 'reset')->name('reset.password.process');
     });
 });

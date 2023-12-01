@@ -15,7 +15,7 @@ class ChapterController extends Controller
 {
     public function index(Request $request, $bookID)
     {
-        $chapters = Chapter::orderBy('chapterNumber', 'asc')->where('bookID', $bookID)->get();
+        $chapters = Chapter::orderBy('chapter', 'asc')->where('bookID', $bookID)->get();
         $comments = Comment::with('authors')->where('bookID', $bookID)->get();
         $inBookmarks = Bookmark::where('authorID', Auth::id())->whereIn('chapterID', $chapters->pluck('id'))->exists();
         // return Json::encode($chapters);
@@ -24,7 +24,9 @@ class ChapterController extends Controller
             return redirect()->back()->with('error', 'The book has no chapters yet');
         }
         $chapter = $chapters->first();
-        return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['inBookmarks', 'chapter']));
+        $isVoted = Votes::where('authorID', Auth::id())->where('chapterID', $chapter->id)->exists();
+        // return Json::encode($isVoted);
+        return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['inBookmarks', 'chapter', 'isVoted']));
     }
 
     public function read(Request $request, $bookID, $chapterID)
@@ -33,13 +35,13 @@ class ChapterController extends Controller
         $comments = Comment::with('authors')->where('bookID', $chapterID)->get();
         $inBookmarks = Bookmark::where('authorID', Auth::id())->whereIn('chapterID', $chapters->pluck('id'))->exists();
         $chapter = Chapter::findOrFail($chapterID);
-        $isVoted = Votes::where('authorID', Auth::id())->where('bookID', $bookID)->exists();
-        // return Json::encode(Auth::id());
+        $isVoted = Votes::where('authorID', Auth::id())->where('chapterID', $chapterID)->get();
+        return Json::encode($isVoted);
         // return to_route('read.chapter')
-        return view('layouts.author.read', [
-            'chapters' => $chapters, 
-            'comments' => $comments], 
-            compact(['chapter', 'inBookmarks', 'isVoted']));
+        // return view('layouts.author.read', [
+        //     'chapters' => $chapters, 
+        //     'comments' => $comments], 
+        //     compact(['chapter', 'inBookmarks', 'isVoted']));
     }
 
 }

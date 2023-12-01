@@ -44,10 +44,24 @@ class BookController extends Controller
         
     }
 
-    public function store(StoreBookRequest $request)
+    public function store(Request $request)
     {
-        $book = Book::create($request->validated());
-        //
+
+        // $book = Book::create([
+        //     'title' => $request->only('title'),
+        //     'description' => $request->only('description'),
+        //     'genreID' => $request->only('genreID'),
+        //     'authorID' => Auth::id(),
+            
+        // ]);
+        // $book = Book::create($request->validated());
+        // Draft::create();
+        $file = $request->file('image');
+        $filename = pathinfo($file, PATHINFO_FILENAME);
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $cover = $filename . '_' . time() . '.' . $extension;
+        $request->file('image')->storeAs('public/covers', $cover);
+        
     }
 
     public function show(Request $request)

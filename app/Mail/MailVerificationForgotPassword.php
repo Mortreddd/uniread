@@ -20,7 +20,8 @@ class MailVerificationForgotPassword extends Mailable
      */
     public function __construct(
         private Author $author,
-        private string $token
+        private string $token,
+        private string $appName = 'UniRead'
     ){}
     /**
      * Get the message envelope.
@@ -40,8 +41,9 @@ class MailVerificationForgotPassword extends Mailable
         return new Content(
             view: 'mails.password-reset',
             with: [
-                'fullName' => $this->author->fullname,
-                'token' => $this->token
+                'author' => $this->author,
+                'token' => $this->token,
+                'appName' => $this->appName
             ]
         );
     }

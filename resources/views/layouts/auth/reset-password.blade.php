@@ -18,7 +18,7 @@
         <main class="container box-border flex w-full h-[80vh]">
             <div class="flex items-center justify-center w-full p-2">
                 <div
-                    class="flex flex-col justify-center p-5 border-2 border-gray-300 border-solid rounded-lg shadow-lg w-fit min-h-3/4"
+                    class="flex flex-col items-center p-5 border-2 border-gray-300 border-solid rounded-lg shadow-lg justify-evenly h-3/4 w-fit"
                 >
                     <h1
                         class="font-serif text-4xl font-semibold text-center text-bold text-fuchsia-900"
@@ -37,6 +37,7 @@
                                     <span class="font-medium">{{ $message }}</span>
                                 </div>
                             @enderror
+                            <input type="text" name="email" value="{{ $email }}" class="hidden">
                             <label
                                 for=""
                                 class="text-lg text-fuchsia-900 font serif"
@@ -111,7 +112,7 @@
                             type="submit"
                             class="py-2 my-5 text-lg text-white rounded-lg bg-fuchsia-800 hover:bg-fuchsia-900"
                         >
-                            Confirm
+                            Continue
                         </button>
                     </form>
                 </div>

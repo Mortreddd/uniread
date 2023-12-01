@@ -21,7 +21,6 @@ class VotesFactory extends Factory
     {
         return [
             'authorID' => fake()->randomElement(Author::all(['id'])),
-            'bookID' => fake()->randomElement(Book::all(['id'])),
             'chapterID' => fake()->randomElement(Chapter::all(['id']))
         ];
     }

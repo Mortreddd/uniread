@@ -13,11 +13,10 @@
             Cancel
         </a>  
     </div>
-    <form action="" method="POST" class="flex justify-center w-full h-full py-5 md:py-10 px-7 md:px-52">
+    <form action="{{ route('book.create') }}" method="POST" class="flex justify-center w-full h-full py-5 md:py-10 px-7 md:px-52" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
         <div class="flex flex-col items-center w-full rounded-lg bg-fuchsia-950">
-            <h1 class="px-12 py-3 my-3 font-sans text-xl antialiased text-center text-black bg-gray-100 rounded-l-full rounded-r-full justify-self-center w-fit md:text-4xl">Details of your new story</h1>
+            <h1 class="px-12 py-3 my-3 font-sans text-xl antialiased text-center bg-gray-100 rounded-l-full rounded-r-full text-fuchsia-950 justify-self-center w-fit md:text-4xl">Details of your new story</h1>
             <div class="flex items-center w-full px-8 my-4">
                 
                 <h2 class="flex items-center mr-4 font-sans text-3xl text-white">
@@ -26,7 +25,7 @@
                       </svg>
                       Title
                 </h2>
-                <input type="text" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Untitled Story">
+                <input type="text" name="title" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Untitled Story">
             </div>
             <div class="flex flex-col items-center w-full px-8 my-4 md:flex-row">
                 
@@ -59,8 +58,8 @@
                     </svg>
                                           
                     Classification(Mature)
-                    <label class="relative inline-flex items-center ml-3 cursor-pointer">
-                        <input type="checkbox" value="mature" name="mature" class="sr-only peer">
+                    <label for="mature" class="relative inline-flex items-center ml-3 cursor-pointer">
+                        <input id="mature" type="checkbox" name="mature" value="off" class="sr-only peer">
                         <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-600"></div>
                     </label>
                 </h2>
@@ -73,7 +72,7 @@
                         ©
                     </span>             
                     Copyright
-                    <select id="countries" class="bg-gray-50 ml-3 border w-fit border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
+                    <select id="copyright" name="copyright" class="bg-gray-50 ml-3 border w-fit border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
                         <option value="All Rights Reserved" selected>All Rights Reserved</option>
                         <option value="Public Domain">Public Domain</option>
                         <option value="Creative Commons (CC) Attribution">Creative Commons (CC) Attribution</option>
@@ -81,7 +80,7 @@
                 </h2>
             </div>
             <div class="flex items-center w-full px-8 my-4 md:flex-row">
-                <input class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" accept="jpeg, jpg, png" aria-describedby="file_input_help" id="file_input" type="file" onchange="displayImage(this)">
+                <input class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="image" accept="jpeg, jpg, png" aria-describedby="file_input_help" id="file_input" type="file" onchange="displayImage(this)">
             </div>
             <div class="flex items-center w-full px-8 my-4 md:flex-row">
                 <img id="book-cover" src="{{ asset('covers/default-cover.png') }}" alt="" class="float-right object-contain h-full mr-4 border-4 rounded-lg w-52 border-fuchsia-950" />
@@ -99,6 +98,7 @@
             
         </div>
     </form>
+    
 
     @include('partials.footer')
 
@@ -124,6 +124,5 @@
                 preview.style.display = "block";
             }
         }
-
     </script>
 @endsection

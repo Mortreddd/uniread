@@ -17,7 +17,6 @@ return new class extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();
-            $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();
             $table->foreignIdFor(Chapter::class, 'chapterID')->constrained('chapters')->cascadeOnDelete();
             $table->timestamps();
         });

@@ -15,7 +15,7 @@
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownChapters">
                         @foreach($chapters as $dropdownChapter)
                             <li class="w-full">
-                                <a href="{{ route('read.chapter', ['bookID' => $dropdownChapter->bookID, 'chapterID' => $dropdownChapter->id]) }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chapter {{ $dropdownChapter->chapterNumber }}</a>
+                                <a href="{{ route('read.chapter', ['bookID' => $dropdownChapter->bookID, 'chapterID' => $dropdownChapter->id]) }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chapter {{ $dropdownChapter->chapter }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -83,7 +83,7 @@
                     <div data-popper-arrow></div>
                 </div>
                 @unless($isVoted)
-                    <form action="{{ route('vote.add', ['authorID' => auth()->user()->id, 'bookID' => $chapter->bookID, 'chapterID' => $chapter->id ])}}" method="post" class="mx-1 md:mx-3">
+                    <form action="{{ route('vote.add', ['authorID' => auth()->user()->id, 'chapterID' => $chapter->id ])}}" method="post" class="mx-1 md:mx-3">
                         @csrf
                         @method('PUT')
                         <button type="submit" class="flex items-center px-2 py-2 text-white bg-gray-500 rounded-lg md:px-4 hover:bg-gray-600">
@@ -95,7 +95,7 @@
                         </button>
                     </form>
                 @else
-                    <form action="{{ route('vote.remove', ['authorID' => auth()->user()->id, 'bookID' => $chapter->bookID, 'chapterID' => $chapter->id])}}" method="post" class="mx-1 md:mx-3">
+                    <form action="{{ route('vote.remove', ['authorID' => auth()->user()->id, 'chapterID' => $chapter->id])}}" method="post" class="mx-1 md:mx-3">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="flex items-center px-2 py-2 text-white bg-gray-500 rounded-lg md:px-4 hover:bg-gray-600">

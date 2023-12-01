@@ -12,13 +12,11 @@ class VotesController extends Controller
     public function store(Request $request)
     {
         $authorID = $request->input('authorID');
-        $bookID = $request->input('bookID');
         $chapterID = $request->input('chapterID');
         if(!Votes::where('authorID', $authorID)->where('chapterID', $chapterID)->exists())
         {
             Votes::create([
                 'authorID' => $authorID,
-                'bookID' => $bookID,
                 'chapterID' => $chapterID
             ]);
         }
@@ -30,7 +28,6 @@ class VotesController extends Controller
 
     {
         $authorID = $request->input('authorID');
-        $bookID = $request->input('bookID');
         $chapterID = $request->input('chapterID');
         if(Votes::where('authorID', $authorID)->where('chapterID', $chapterID)->exists())
         {
