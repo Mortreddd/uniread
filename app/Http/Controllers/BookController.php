@@ -44,24 +44,39 @@ class BookController extends Controller
         
     }
 
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-
-        // $book = Book::create([
-        //     'title' => $request->only('title'),
-        //     'description' => $request->only('description'),
-        //     'genreID' => $request->only('genreID'),
-        //     'authorID' => Auth::id(),
-            
-        // ]);
-        // $book = Book::create($request->validated());
-        // Draft::create();
-        $file = $request->file('image');
-        $filename = pathinfo($file, PATHINFO_FILENAME);
-        $extension = $request->file('image')->getClientOriginalExtension();
-        $cover = $filename . '_' . time() . '.' . $extension;
-        $request->file('image')->storeAs('public/covers', $cover);
+        $title = Str::title($request->title);
+        $description = $request->input('description');
+        $genreID = $request->input('genreID');
+        $authorID = $request->user()->id;
+        $mature = $request->input('mature') == null ? false : true;
+        $copyright = $request->input('copyright');
+        $filename = time().'_'.$request->file('image')->getClientOriginalName();
+        $path = 'storage/covers/'.$filename;
+        $request->file('image')->storeAs($path);
         
+        // $book = Book::insert([
+        //     'title' => $title,
+        //     'genreID' => $genreID,
+        //     'description' => $description,
+        //     'image' => $path,
+        //     'mature' => $mature,
+        //     'authorID' => $authorID,
+        //     'copyright' => $copyright,
+        //     'create_at' => now(),
+        //     'update_at' => now()
+        // ]);
+
+        // Draft::create([
+        //     'authorID' => $authorID,
+        //     'bookID' => $book->id,
+        // ]);
+
+        // dd($book);
+        
+        // return Json::encode($filename);
+        return view('');
     }
 
     public function show(Request $request)

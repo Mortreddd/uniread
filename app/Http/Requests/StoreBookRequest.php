@@ -42,7 +42,8 @@ class StoreBookRequest extends FormRequest
             'copyright.required' => 'Please choose a copyright',
             'image.image' => 'Only images are applicable to submit',
             'image.required' => 'Cover of the book is required',
-            'image.max' => 'Cover of the book must not exceed 10MB'
+            'image.max' => 'Cover of the book must not exceed 10MB',
+            'image.mimes' => 'Cover of the book must be in png, jpg, jpeg, bmp, tiff format'
         ];
     }
 }

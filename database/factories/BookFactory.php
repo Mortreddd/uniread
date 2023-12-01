@@ -18,7 +18,7 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
-        $covers = ['covers/cover1.jpeg', 'covers/cover2.jpg', 'covers/cover3.jpg', 'covers/cover4.jpg', 'covers/cover5.jpg', 'covers/cover6.jpg'];
+        $covers = ['storage/covers/cover1.jpeg', 'storage/covers/cover2.jpg', 'storage/covers/cover3.jpg', 'storage/covers/cover4.jpg', 'storage/covers/cover5.jpg', 'storage/covers/cover6.jpg'];
         return [
             'title' => fake()->realText(30),
             'genreID' => fake()->randomElement(Genre::all('id')),
