@@ -26,7 +26,7 @@
                         Reset Password
                     </h1>
                     <form
-                        action="{{ route('update.password') }}"
+                        action="{{ route('update.password.process') }}"
                         class="flex flex-col justify-center px-10"
                         method="POST"
                     >

@@ -2,21 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Password Reset Verification</title>
+    <title>Password Reset Confirmation</title>
 </head>
 <body>
-    <p>Dear {{ $author->fullname }},</p>
+    <p>Hello {{ $author->fullname }},</p>
 
-    <p>We've received a request to reset your password for your account with {{ $appName }}.</p>
+    <p>We received a request to reset your password. To reset your password, please use the following token:</p>
 
-    <p>To proceed with the password reset, please click the following link:</p>
-{{-- TODO modify the link --}}
-    <p><a href="/profile/reset-password/{{$author->id}}/{{$token}}">{{ route('reset.password', ['id' => $author->id, 'token' => $token]) }}</a></p>
+    <p><strong>{{ $token }}</strong></p>
 
-    <p>If you did not request a password reset, please ignore this email.</p>
+    <p>If you did not request a password reset, please disregard this email.</p>
 
     <p>Thank you,</p>
-
     <p>{{ $appName }} Team</p>
 </body>
 </html>

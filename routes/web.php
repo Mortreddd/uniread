@@ -3,8 +3,6 @@
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Mail\MailVerficationForgotPasswordController;
 use App\Http\Controllers\Read\LibraryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
@@ -13,13 +11,15 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AuthorMonitorController;
 use App\Http\Controllers\Admin\BookMonitorController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\Mail\VerifyEmailController;
+use App\Http\Controllers\Mail\VerifyTokenController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Read\ChapterController;
 use App\Http\Controllers\Read\BookmarkController;
 use App\Http\Controllers\VotesController;
-use App\Mail\MailVerificationForgotPassword;
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
@@ -131,12 +131,9 @@ Route::middleware(['guest', 'preventBackHistory'])->group(function () {
     // *---------------------------------
     // *  FORGOT PASSWORD ROUTES
     // *---------------------------------
-    Route::controller(MailVerficationForgotPasswordController::class)->group( function () {
-        Route::post('/profile/verify-email', 'send')->name('verify.email');
-    });
-    
-    Route::controller(ResetPasswordController::class)->group(function () {
-        Route::get('/profile/reset-password/{id}/{token}', 'show')->name('reset.password');
-        Route::post('/profile/reset-password/process', 'reset')->name('reset.password.process');
-    });
+    Route::match(['get', 'post'], '/verify-token/process', [VerifyEmailController::class, 'verify'])->name('verify.email.process');
+
+    Route::match(['get', 'post'], '/reset-password/process', [VerifyTokenController::class, 'verify'])->name('verify.token.process');
+
+    Route::match(['get', 'post'], '/update-password/process', [ResetPasswordController::class, 'update'])->name('update.password.process');
 });
