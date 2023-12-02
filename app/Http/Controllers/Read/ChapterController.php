@@ -31,17 +31,16 @@ class ChapterController extends Controller
 
     public function read(Request $request, $bookID, $chapterID)
     {
-        $chapters = Chapter::where('bookID', $bookID)->orderBy('chapterNumber', 'asc')->get();
+        $chapters = Chapter::where('bookID', $bookID)->orderBy('chapter', 'asc')->get();
         $comments = Comment::with('authors')->where('bookID', $chapterID)->get();
-        $inBookmarks = Bookmark::where('authorID', Auth::id())->whereIn('chapterID', $chapters->pluck('id'))->exists();
+        $inBookmarks = Bookmark::where('authorID', Auth::id())->where('chapterID', $chapterID)->exists();
         $chapter = Chapter::findOrFail($chapterID);
-        $isVoted = Votes::where('authorID', Auth::id())->where('chapterID', $chapterID)->get();
-        return Json::encode($isVoted);
-        // return to_route('read.chapter')
-        // return view('layouts.author.read', [
-        //     'chapters' => $chapters, 
-        //     'comments' => $comments], 
-        //     compact(['chapter', 'inBookmarks', 'isVoted']));
+        $isVoted = Votes::where('authorID', Auth::id())->where('chapterID', $chapterID)->exists();
+        // return Json::encode($isVoted);
+        return view('layouts.author.read', [
+            'chapters' => $chapters, 
+            'comments' => $comments], 
+            compact(['chapter', 'inBookmarks', 'isVoted']));
     }
 
 }

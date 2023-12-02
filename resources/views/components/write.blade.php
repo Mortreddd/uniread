@@ -27,7 +27,7 @@
             <a href="{{ route('book.add') }}" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">Create a new story</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">My stories</a>
+            <a href="{{ route('my.stories') }}" class="block px-4 py-2 text-gray-600 hover:text-fuchsia-900 ">My stories</a>
           </li>
         </ul>
     </div>

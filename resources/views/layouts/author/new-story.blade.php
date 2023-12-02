@@ -5,14 +5,6 @@
 
 @section('content')
     @include('partials.nav')
-    <div class="px-5 py-3 h-fit">
-        <a href="{{ URL::previous() }}" class="flex items-center px-3 py-2 font-sans text-2xl text-black rounded-lg w-fit hover:bg-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-            Cancel
-        </a>  
-    </div>
     <form action="{{ route('book.create') }}" method="POST" class="flex justify-center w-full h-full py-5 md:py-10 px-7 md:px-52" enctype="multipart/form-data">
         @csrf
         <div class="flex flex-col items-center w-full rounded-lg bg-fuchsia-950">

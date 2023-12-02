@@ -81,7 +81,7 @@
                 </li>
                 <li>
                     <a
-                        href="/books{{ route('genre.index', ['genreID' => 3])}}"
+                        href="{{ route('genre.index', ['genreID' => 3])}}"
                         class="text-gray-600 hover:text-fuchsia-900"
                     >
                         Science Fiction

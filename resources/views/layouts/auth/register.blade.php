@@ -18,7 +18,7 @@
         <div
             class="w-0 h-full bg-no-repeat bg-cover md:w-[150vw]"
             style="background-image: url('{{
-                asset('backgrounds/Register.webp')
+                asset('storage/backgrounds/Register.webp')
             }}');"
         ></div>
         <div class="flex items-center justify-center w-full p-2">

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->mediumText('content');
             $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();
             $table->unsignedBigInteger('reads')->dafault(0);
+            $table->boolean('published')->default(false);
             $table->timestamps();
         });
     }

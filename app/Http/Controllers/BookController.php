@@ -76,7 +76,7 @@ class BookController extends Controller
         // dd($book);
         
         // return Json::encode($filename);
-        return view('');
+        return view('layouts.author.workspace');
     }
 
     public function show(Request $request)
