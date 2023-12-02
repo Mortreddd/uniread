@@ -9,12 +9,12 @@
         <section
             class="flex justify-center items-end h-[60vh] bg-cover w-full bg-no-repeat bg-center"
             style="background-image: url({{
-                asset('backgrounds/Profile.webp')
+                asset('storage/backgrounds/Profile.webp')
             }})"
         >
             <div class="flex flex-col items-center p-3 m-4 bg-transparent">
                 <img
-                    src="{{ asset(auth()->user()->image) }}"
+                    src="{{ asset($author->image) }}"
                     alt=""
                     class="w-48 h-48 mb-3 border-4 border-gray-500 rounded-full"
                 />

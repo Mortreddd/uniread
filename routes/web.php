@@ -52,7 +52,7 @@ Route::middleware(['auth.session', 'auth'])->group( function () {
     Route::controller(GenreController::class)->group( function () {
         Route::get('/books/genres/{genreID}', 'index')->name('genre.index');
     });
-
+    Route::get('works/my-stories', fn () => view('layouts.author.personal-story'))->name('my.stories');
     Route::controller(ChapterController::class)->group( function () {
         Route::get('/books/{bookID}/read', 'index')->name('read.book');
         Route::get('/books/{bookID}/read/chapter/{chapterID}', 'read')->name('read.chapter');

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('completed')->default(false);
             $table->boolean('collaborative')->default(false);
             $table->boolean('mature')->default(false);
+            $table->boolean('published')->default(false);
             $table->foreignIdFor(Author::class, 'authorID')->constrained('authors')->cascadeOnDelete();
             $table->enum('copyright', ['Public Domain', 'All Rights Reserved', 'Creative Commons (CC) Attribution'])->default('All Rights Reserved');
             $table->timestamps();

@@ -23,7 +23,7 @@ class AuthorFactory extends Factory
             'username' => fake()->unique(true)->userName(),
             'gender' => fake()->randomElement(['Male', 'Female', 'Other']),
             'birthday' => fake()->dateTimeBetween('-50 years', '-5 years'),
-            'image' => 'profiles/default-profile.jpg',
+            'image' => 'storage/profiles/default-profile.jpg',
             'email' => fake()->unique(true)->safeEmail(),
             'password' => Hash::make(Str::random(8)), // password
             'remember_token' => Str::random(10),

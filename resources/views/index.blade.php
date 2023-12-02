@@ -10,7 +10,8 @@
         <title>@yield('title', 'UniRead')</title>
         @vite(['resources/css/app.css','resources/js/app.js', 
         'resources/js/tabs.js', 'resources/js/page.js', 
-        'resources/js/voice.js', 'resources/js/bookmarks.js'])
+        'resources/js/voice.js', 'resources/js/bookmarks.js',
+        'resources/js/workspace.js'])
     </head>
     <body>
         @yield('content')
