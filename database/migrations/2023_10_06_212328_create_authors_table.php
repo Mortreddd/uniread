@@ -17,10 +17,11 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->enum('gender', ['Male', 'Female', 'Other'])->default('Other');
             $table->date('birthday');
-            $table->string('image')->default('profile/default-profile.jpg');
+            $table->string('image')->default('storage/profile/default-profile.jpg');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('status')->default('Active');
+            $table->string('status')->default('active');
+            $table->enum('role', ['author', 'admin'])->default('author');
             $table->timestamp('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();

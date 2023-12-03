@@ -12,7 +12,7 @@ class Draft extends Model
 
     protected $fillable = [
         'authorID',
-        'bookID'
+        'chapterID'
     ];
 
     public function author()
@@ -20,8 +20,8 @@ class Draft extends Model
         return $this->belongsTo(Author::class, 'authorID', 'id');
     }
 
-    public function books()
+    public function chapters()
     {
-        return $this->hasMany(Book::class, 'bookID', 'id');
+        return $this->hasMany(Chapter::class, 'chapterID', 'id');
     }
 }

@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
             strongTag.textContent = selectedText;
 
             const range = document.getSelection().getRangeAt(0);
-            range.deleteContents();
             range.insertNode(strongTag);
         }
     });

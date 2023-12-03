@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginAuthorRequest;
+use App\Models\Author;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -18,9 +19,18 @@ class LoginController extends Controller
     {
         
         $isRembembered = $request->has('remember');
-        if (Auth::attempt($request->validated(), $isRembembered)) {
+        $isAuthenticated = Auth::attempt($request->validated(), $isRembembered);
+        if($isAuthenticated){
+            $author = Auth::user();
+            Author::find(Auth::id())->update(['last_login' => now()]);
             $request->session()->regenerate();
-            return to_route('home')->with('success', "Welcome back, ".Auth::user()->username);
+
+            switch($author->role){
+                case 'admin':
+                    return to_route('admin.index')->with('success', "Welcome back, ".$author->username);
+                case 'author':
+                    return to_route('home')->with('success', "Welcome back, ".$author->username);       
+            }
         }
 
         return redirect()->back()->withErrors($request->messages());

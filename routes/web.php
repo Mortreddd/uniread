@@ -16,19 +16,19 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\Mail\VerifyEmailController;
 use App\Http\Controllers\Mail\VerifyTokenController;
+use App\Http\Controllers\Profile\PersonalStoriesController;
+use App\Http\Controllers\Profile\WorkspaceController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Read\ChapterController;
 use App\Http\Controllers\Read\BookmarkController;
 use App\Http\Controllers\VotesController;
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admins', [AuthorMonitorController::class, 'index'])->name('admin.authors');
+    Route::get('/authors', [AuthorMonitorController::class, 'index'])->name('admin.authors');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/books', [BookMonitorController::class, 'index'])->name('admin.books');
 });
-
-
 
 // *---------------------------------
 // * All of the routes for the authors *
@@ -52,7 +52,7 @@ Route::middleware(['auth.session', 'auth'])->group( function () {
     Route::controller(GenreController::class)->group( function () {
         Route::get('/books/genres/{genreID}', 'index')->name('genre.index');
     });
-    Route::get('works/my-stories', fn () => view('layouts.author.personal-story'))->name('my.stories');
+    
     Route::controller(ChapterController::class)->group( function () {
         Route::get('/books/{bookID}/read', 'index')->name('read.book');
         Route::get('/books/{bookID}/read/chapter/{chapterID}', 'read')->name('read.chapter');
@@ -89,6 +89,18 @@ Route::middleware(['auth.session', 'auth'])->group( function () {
         Route::post('/logout', 'logout');
     });
 
+    // *---------------------------------
+    // * Routes for personal stories of authenticated user
+    // *---------------------------------
+
+    Route::controller(PersonalStoriesController::class)->group( function () {
+        Route::get('/works/my-stories', 'index')->name('my.stories');
+    });
+
+    Route::controller(WorkspaceController::class)->group( function () {
+        Route::get('/works/workspace/{bookID}', 'index')->name('workspace');
+    });
+    
     // *---------------------------------
     // * Handling the routes for the authenticated user's library
     // *---------------------------------

@@ -21,6 +21,7 @@ class ChapterFactory extends Factory
             'chapter' => fake()->numberBetween(1, 100),
             'title' => fake()->realText(50),
             'content' => fake()->realText(200),
+            'published' => fake()->boolean(),
             'bookID' => fake()->randomElement(Book::all(['id'])),
             'reads' => fake()->numberBetween(1, 1000),
         ];

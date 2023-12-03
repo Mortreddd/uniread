@@ -12,6 +12,7 @@ class Chapter extends Model
         'chapter',
         'title',
         'content',
+        'published',
         'bookID'
     ];
 
@@ -30,5 +31,10 @@ class Chapter extends Model
     public function bookmark()
     {
         return $this->belongsTo(Bookmark::class, 'id', 'chapterID');
+    }
+
+    public function drafts()
+    {
+        return $this->hasMany(Draft::class, 'chapterID', 'id');
     }
 }
