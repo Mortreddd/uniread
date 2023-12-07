@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginAuthorRequest;
 use App\Models\Author;
 use Illuminate\Support\Facades\Auth;
-
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class LoginController extends Controller
 {
@@ -22,14 +22,16 @@ class LoginController extends Controller
         $isAuthenticated = Auth::attempt($request->validated(), $isRembembered);
         if($isAuthenticated){
             $author = Auth::user();
-            Author::find(Auth::id())->update(['last_login' => now()]);
+            Author::find(Auth::id())->update(['last_login' => now(), 'status' => 'active']);
             $request->session()->regenerate();
 
             switch($author->role){
                 case 'admin':
                     return to_route('admin.index')->with('success', "Welcome back, ".$author->username);
                 case 'author':
-                    return to_route('home')->with('success', "Welcome back, ".$author->username);       
+                    return to_route('home')->with('success', "Welcome back, ".$author->username); 
+                default:
+                    throw new HttpException(403, "You are not allowed to access this page");     
             }
         }
 

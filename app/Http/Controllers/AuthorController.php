@@ -12,7 +12,7 @@ class AuthorController extends Controller
     
     
 
-    public function index($id)
+    public function index(Request $request, $id)
     {
         $author = Author::with(['books', 'followers', 'followed'])->findOrFail($id);
         $username = $author->username;

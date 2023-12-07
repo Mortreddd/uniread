@@ -5,6 +5,5 @@
 
 @section('content')
     @include('layouts.admin.partials.sidebar')
-    @include('layouts.admin.partials.published-books')
-
+    @include('layouts.admin.partials.published-books', ['genreCounts' => $genreCounts, 'publishedBooks' => $publishedBooks])
 @endsection

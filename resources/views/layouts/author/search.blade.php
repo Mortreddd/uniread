@@ -9,7 +9,6 @@
             <div class="flex w-full justify-evenly">
                 <button class="py-4 mr-3 font-sans text-2xl border-solid tab-button active" data-tab="#stories">Stories</button>
                 <button class="py-4 mr-3 font-sans text-2xl border-solid tab-button" data-tab="#authors">Authors</button>
-                <button class="py-4 mr-3 font-sans text-2xl border-solid tab-button" data-tab="#tags">Tags</button>
             </div>
             <div class="flex justify-center w-full">
                 <div class="tab-content my-5 px-4 md:px-20 min-h-[40vh] w-full flex-col flex items-center" id="stories">
@@ -20,7 +19,6 @@
                     @else
                         <h1 class="font-sans text-3xl text-center text-gray-600">No Result for Books</h1>
                     @endunless
-                    
                 </div>
                 <div class="hidden tab-content my-5 px-4 md:px-20 min-h-[40vh] flex-col  md:w-1/2 w-full flex items-center" id="authors">
                     @unless($authors->isEmpty())
@@ -28,10 +26,9 @@
                             <x-authors :author="$author"></x-authors>
                         @endforeach
                     @else
-                        <h1 class="font-sans text-3xl text-center text-gray-600">No Result for Books</h1>
+                        <h1 class="font-sans text-3xl text-center text-gray-600">No Result for Authors</h1>
                     @endunless
                 </div>
-                <div class="hidden tab-content my-5 px-20 min-h-[40vh] w-screen flex-col flex items-center" id="tags">Content for Tags</div>
             </div>
         </section>
         @include('partials.footer')

@@ -15,8 +15,6 @@ class WorkspaceController extends Controller
         $authorID = $request->user()->id;
         $chapters = Chapter::where('bookID', $bookID)->get();
         $book = Book::with('chapters')->where('authorID', $authorID)->where('id', $bookID)->get();
-        // $chapters = $book->chapters;
-        // return Json::encode($book->pluck('chapters'));
         return view('layouts.author.workspace', ['book' => $book, 'chapters' => $chapters]);
     }
 }

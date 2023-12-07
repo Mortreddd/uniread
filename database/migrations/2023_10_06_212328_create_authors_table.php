@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image')->default('storage/profile/default-profile.jpg');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('status')->default('active');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->enum('role', ['author', 'admin'])->default('author');
             $table->timestamp('last_login')->nullable();
             $table->rememberToken();

@@ -26,6 +26,7 @@ class VerifyResetPasswordController extends Controller
             'password' => Hash::make($password),
             'updated_at' => now()
         ]);
+
         if(!$author)
         {
             return redirect()->back()->with('token', 'Invalid token');

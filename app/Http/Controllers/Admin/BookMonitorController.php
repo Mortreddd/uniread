@@ -20,7 +20,7 @@ class BookMonitorController extends Controller
             ->groupBy('genres.name')
             ->orderBy('genres.id')
             ->get();
-        $publishedBooks = Publisher::with(['book', 'author'])->get();
+        $publishedBooks = Book::with('author')->where('published', true)->get();
         $totalBooks = Book::count();
         
         foreach ($genreCounts as $genreCount) {

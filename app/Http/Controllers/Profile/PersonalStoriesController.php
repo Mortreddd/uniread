@@ -11,6 +11,7 @@ class PersonalStoriesController extends Controller
 {
     public function index(Request $request)
     {
+
         $authID = $request->user()->id;
         $drafts = Book::with('chapters' )->where('authorID', $authID)->where('published', false)->get();
         

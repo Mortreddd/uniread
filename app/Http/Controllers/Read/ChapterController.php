@@ -43,4 +43,15 @@ class ChapterController extends Controller
             compact(['chapter', 'inBookmarks', 'isVoted']));
     }
 
+    public function store(Request $request)
+    {
+        Chapter::create($request->validate([
+                'chapter' => 'required|filled',
+                'bookID'
+            ]
+        ));
+
+
+    }
+
 }

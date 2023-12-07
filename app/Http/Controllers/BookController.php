@@ -18,11 +18,9 @@ class BookController extends Controller
     
     public function index()
     {
-        // $trendingBooks = Chapter::with(['book.genre'])->orderByDesc('reads')->groupBy('bookID')->limit(15)->get();
-        $trendingBooks = Book::with(['chapters', 'genre'])->take(15);
-        // $trendingBooks = Chapter::with(['book.genre'])->sum('reads')->groupBy('bookID')->limit(15)->get();
+        $trendingBooks = Book::with(['chapters', 'genre'])->limit(15)->get();
         $genres = Genre::with('books')->take(100)->get(['id', 'name']);
-        // return Json::encode($trendingBooks);         
+        // return Json::encode($trendingBooks);
         return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'genres' => $genres]);
     }
 
@@ -36,7 +34,6 @@ class BookController extends Controller
             ->where('id', '!=', $bookID)
             ->get();
 
-        // return Json::encode($belongsToLibrary);
         return view('layouts.author.description', [
             'book' => $book, 
             'recommendations' => $recommendations,
@@ -54,29 +51,21 @@ class BookController extends Controller
         $copyright = $request->input('copyright');
         $filename = time().'_'.$request->file('image')->getClientOriginalName();
         $path = 'storage/covers/'.$filename;
-        $request->file('image')->storeAs($path);
-        
-        // $book = Book::insert([
-        //     'title' => $title,
-        //     'genreID' => $genreID,
-        //     'description' => $description,
-        //     'image' => $path,
-        //     'mature' => $mature,
-        //     'authorID' => $authorID,
-        //     'copyright' => $copyright,
-        //     'create_at' => now(),
-        //     'update_at' => now()
-        // ]);
-
-        // Draft::create([
-        //     'authorID' => $authorID,
-        //     'bookID' => $book->id,
-        // ]);
-
-        // dd($book);
-        
-        // return Json::encode($filename);
-        return view('layouts.author.workspace');
+        $storePath = 'public/covers/'.$filename;
+        $request->file('image')->storeAs($storePath);
+        $book = Book::create([
+            'title' => $title,
+            'genreID' => $genreID,
+            'description' => $description,
+            'image' => $path,
+            'mature' => $mature,
+            'published' => false,
+            'authorID' => $authorID,
+            'copyright' => $copyright,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        return to_route('author.stories');
     }
 
     public function show(Request $request)

@@ -1,5 +1,5 @@
 
-<div class="min-h-screen w-[20vw] px-2 py-10 bg-fuchsia-900">
+<div class="min-h-screen w-[20vw] flex flex-col justify-between px-2 py-10 bg-fuchsia-900">
     <ul class="flex flex-col justify-start w-full space-y-5 font-sans text-2xl font-semibold text-white">
         <li>
             <a href="{{ route('admin.dashboard') }}" class="flex flex-row items-center w-full px-3 py-2 bg-transparent rounded-lg hover:bg-fuchsia-950 hover:text-gray-100">
@@ -27,5 +27,14 @@
                 Books           
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.reports') }}" class="flex flex-row items-center w-full px-3 py-2 bg-transparent rounded-lg hover:bg-fuchsia-950 hover:text-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 w-7 h-7">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
+                </svg>
+                Reports
+            </a>
+        </li>
     </ul>
+    
 </div>
