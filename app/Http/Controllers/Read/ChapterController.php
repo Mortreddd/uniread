@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Read;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Bookmark;
+use App\Models\ChapterComment;
 use App\Models\Comment;
 use App\Models\Votes;
 use Illuminate\Database\Eloquent\Casts\Json;
@@ -32,10 +34,11 @@ class ChapterController extends Controller
     public function read(Request $request, $bookID, $chapterID)
     {
         $chapters = Chapter::where('bookID', $bookID)->orderBy('chapter', 'asc')->get();
-        $comments = Comment::with('authors')->where('bookID', $chapterID)->get();
+        $comments = ChapterComment::with('authors')->where('chapterID', $chapterID)->get();
         $inBookmarks = Bookmark::where('authorID', Auth::id())->where('chapterID', $chapterID)->exists();
         $chapter = Chapter::findOrFail($chapterID);
         $isVoted = Votes::where('authorID', Auth::id())->where('chapterID', $chapterID)->exists();
+        Chapter::where('id', $chapterID)->increment('reads');
         // return Json::encode($isVoted);
         return view('layouts.author.read', [
             'chapters' => $chapters, 
@@ -43,15 +46,5 @@ class ChapterController extends Controller
             compact(['chapter', 'inBookmarks', 'isVoted']));
     }
 
-    public function store(Request $request)
-    {
-        Chapter::create($request->validate([
-                'chapter' => 'required|filled',
-                'bookID'
-            ]
-        ));
-
-
-    }
 
 }

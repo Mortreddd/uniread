@@ -6,12 +6,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mail\VerifyEmailController;
 use App\Http\Controllers\Mail\VerifyResetPasswordController;
 use App\Http\Controllers\Mail\VerifyTokenController;
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 // *---------------------------------
 // * Routes for guest only *
 // * Handling login and registration *
 // *---------------------------------
+
 Route::middleware(['guest', 'preventBackHistory'])->group(function () {
     Route::controller(LoginController::class)->group(function () {
         Route::get('/login', 'show')->name('login');
@@ -19,7 +20,8 @@ Route::middleware(['guest', 'preventBackHistory'])->group(function () {
     });
     Route::controller(RegisterController::class)->group(function () {
         Route::get('/register', 'show');
-        Route::post('/register/process', 'store');  
+        Route::match(['get', 'post'], '/register/verify', 'store')->name('register.verify');
+        // Route::match(['get', 'post'], '/register/verified-email', 'verified')->name('verified.email');
     });
 
     // *---------------------------------

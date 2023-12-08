@@ -7,7 +7,7 @@
         class="flex items-center w-full h-32 px-5 py-4 border-2 border-solid rounded-lg shadow-lg md:h-52 shadow-gray-300"
     >
         <img
-            src="{{ asset('profiles/default-profile.jpg') }}"
+            src="{{ asset($author->image) }}"
             alt=""
             class="block float-right object-contain h-full mr-5 border-4 border-gray-500 rounded-full md:w-40 md:h-40 aspect-square"
         />

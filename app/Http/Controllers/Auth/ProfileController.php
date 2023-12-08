@@ -18,9 +18,10 @@ class ProfileController extends Controller
     // * Redirect to login page
     public function logout(Request $request)
     {
-        Auth::logout();
+        
         Author::find(Auth::id())->update(['status' => 'inactive', 'last_login' => now() ]);
         // Author::find($request->user()->id)->update('status', 'inactive');
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login');

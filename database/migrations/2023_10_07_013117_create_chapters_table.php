@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
             $table->string('chapter');
-            $table->string('title')->nullable();
-            $table->mediumText('content')->nullable();
+            $table->string('title')->nullable()->default(null);
+            $table->mediumText('content')->nullable()->default(null);
             $table->foreignIdFor(Book::class, 'bookID')->constrained('books')->cascadeOnDelete();
             $table->unsignedBigInteger('reads')->dafault(0);
             $table->boolean('published')->default(false);

@@ -10,7 +10,6 @@
             <section class="flex flex-col items-center w-full h-fit">
                 <div class="flex justify-start w-full gap-10 px-10 bg-white">
                     <button class="py-4 mr-3 font-sans text-2xl border-solid tab-button active" data-tab="#profile">Profile and Account</button>
-                    <button class="py-4 mr-3 font-sans text-2xl border-solid tab-button" data-tab="#notifications">Notifications</button>
                 </div>
                 <div class="flex justify-center w-full bg-gray-200  min-h-[60vh]">
                     <div class="flex flex-col items-center w-full min-h-full px-4 my-5 tab-content md:px-20" id="profile">
@@ -44,9 +43,6 @@
                             
                             
                         </section>
-                    </div>
-                    <div class="flex flex-col items-center hidden w-full h-full min-h-full px-4 my-5 tab-content md:px-20 md:w-1/2" id="notifications">
-                        
                     </div>
                 </div>
             </section>

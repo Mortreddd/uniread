@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 use Exception;
 use App\Mail\MailVerificationForgotPassword;
 use App\Models\Author;
-use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\HttpException;

@@ -13,10 +13,8 @@ class PersonalStoriesController extends Controller
     {
 
         $authID = $request->user()->id;
-        $drafts = Book::with('chapters' )->where('authorID', $authID)->where('published', false)->get();
-        
-        $published = Book::where('authorID', $authID)->where('published', true)->get();
-
+        $drafts = Book::with('chapters')->where('authorID', $authID)->where('published', false)->get();
+        $published = Book::with('chapters')->where('authorID', $authID)->where('published', true)->get();
         return view('layouts.author.personal-story', ['drafts' => $drafts, 'published' => $published]);
         // return Json::encode([$drafts]);
     }

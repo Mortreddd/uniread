@@ -18,7 +18,7 @@
     <main
         class="container box-border flex w-full h-[80vh]"
     >
-        <div class="flex items-center justify-center w-full p-2">
+        <div class="flex items-center justify-center w-full h-full p-2 bg-center bg-no-repeat bg-cover md:w-screen" style="background-image: url('{{ asset('storage/backgrounds/auth.webp') }}');">
             <div
                 class="flex flex-col justify-center p-2 border-2 border-gray-300 border-solid rounded-lg shadow-lg md:p-5"
             >
@@ -132,12 +132,6 @@
   
             </div>
         </div>
-        <div
-            class="w-0 h-full bg-no-repeat bg-cover md:w-screen"
-            style="background-image: url('{{
-                asset('storage/backgrounds/Login.webp')
-            }}');"
-        ></div>
         
     </main>
 

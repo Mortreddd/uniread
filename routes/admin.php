@@ -13,4 +13,5 @@ Route::prefix('admin')->middleware(['auth','auth.session', 'role:admin'])->group
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/books', [BookMonitorController::class, 'index'])->name('admin.books');
     Route::get('/reports', [ReportController::class, 'index'])->name('admin.reports');
+    Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });

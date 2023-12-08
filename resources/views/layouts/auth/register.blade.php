@@ -14,166 +14,83 @@
             </div>
         </nav>
     </div>
-    <main class="container box-border flex w-full h-[100vh]">
-        <div
-            class="w-0 h-full bg-no-repeat bg-cover md:w-[150vw]"
-            style="background-image: url('{{
-                asset('storage/backgrounds/Register.webp')
-            }}');"
-        ></div>
-        <div class="flex items-center justify-center w-full p-2">
+    <main class="container box-border flex w-full h-[80vh]">
+        <div class="flex items-center justify-center w-full h-full p-2 md:bg-center md:bg-no-repeat md:bg-cover md:w-screen" style="background-image: url('{{ asset('storage/backgrounds/auth.webp') }}');">
             <div
-                class="flex flex-col justify-center p-5 border-2 border-gray-300 border-solid rounded-lg shadow-lg"
+                class="flex flex-col justify-center w-full p-2 border-2 border-gray-300 border-solid rounded-lg shadow-lg md:p-5 md:w-2/5"
             >
                 <h1
-                    class="font-serif text-4xl text-center text-bold text-fuchsia-900"
+                    class="font-serif text-4xl text-center text-bold text-fuchsia-950"
                 >
                     Register
                 </h1>
-                <form
-                    action="/register/process"
-                    class="flex flex-col justify-center px-10"
-                    method="POST"
-                >
-                @csrf
-                @error('error')
-                    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                        <span class="font-medium">{{ $message }}</span>
-                    </div>
-                @enderror
-                    <div class="mb-3">
-                        @error('username')
-                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                                <span class="font-medium">{{ $message }}</span>
-                            </div>
-                        @enderror
-                        <label
-                            for=""
-                            class="text-lg text-fuchsia-900 font serif"
-                            >Username</label
-                        >
-                        <div
-                            class="flex items-center border-2 border-gray-500 border-solid rounded-md"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="m-2 w-7 h-7"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-                                />
-                            </svg>
-
-                            <input
-                                type="text"
-                                name="username"
-                                id=""
-                                placeholder="Enter Username"
-                                value="{{ old('username') }}"
-                                class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
-                            />
+                <form action="{{ route('register.verify') }}" method="post" class="flex flex-col w-full">
+                    @csrf
+                    <div class="flex items-end justify-around w-full gap-3 p-2">
+                        <div class="w-1/2 my-1">
+                            <label for="fullname" class="font-sans text-xl font-semibold text-fuchsia-950">Full Name</label>
+                            @error('fullname')
+                                <p class="w-full font-sans text-xs text-red-600">{{ $message }}</p>
+                            @enderror
+                            <input type="text" value="{{ old('fullname') }}" name="fullname" id="fullname" autocomplete="off" placeholder="Enter your fullname" class="w-full p-2 border-2 border-solid rounded-lg border-fuchsia-900 focus:border-fuchsia-900 focus:ring-0 focus:outline-none" required>
+                        </div>
+                        <div class="w-1/2 my-1">
+                            <label for="username" class="font-sans text-xl font-semibold text-fuchsia-950">Username</label>
+                            @error('username')
+                                <p class="w-full font-sans text-xs text-red-600">{{ $message }}</p>
+                            @enderror
+                            <input type="text" name="username" value="{{ old('username') }}" id="username" autocomplete="off" placeholder="Enter your username" class="w-full p-2 border-2 border-solid rounded-lg border-fuchsia-900 focus:border-fuchsia-900 focus:ring-0 focus:outline-none" required>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        @error('email')
-                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                                <span class="font-medium">{{ $message }}</span>
+                    <div class="flex items-end justify-around w-full gap-3 p-2">
+                        <div class="w-1/2 my-1">
+                            <label for="birthday" class="font-sans text-xl font-semibold text-fuchsia-950">Birthday</label>
+                            @error('birthday')
+                                <p class="w-full font-sans text-xs text-red-600">{{ $message }}</p>
+                            @enderror
+                            <div class="relative">
+                                <input datepicker type="text" name="birthday" id="birthday" class="w-full p-2 border-2 border-solid rounded-lg border-fuchsia-900 focus:border-fuchsia-900 focus:outline-none focus:ring-0" placeholder="Select date">
                             </div>
-                        @enderror
-                        <label
-                            for=""
-                            class="text-lg text-fuchsia-900 font serif"
-                            >Email Address</label
-                        >
-                        <div
-                            class="flex items-center border-2 border-gray-500 border-solid rounded-md"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="m-2 w-7 h-7"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                                />
-                            </svg>
-
-                            <input
-                                type="email"
-                                name="email"
-                                id=""
-                                placeholder="Enter Email"
-                                value="{{ old('email') }}"
-                                class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
-                            />
+                        </div>
+                        <div class="w-1/2 my-1">
+                            <label for="gender" class="font-sans text-xl font-semibold text-fuchsia-950">Gender</label>
+                            @error('gender')
+                                <p class="w-full font-sans text-xs text-red-600">{{ $message }}</p>
+                            @enderror
+                            <select id="gender" name="gender" class="bg-gray-50 border-2 border-solid border-fuchsia-900 text-fuchsia-950 text-sm rounded-lg focus:ring-fuchsia-950 focus:border-fuchsia-950 block w-full p-2.5">
+                                <option value="Other" selected disabled>Other</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        @error('password')
-                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                                <span class="font-medium">{{ $message }}</span>
-                            </div>
-                        @enderror
-                        <label
-                            for=""
-                            class="text-lg text-fuchsia-900 font serif"
-                            >Password</label
-                        >
-                        <div
-                            class="flex items-center border-2 border-gray-500 border-solid rounded-md"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="m-2 w-7 h-7"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
-                                />
-                            </svg>
-
-                            <input
-                                type="password"
-                                name="password"
-                                id=""
-                                placeholder="Enter Password"
-                                value="{{ old('password')}}"
-                                class="w-full h-auto bg-transparent border-none rounded-md focus:border-none focus:ring-0"
-                            />
+                    <div class="flex items-end justify-around w-full gap-3 p-2">
+                        <div class="w-1/2 my-1">
+                            <label for="email" class="font-sans text-xl font-semibold text-fuchsia-950">Email</label>
+                            @error('email')
+                                <p class="w-full font-sans text-xs text-red-600">{{ $message }}</p>
+                            @enderror
+                            <input type="email" name="email" id="email" placeholder="Enter your email" class="w-full p-2 border-2 border-solid rounded-lg border-fuchsia-900 focus:border-fuchsia-900 focus:ring-0 focus:outline-none" required>
+                        </div>
+                        <div class="w-1/2 my-1">
+                            <label for="password" class="font-sans text-xl font-semibold text-fuchsia-950">Password</label>
+                            @error('password')
+                                <p class="w-full font-sans text-xs text-red-600">{{ $message }}</p>
+                            @enderror
+                            <input type="password" name="password" id="password" placeholder="Enter your password" class="w-full p-2 border-2 border-solid rounded-lg border-fuchsia-900 focus:border-fuchsia-900 focus:ring-0 focus:outline-none" required>
                         </div>
                     </div>
-                    <button
-                        type="submit"
-                        class="py-2 my-5 text-lg text-white rounded-lg bg-fuchsia-800 hover:bg-fuchsia-900"
-                    >
-                        Register
-                    </button>
-                    <p class="font-sans text-center text-gray-700 text-md">
-                        Already have an account?
-                    </p>
-                    <a
-                        href="/login"
-                        class="font-sans text-center text-red-400 text-md hover:text-red-500 hover:cursor-pointer"
-                        >Login</a
-                    >
+
+                    <div class="flex justify-center w-full my-2">
+                        <button type="submit" class="px-10 py-2 font-sans text-xl font-semibold text-white rounded-lg bg-fuchsia-900 hover:bg-fuchsia-950">Register</button>
+                    </div>
+                    <div class="flex flex-col items-center w-full my-2">
+                        <h2 class="font-sans text-lg text-gray-400">Already have an account?</h2>
+                        <a href="{{ route('login') }}" class="font-sans text-lg font-semibold text-orange-400 hover:text-orange-500">Login</a>
+                    </div>
                 </form>
             </div>
         </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
 @endsection

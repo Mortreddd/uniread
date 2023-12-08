@@ -137,9 +137,11 @@
                 @else
                     <p class="my-10 font-sans text-2xl text-center text-gray-500">No comments yet.</p>
                 @endunless
-                <form action="" method="post" class="mb-5">
+                <form action="{{ route('comment.add', ['chapterID' => $chapter->id]) }}" method="post" class="mb-5">
+                    @csrf
                     <div class="relative flex flex-row items-center bg-transparent border-2 border-gray-200 border-solid rounded-full outline-none">
-                        <input type="text" class="w-full border-none rounded-full outline-none focus:border-none focus:outline-none focus:outline-0"  placeholder="Write something...">
+                        <input type="text" name="content" class="w-full border-none rounded-full outline-none focus:border-fuchsia-950 focus:ring-0 focus:outline-none"  placeholder="Write something..." required>
+                        <input type="hidden" name="authorID" value="{{ Auth::id() }}">
                         <button type="submit" class="flex flex-row items-center p-2 bg-transparent rounded-full hover:bg-gray-200 text-fuchsia-900 hover:text-fuchsia-950">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                 <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />

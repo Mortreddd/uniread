@@ -5,7 +5,7 @@
   <input type="number" name="authorID" value="{{ $archive->authorID }}" class="hidden">
   <input type="number" name="bookID" value="{{ $archive->id }}" class="hidden">
   <button type="submit" class="inline-block p-3" :archive="$archive">
-      <div class="w-40 overflow-hidden text-left rounded-md shadow-lg card h-fit" style="background-color: rgba(235, 235, 235, 0.7)">
+      <div class="overflow-hidden text-left rounded-md shadow-lg w-28 md:w-40 card h-fit" style="background-color: rgba(235, 235, 235, 0.7)">
         <img class="w-full" src="{{ asset($archive->image) }}"/>
         <figure class="py-2 text-center">
           <blockquote class="w-full">

@@ -7,6 +7,7 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Bookmark;
 use App\Models\Chapter;
+use App\Models\ChapterComment;
 use App\Models\Comment;
 use App\Models\Library;
 use App\Models\Message;
@@ -38,5 +39,6 @@ class DatabaseSeeder extends Seeder
         Rating::factory(500)->create();
         Library::factory(400)->create();
         Votes::factory(500)->create(); 
+        ChapterComment::factory(500)->create();
     }
 }

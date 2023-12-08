@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Profile\SettingsController;
 use App\Http\Controllers\Read\LibraryController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ChapterCommentController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\Profile\UpdateFullNameController;
 use App\Http\Controllers\Profile\UpdatePasswordController;
@@ -23,7 +26,7 @@ use App\Http\Controllers\Profile\UpdateUsernameController;
 // * Handling Profile Routes *
 // *---------------------------------
 
-Route::middleware(['auth.session', 'auth', 'role:author'])->group( function () {
+Route::middleware(['auth.session', 'auth', 'role:author', 'verified'])->group( function () {
 
     // *---------------------------------
     // * Handle the Books to be displayed *
@@ -35,6 +38,7 @@ Route::middleware(['auth.session', 'auth', 'role:author'])->group( function () {
         Route::get('/books/{bookID}', 'search')->name('book.description')->where(['bookID' => '[0-9]+']);
         Route::get('/books/new-story', 'show')->name('book.add');
         Route::post('/books/new-story/create', 'store')->name('book.create');
+        Route::delete('/books/{id}/delete', 'destroy')->name('book.delete');
     });
 
     Route::controller(GenreController::class)->group( function () {
@@ -91,7 +95,10 @@ Route::middleware(['auth.session', 'auth', 'role:author'])->group( function () {
     });
 
     Route::controller(WorkspaceController::class)->group( function () {
-        Route::get('/works/workspace/{bookID}', 'index')->name('workspace');
+        Route::get('/works/workspace/{bookID}', 'redirect')->name('workspace.redirect');
+        Route::get('/works/workspace/{bookID}/chapter/{chapterID}', 'index')->name('workspace');
+        Route::post('/works/workspace/chapter/create', 'store')->name('chapter.create');
+        Route::any('/works/workspace/{bookID}/chapter/{chapterID}/modify', 'track')->name('chapter.track');
     });
     
     // *---------------------------------
@@ -108,10 +115,14 @@ Route::middleware(['auth.session', 'auth', 'role:author'])->group( function () {
         Route::put('/archive/add', 'store')->name('archive.add');
         Route::delete('/archive/remove', 'destroy')->name('archive.remove');
     });
+    Route::controller(ChapterCommentController::class)->group(function (){
+        Route::post('/comment/add/{chapterID}', 'store')->name('comment.add');
 
+    });
     Route::put('/profile/update-fullname', [UpdateFullNameController::class, 'update'])->name('update.fullname');
     Route::put('/profile/update-username', [UpdateUsernameController::class, 'update'])->name('update.username');
     Route::put('/profile/update-password', [UpdatePasswordController::class, 'update'])->name('update.password');
+
     // *---------------------------------
     // * Routes for for the footer only *
     // *---------------------------------

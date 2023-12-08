@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Mail\VerifyEmailNotification;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        VerifyEmail::toMailUsing(function ($notifiable, $url) {
+            return (new VerifyEmailNotification($url))->to($notifiable->email);
+        });
     }
 }

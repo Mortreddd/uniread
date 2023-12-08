@@ -1,5 +1,5 @@
 <button data-modal-target="{{ $book->id }}" data-modal-toggle="{{ $book->id }}" class="inline-block p-3" :book="$book">
-    <div class="w-40 overflow-hidden text-left rounded-md shadow-lg card h-fit" style="background-color: rgba(235, 235, 235, 0.7)">
+    <div class="overflow-hidden text-left rounded-md shadow-lg md:w-40 w-28 md:h-fit card h-fit" style="background-color: rgba(235, 235, 235, 0.7)">
       <img class="w-full" src="{{ asset($book->image) }}"/>
       <figure class="py-2 text-center">
         <blockquote class="w-full">

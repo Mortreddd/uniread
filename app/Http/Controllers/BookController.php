@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookRequest;
+use App\Models\Archive;
 use App\Models\Book;
+use App\Models\Bookmark;
 use App\Models\Chapter;
+use App\Models\Comment;
 use App\Models\Draft;
 use App\Models\Genre;
 use App\Models\Library;
@@ -74,6 +77,24 @@ class BookController extends Controller
         // Book::create($request->validated());
         $genres = Genre::all();
         return view('layouts.author.new-story', ['genres' => $genres]);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        if(Chapter::where('bookID', $id)->exists()) {   
+            Chapter::where('bookID', $id)->delete();
+        }
+        if(Archive::where('bookID', $id)->exists()){
+            Archive::where('bookID', $id)->delete();
+        }
+        if(Library::where('bookID', $id)->exists()){
+            Library::where('bookID', $id)->delete();
+        }
+        if(Comment::where('bookID', $id)->exists()){
+            Comment::where('bookID', $id)->delete();
+        }
+        Book::find($id)->delete();
+        return back();
     }
 
 }
