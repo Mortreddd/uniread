@@ -47,6 +47,7 @@
                         <p class="text-lg font-semibold text-fuchsia-950 ">
                             {{ $author->fullname }} has no followers yet.
                         </p>
+                        
                     @endunless
                 </div>
             </div>

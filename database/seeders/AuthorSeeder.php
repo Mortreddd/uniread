@@ -26,36 +26,12 @@ class AuthorSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
-                'fullname' => 'Roselle Ann Manalansan',
-                'username' => 'Teythewriter',
-                'gender' => 'Female',
-                'birthday' => '2002-09-25',
-                'image' => 'storage/profiles/default-profile.jpg',
-                'email' => 'roselleannmanalansan@gmail.com',
-                'password' => Hash::make('teytey15'),
-                'role' => 'admin',
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
                 'fullname' => 'Emmanuel Male',
                 'username' => 'emmanuel',
                 'birthday' => '2002-09-25',
                 'image' => 'storage/profiles/default-profile.jpg',
-                'email' => 'emmanuelmale@gmail.com',
+                'email' => 'gokoreyes25@gmail.com',
                 'password' => Hash::make('emmanuelmale25'),
-                'role' => 'admin',
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'fullname' => 'Bea Mangulabnan',
-                'username' => 'beabanana',
-                'gender' => 'Female',
-                'birthday' => '2002-09-25',
-                'image' => 'storage/profiles/default-profile.jpg',
-                'email' => 'beamangulabnan05@gmail.com',
-                'password' => Hash::make('beabaduday'),
                 'role' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
