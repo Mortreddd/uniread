@@ -13,7 +13,7 @@ class UpdatePasswordController extends Controller
     public function update(EditUsernameRequest $request)
     {
         $authorID = Auth::id();
-        if(Author::find($authorID)->update(['password', Hash::make($request->input('password'))]))
+        if(Author::find($authorID)->update(['password' => Hash::make($request->input('password'))]))
         {
             return back()->with(['success' => 'Password updated successfully']);
         }

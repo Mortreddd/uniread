@@ -13,11 +13,22 @@
             }})"
         >
             <div class="flex flex-col items-center p-3 m-4 bg-transparent">
-                <img
-                    src="{{ asset($author->image) }}"
-                    alt=""
-                    class="w-32 h-32 mb-3 border-4 border-gray-500 rounded-full md:w-48 md:h-48"
-                />
+                @if ($author->id === Auth::id())
+                    <button data-modal-target="profile-image-modal" data-modal-toggle="profile-image-modal">
+                        <img
+                            src="{{ asset($author->image) }}"
+                            alt=""
+                            class="w-32 h-32 mb-3 border-4 border-gray-500 rounded-full md:w-48 md:h-48"
+                        />
+                    </button>
+                    @include('layouts.profile.edit.profile-image')
+                @else
+                    <img
+                        src="{{ asset($author->image) }}"
+                        alt=""
+                        class="w-32 h-32 mb-3 border-4 border-gray-500 rounded-full md:w-48 md:h-48"
+                    />
+                @endif
                 <h3
                     class="mb-3 font-serif text-2xl text-center text-gray-200 md:text-4xl font-weight text-bold"
                 >
@@ -25,7 +36,8 @@
                 </h3>
                 <div class="flex flex-row justify-between w-auto">
                     <div class="flex flex-col items-center mx-3">
-                        <a
+                        <button
+                            
                             class="flex items-center justify-between w-full font-sans text-xl text-gray-200 border-0 cursor-pointer md:text-2xl font-weight text-bold"
                         >
                             <svg
@@ -44,7 +56,8 @@
                             </svg>
 
                             Works
-                        </a>
+                        </button>
+                        
                         <h2
                             class="font-sans text-xl text-gray-200 md:text-2xl font-weight text-bold"
                         >
@@ -53,7 +66,8 @@
                     </div>
 
                     <div class="flex flex-col items-center mx-3">
-                        <a
+                        <button
+                            data-modal-target="followers-modal" data-modal-toggle="followers-modal"
                             class="flex items-center justify-between w-full font-sans text-xl text-gray-200 border-0 cursor-pointer md:text-2xl font-weight text-bold"
                         >
                             <svg
@@ -72,7 +86,8 @@
                             </svg>
 
                             Followers
-                        </a>
+                        </button>
+                        @include('layouts.profile.edit.followers', ['author' => $author, 'followers' => $followers])
                         <h2
                             class="font-sans text-xl text-gray-200 md:text-2xl font-weight text-bold"
                         >
@@ -81,7 +96,8 @@
                     </div>
 
                     <div class="flex flex-col items-center mx-3">
-                        <a
+                        <button
+                        data-modal-target="following-modal" data-modal-toggle="following-modal"
                             class="flex items-center justify-between w-full font-sans text-xl text-gray-200 border-0 cursor-pointer md:text-2xl font-weight text-bold"
                         >
                             <svg
@@ -100,7 +116,8 @@
                             </svg>
 
                             Following
-                        </a>
+                        </button>
+                        @include('layouts.profile.edit.following', ['author' => $author, 'following' => $following])
                         <h2
                             class="font-sans text-xl text-gray-200 md:text-2xl font-weight text-bold"
                         >
@@ -245,4 +262,27 @@
         </section>
     </main>
     @include('partials.footer')
+    <script>
+        function displayImage(input) {
+            const preview = document.getElementById("profile-image");
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                };
+
+                reader.onerror = function (e) {
+                    preview.src = "{{ asset('storage/profiles/default-profile.jpg') }}";
+                    preview.style.display = "block";
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = "{{ asset('storage/profiles/default-profile.jpg') }}";
+                preview.style.display = "block";
+            }
+        }
+    </script>
 @endsection

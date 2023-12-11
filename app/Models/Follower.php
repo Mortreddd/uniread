@@ -18,13 +18,23 @@ class Follower extends Model
     public $timestamps = true;
 
 
-    public function follows()
+    public function followers()
     {
-        return $this->belongsTo(Author::class, 'followedAuthorID', 'id');
+        return $this->hasMany(Author::class, 'followedAuthorID', 'id');
+    }
+
+    public function following()
+    {
+        return $this->hasMany(Author::class, 'followerAuthorID', 'id');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class, 'followerAuthorID', 'id');
     }
 
     public function followed()
     {
-        return $this->belongsTo(Author::class, 'followerAuthorID', 'id');
+        return $this->belongsTo(Author::class, 'followedAuthorID', 'id');
     }
 }

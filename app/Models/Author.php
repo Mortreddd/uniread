@@ -16,6 +16,7 @@ class Author extends Model implements AuthenticatableContract
             'username',
             'gender',
             'birthday',
+            'image',
             'email',
             'password',
     ];

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Profile\SettingsController;
 use App\Http\Controllers\Read\LibraryController;
@@ -19,6 +17,7 @@ use App\Http\Controllers\ChapterCommentController;
 use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\Profile\ProfileImageController;
 use App\Http\Controllers\Profile\UpdateFullNameController;
 use App\Http\Controllers\Profile\UpdatePasswordController;
 use App\Http\Controllers\Profile\UpdateUsernameController;
@@ -72,7 +71,7 @@ Route::middleware(['auth.session', 'auth', 'role:author', 'verified'])->group( f
     // * Responsible for navigating another author
     // *---------------------------------
     Route::controller(AuthorController::class)->group(function () {
-        Route::get('/user/profile/{id}', 'index');
+        Route::get('/user/profile/{id}', 'index')->name('author.profile');
     });
 
 
@@ -136,6 +135,7 @@ Route::middleware(['auth.session', 'auth', 'role:author', 'verified'])->group( f
     Route::put('/profile/update-fullname', [UpdateFullNameController::class, 'update'])->name('update.fullname');
     Route::put('/profile/update-username', [UpdateUsernameController::class, 'update'])->name('update.username');
     Route::put('/profile/update-password', [UpdatePasswordController::class, 'update'])->name('update.password');
+    Route::put('/profile/update-profile-image', [ProfileImageController::class, 'update'])->name('update.profile-image');
 
     // *---------------------------------
     // * Routes for for the footer only *

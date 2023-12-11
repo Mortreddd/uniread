@@ -34,13 +34,24 @@ class ProfileController extends Controller
         // $followerCount = Follower::where('followedAuthorID', $author->pluck('id'))->get(['followerAuthorID'])->count();
         // $followedCount = Follower::where('followerAuthorID', $author->pluck('id'))->get(['followedAuthorID'])->count();
         
-        $author = Author::with(['books', 'followers', 'followed'])->findOrFail(Auth::id());
+        $author = Author::with(['books'])->findOrFail(Auth::id());
         $username = $author->username;
         $workCount = $author->books->count();
+        $followers = Follower::with('author')->where('followedAuthorID', Auth::id())->get();
+        $following = Follower::with('author')->where('followerAuthorID', Auth::id())->get();
         $followerCount = $author->followers->count();
         $followedCount = $author->followed->count();
         $works = Book::with('genre')->where('authorID', $author->id)->get();
-        return view('layouts.profile.author',['works' => $works, 'author' => $author], compact(['username', 'workCount', 'followerCount', 'followedCount']));
+        // return Json::encode($followers);
+        return view('layouts.profile.author',[
+                    'works' => $works, 
+                    'author' => $author,
+                    'followers' => $followers,
+                    'following' => $following
+                ], compact(
+                    ['username', 'workCount', 'followerCount', 'followedCount']
+                )
+            );
         
     }
     
