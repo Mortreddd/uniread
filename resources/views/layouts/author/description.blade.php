@@ -14,11 +14,11 @@
             >
                 <img
                     src="{{ asset($book->image) }}"
-                    class="w-full mb-4 leading-none align-middle rounded-lg shadow-lg h-5/6"
+                    class="w-full mb-4 leading-none align-middle rounded-lg shadow-lg h-80 md:h-5/6"
                     alt="Taking up Water with a Spoon"
                 />
                 <figcaption
-                    class="flex justify-center w-full text-2xl text-neutral-600 dark:text-neutral-400"
+                    class="flex justify-center w-full text-lg md:text-2xl text-neutral-600 dark:text-neutral-400"
                 >
                     <div class="flex items-center">
                         <svg
@@ -43,7 +43,7 @@
                     </div>
                 </figcaption>
             </figure>
-            <section class="w-full md:w-[75vw] p-5 md:p-0">
+            <section class="w-full md:w-[75vw] md:p-5">
                 <x-information :book="$book" :ratings="$ratings" :parts="$parts" :belongsToLibrary="$belongsToLibrary"></x-information>
                 <section
                     class="w-full p-5 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-lg shadow-gray-300"

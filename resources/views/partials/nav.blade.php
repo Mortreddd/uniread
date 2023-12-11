@@ -1,4 +1,4 @@
-<div class="w-full py-5 bg-fuchsia-900">
+<div class="w-full py-2 md:py-5 bg-fuchsia-900">
   <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
       <x-logo></x-logo>

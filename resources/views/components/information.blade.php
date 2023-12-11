@@ -1,9 +1,9 @@
 <section class="w-full p-2 mb-4 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-lg shadow-gray-300 md:p-5 " :book="$book" :ratigns="$ratings" :parts="$parts" :belongsToLibrary="$belongsToLibrary">
     <div class="mx-3">
-        <h1 class="text-4xl text-slate-400">{{ $book->title }}</h1>
+        <h1 class="text-2xl md:text-4xl text-slate-400">{{ $book->title }}</h1>
         <div class="flex flex-row flex-wrap items-center w-full my-1 md:my-3">
             <div class="mr-4">
-                <h4 class="flex gap-2 text-xl text-gray-400">
+                <h4 class="flex gap-2 text-lg text-gray-400 md:text-xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -23,7 +23,7 @@
                 </h4>
             </div>
             <div class="mr-4">
-                <h4 class="flex gap-2 text-xl text-gray-400">
+                <h4 class="flex gap-2 text-lg text-gray-400 md:text-xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -43,7 +43,7 @@
                 </h4>
             </div>
             <div class="mr-4">
-                <h4 class="flex gap-2 text-xl text-gray-400">
+                <h4 class="flex gap-2 text-lg text-gray-400 md:text-xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -63,17 +63,10 @@
                 </h4>
             </div>
             <div class="mr-4">
-                <h4 href="" class="px-5 py-1 font-sans text-white rounded-l-full rounded-r-full bg-fuchsia-900">
-                    @if($book->status === 1) Completed @else Ongoing @endif
+                <h4 href="" class="px-2 py-1 font-sans text-white rounded-l-full rounded-r-full md:px-5 bg-fuchsia-900">
+                    @if($book->completed === 1) Completed @else Ongoing @endif
                 </h4>
             </div>
-            {{-- @if($book->mature === 1)
-                <div class="mr-4">
-                    <h4 href="" class="px-5 py-1 font-sans text-white bg-orange-600 rounded-l-full rounded-r-full text-md ">
-                        Mature
-                    </h4>
-                </div>
-            @endif --}}
         </div>
         <div class="flex flex-row items-center w-full my-1 md:my-3">
             <div class="mr-4">
@@ -81,14 +74,14 @@
 
                     <a
                         href="/books/{{ $book->id }}/read"
-                        class="hidden px-4 py-2 text-white rounded-full bg-fuchsia-900 hover:bg-fuchsia-950"
+                        class="hidden px-3 py-1 text-white rounded-full md:px-4 md:py-2 bg-fuchsia-900 hover:bg-fuchsia-950"
                         >
                         Start Reading
                     </a>
                 @else
                     <a
                     href="/books/{{ $book->id }}/read"
-                    class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-900 hover:bg-fuchsia-950"
+                    class="px-3 py-1 text-white rounded-full md:px-4 md:py-2 bg-fuchsia-900 hover:bg-fuchsia-950"
                     >
                         Start Reading
                     </a>
@@ -105,7 +98,7 @@
                         <input type="number" name="bookID" value="{{ $book->id }}" class="hidden">
                         <button
                             type="submit"
-                            class="flex flex-row px-4 py-2 text-white rounded-full bg-fuchsia-900 hover:bg-fuchsia-950"
+                            class="flex flex-row px-3 py-1 text-white rounded-full md:px-4 md:py-2 bg-fuchsia-900 hover:bg-fuchsia-950"
                         >
                             Add to your library
                         </button>
@@ -116,14 +109,14 @@
         </div>
         <div class="w-full my-1 md:my-3">
             <div class="">
-                <p class="mb-3 font-sans text-lg text-justify text-gray-500">
+                <p class="mb-3 font-sans text-justify text-gray-500 text-md md:text-lg">
                     {{ $book->description }}
                 </p>
             </div>
         </div>
         <div class="flex flex-row w-full my-1 md:my-3">
             <div>
-                <h3 class="px-4 py-2 text-white bg-gray-600 rounded-full">
+                <h3 class="px-2 py-1 text-white bg-gray-600 rounded-full md:px-4 md:py-2 text-md md:text-lg">
                     {{ $book->genre->name }}
                 </h3>
             </div>

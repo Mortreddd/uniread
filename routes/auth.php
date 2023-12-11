@@ -16,7 +16,9 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ChapterCommentController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Profile\UpdateFullNameController;
 use App\Http\Controllers\Profile\UpdatePasswordController;
 use App\Http\Controllers\Profile\UpdateUsernameController;
@@ -44,6 +46,12 @@ Route::middleware(['auth.session', 'auth', 'role:author', 'verified'])->group( f
     Route::controller(GenreController::class)->group( function () {
         Route::get('/books/genres/{genreID}', 'index')->name('genre.index');
     });
+
+    Route::controller(MessageController::class)->group( function () {
+        Route::get('/messages/inbox', 'index')->name('messages.inbox');
+        Route::get('/messages/inbox/{username}', 'show')->name('messages.open.inbox');
+        Route::post('/message/inbox/send', 'store')->name('messages.create');
+    });
     
     Route::controller(ChapterController::class)->group( function () {
         Route::get('/books/{bookID}/read', 'index')->name('read.book');
@@ -65,6 +73,12 @@ Route::middleware(['auth.session', 'auth', 'role:author', 'verified'])->group( f
     // *---------------------------------
     Route::controller(AuthorController::class)->group(function () {
         Route::get('/user/profile/{id}', 'index');
+    });
+
+
+    Route::controller(FollowerController::class)->group( function () {
+        Route::post('/user/profile/add', 'store')->name('follow.add');
+        Route::delete('/user/profile/delete', 'destroy')->name('follow.delete');
     });
 
     Route::controller(SettingsController::class)->group(function () {

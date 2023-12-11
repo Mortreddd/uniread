@@ -17,8 +17,14 @@ class Follower extends Model
 
     public $timestamps = true;
 
-    public function authors()
+
+    public function follows()
     {
-        return $this->hasMany(Author::class, 'followedAuthorID', 'id');
+        return $this->belongsTo(Author::class, 'followedAuthorID', 'id');
+    }
+
+    public function followed()
+    {
+        return $this->belongsTo(Author::class, 'followerAuthorID', 'id');
     }
 }

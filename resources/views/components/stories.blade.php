@@ -1,18 +1,18 @@
-<a href="/books/{{ $book->id }}" class="block w-full my-3 card h-fit line-clamp-2 text-ellipsis overflow-hidden" :book="$book">
-  <div class="flex flex-row border-2 border-solid rounded-lg shadow-lg h-72 shadow-gray-300">
+<a href="/books/{{ $book->id }}" class="block w-full my-3 overflow-hidden card h-fit line-clamp-2 text-ellipsis" :book="$book">
+  <div class="flex flex-row border-2 border-solid rounded-lg shadow-md md:shadow-lg h-52 md:h-60 shadow-gray-300">
     <img class="object-contain rounded-l-lg aspect-auto" src="{{ asset($book->image) }}"/>
-      <section class="md:px-10 text-align text-ellipsis h-full p-4 md:py-5">
+      <section class="h-full p-4 md:px-10 text-align text-ellipsis md:py-5">
         <h1 class="text-xl md:text-4xl text-slate-400">{{ $book->title }}</h1>
         <div class="flex flex-row flex-wrap my-1 md:my-3">
             <div class="mr-4">
-                <h4 class="flex gap-2 text-md md:text-xl text-gray-400">
+                <h4 class="flex gap-2 text-gray-400 text-md md:text-xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-6 md:w-7 h-6 md:h-7"
+                        class="w-6 h-6 md:w-7 md:h-7"
                     >
                         <path
                             stroke-linecap="round"
@@ -25,14 +25,14 @@
                 </h4>
             </div>
             <div class="mr-4">
-                <h4 class="flex gap-2 text-md md:text-xl text-gray-400">
+                <h4 class="flex gap-2 text-gray-400 text-md md:text-xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-6 md:w-7 h-6 md:h-7"
+                        class="w-6 h-6 md:w-7 md:h-7"
                     >
                         <path
                             stroke-linecap="round"
@@ -45,14 +45,14 @@
                 </h4>
             </div>
             <div class="mr-4">
-                <h4 class="flex gap-2 text-md md:text-xl text-gray-400">
+                <h4 class="flex gap-2 text-gray-400 text-md md:text-xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-6 md:w-7 h-6 md:h-7"
+                        class="w-6 h-6 md:w-7 md:h-7"
                     >
                         <path
                             stroke-linecap="round"
@@ -65,11 +65,19 @@
                 </h4>
             </div>
             <div class="mr-4">
-                <h4 href="" class="px-5 py-1 text-white rounded-full text-md bg-fuchsia-900">
-                    Completed
-                </h4>
+                @if($book->completed)
+
+                    <h4 href="" class="px-2 py-1 text-white rounded-l-full rounded-r-full md:px-5 text-md bg-fuchsia-900">
+                        Completed
+                    </h4>
+                @else
+                    <h4 href="" class="px-2 py-1 text-white bg-orange-700 rounded-l-full rounded-r-full md:px-5 text-md">
+                        Ongoing
+                    </h4>
+                @endif
+                
             </div>  
-            <p class="mt-2 text-clip font-serif text-md md:text-lg text-left text-gray-600 ">{{ $book->description }}</p>
+            <p class="mt-2 font-serif text-left text-gray-600 text-clip line-clamp-3 md:line-clamp-5 text-md md:text-lg ">{{ $book->description }}</p>
         </section>
     </div>
 </a>

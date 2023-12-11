@@ -14,6 +14,6 @@
       </svg>
       <span class="sr-only">Search icon</span>
     </div>
-    <input type="search" name="search" autocomplete="off" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-200 rounded-lg focus:border-none focus:outline-fuchsia-900" value="{{ old('search') }}" placeholder="Search books, authors, etc">
+    <input type="search" name="search" autocomplete="off" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-200 rounded-lg focus:border-none focus:ring-0 focus:outline-fuchsia-900" value="{{ old('search') }}" placeholder="Search books, authors, etc">
   </div>
 </form>

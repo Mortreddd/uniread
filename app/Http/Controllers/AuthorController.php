@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Follower;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
 {
@@ -20,8 +22,11 @@ class AuthorController extends Controller
         $followerCount = $author->followers->count();
         $followedCount = $author->followed->count();
         $followers = $author->followers->toArray();
+        $isFollowing = Follower::where('followerAuthorID', Auth::id())->where('followedAuthorID', $author->id)->exists();
         $works = Book::with('genre')->where('authorID', $author->id)->get();
-        return view('layouts.profile.author',['works' => $works, 'followers' => $followers, 'author' => $author], compact(['username', 'workCount', 'followerCount', 'followedCount']));
+
+        // return Json::encode($isFollowing);
+        return view('layouts.profile.author',['works' => $works, 'followers' => $followers, 'author' => $author], compact(['username', 'isFollowing', 'workCount', 'followerCount', 'followedCount']));
         
     }
     

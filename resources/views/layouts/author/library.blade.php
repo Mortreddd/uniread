@@ -47,6 +47,7 @@
                         >
                             <li>
                                 <a
+                                    href="{{ route('messages.inbox') }}"
                                     class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-sm border-b cursor-pointer md:text-lg md:hover:text-fuchsia-900 md:hover:bg-transparent md:text- md:text-gray-800 md:border-0 md:p-0 md:w-auto"
                                 >
                                     <svg
@@ -66,42 +67,23 @@
                                     Messages
                                 </a>
                             </li>
-                            <li>
-                                <a
-                                    class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-sm border-b cursor-pointer md:text-lg md:hover:text-fuchsia-900 md:hover:bg-transparent md:text- md:text-gray-800 md:border-0 md:p-0 md:w-auto"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        class="w-6 h-6 mr-2"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
-                                            clip-rule="evenodd"
-                                        />
-                                    </svg>
-
-                                    Notifications
-                                </a>
-                            </li>
+                            
                             <x-profile></x-profile>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
-        <div class="flex w-full justify-evenly">
+        <div class="flex justify-between md:justify-evenly">
             <button
-                class="flex flex-col items-center py-4 mr-3 font-sans text-xl border-solid md:text-2xl md:flex-row md:items-start tab-button active"
+                class="flex flex-col items-center py-2 mr-3 font-sans text-lg border-solid md:py-4 md:text-2xl md:flex-row md:items-start tab-button active"
                 data-tab="#readlist"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    class="md:mr-2 w-7 h-7"
+                    class="w-5 h-5 md:mr-2 md:w-7 md:h-7 "
                 >
                     <path
                         d="M19.5 21a3 3 0 003-3v-4.5a3 3 0 00-3-3h-15a3 3 0 00-3 3V18a3 3 0 003 3h15zM1.5 10.146V6a3 3 0 013-3h5.379a2.25 2.25 0 011.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 013 3v1.146A4.483 4.483 0 0019.5 9h-15a4.483 4.483 0 00-3 1.146z"
@@ -111,14 +93,14 @@
                 Current Reading List
             </button>
             <button
-                class="flex flex-col items-center py-4 font-sans text-xl border-solid md:mr-3 md:flex-row md:items-start md:text-2xl tab-button"
+                class="flex flex-col items-center py-2 font-sans text-lg border-solid md:py-4 md:mr-3 md:flex-row md:items-start md:text-2xl tab-button"
                 data-tab="#bookmarks"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    class="md:mr-2 w-7 h-7"
+                    class="w-5 h-5 md:mr-2 md:w-7 md:h-7"
                 >
                     <path
                         fill-rule="evenodd"
@@ -130,14 +112,14 @@
                 Bookmarks
             </button>
             <button
-                class="flex flex-col items-center py-4 mr-3 font-sans text-xl border-solid md:flex-row md:items-start md:text-2xl tab-button"
+                class="flex flex-col items-center py-2 mr-3 font-sans text-lg border-solid md:py-4 md:flex-row md:items-start md:text-2xl tab-button"
                 data-tab="#archive"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    class="md:mr-2 w-7 h-7"
+                    class="w-5 h-5 md:mr-2 md:w-7 md:h-7"
                 >
                     <path
                         fill-rule="evenodd"
@@ -148,7 +130,7 @@
                 Archive
             </button>
         </div>
-        <div class="flex w-full px-5 py-10">
+        <div class="flex w-full px-5 py-4 md:py-8">
             <div class="w-full px-2 tab-content" id="readlist">
                 <x-readinglist :library="$library"></x-readinglist>
             </div>

@@ -18,14 +18,14 @@ class ChapterController extends Controller
     public function index(Request $request, $bookID)
     {
         $chapters = Chapter::orderBy('chapter', 'asc')->where('bookID', $bookID)->get();
-        $comments = Comment::with('authors')->where('bookID', $bookID)->get();
+        $chapter = $chapters->first();
+        $comments = ChapterComment::with('authors')->where('chapterID', $chapter->id)->get();
         $inBookmarks = Bookmark::where('authorID', Auth::id())->whereIn('chapterID', $chapters->pluck('id'))->exists();
         // return Json::encode($chapters);
         if( $chapters->isEmpty())
         {
             return redirect()->back()->with('error', 'The book has no chapters yet');
         }
-        $chapter = $chapters->first();
         $isVoted = Votes::where('authorID', Auth::id())->where('chapterID', $chapter->id)->exists();
         // return Json::encode($isVoted);
         return view('layouts.author.read', ['chapters' => $chapters, 'comments' => $comments], compact(['inBookmarks', 'chapter', 'isVoted']));

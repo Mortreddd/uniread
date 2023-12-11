@@ -16,4 +16,21 @@ class Message extends Model
     ];
 
     public $timestamps = true;
+
+    public function sender()
+    {
+        return $this->belongsTo(Author::class, 'senderAuthorID', 'id');
+    }
+
+    public function receiver()
+    {
+        return $this->belongsTo(Author::class, 'receiverAuthorID', 'id');
+    }
+
+
+    public function messages()
+    {
+        return $this->hasManyThrough(Author::class, 'senderAuthorID', 'id');
+    }
+
 }
