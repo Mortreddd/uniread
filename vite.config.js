@@ -7,7 +7,15 @@ export default defineConfig({
     },
     plugins: [
         laravel({
-            input: ["resources/css/app.css", "resources/js/app.js"],
+            input: [
+                "resources/css/app.css",
+                "resources/js/app.js",
+                "resources/js/tabs.js",
+                "resources/js/page.js",
+                "resources/js/voice.js",
+                "resources/js/bookmarks.js",
+                "resources/js/workspace.js",
+            ],
             refresh: true,
         }),
     ],
