@@ -8,7 +8,7 @@
 
 @section('content')
     <x-nav></x-nav> 
-    <main class="container mx-auto">
+    <main class="h-full w-full">
         <div class="mx-auto flex h-[80vh] w-full">
             <div class="md:py-3 p-1 w-[25vw] md:w-[30vw] h-full overflow-y-hidden border-gray-200 bg-white">
                 

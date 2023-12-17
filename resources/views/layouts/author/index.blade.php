@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <main class="container box-border w-full min-h-full p-0 m-0">
+    <main class="w-full h-full">
         @include("partials.nav")
         @include("partials.trending", ['trendingBooks' => $trendingBooks]) 
         @if(Session::has('success'))

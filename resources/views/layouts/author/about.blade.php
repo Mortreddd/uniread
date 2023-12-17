@@ -5,7 +5,7 @@
 
 @section('content')
     @include('partials.nav')
-    <div class="container w-full p-0 m-0">
+    <div class="w-full h-full">
         <div
         class="w-full flex justify-center items-center h-[50vh] bg-no-repeat bg-cover bg-center md:w-screen"
         style="background-image: url('{{

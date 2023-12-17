@@ -38,7 +38,6 @@
                         @endunless
                     </div>                    
                 </section>
-                
             </div>
             @unless ($chapters->isEmpty())
                 <form action="{{ route('chapter.track', ['bookID' => $selectedChapter->bookID, 'chapterID' => $selectedChapter->id]) }}" method="POST" class="w-full p-2 mx-2 md:mx-10 md:p-7 ">

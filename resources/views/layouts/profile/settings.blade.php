@@ -9,34 +9,34 @@
         @include('partials.nav')
             <section class="flex flex-col items-center w-full h-fit">
                 <div class="flex justify-start w-full gap-10 px-10 bg-white">
-                    <button class="py-4 mr-3 font-sans text-2xl border-solid tab-button active" data-tab="#profile">Profile and Account</button>
+                    <button class="py-2 md:py-4 mr-3 font-sans text-lg md:text-2xl border-solid tab-button active" data-tab="#profile">Profile and Account</button>
                 </div>
                 <div class="flex justify-center w-full bg-gray-200  min-h-[60vh]">
                     <div class="flex flex-col items-center w-full min-h-full px-4 my-5 tab-content md:px-20" id="profile">
                         <div class="w-full my-2">
-                            <h3 class="font-sans text-xl text-left text-black">Modify your privacy and account information</h3>
+                            <h3 class="font-sans text-lg md:text-xl text-left text-black">Modify your privacy and account information</h3>
                         </div>
-                        <section class="flex flex-col items-center w-full px-10 py-5 border-2 border-solid rounded-lg border-fuchsia-950 bg-fuchsia-100">
-                            <div class="flex w-full my-1">
+                        <section class="flex flex-col items-center w-full px-10 py-3 md:py-5 border-2 border-solid rounded-lg border-fuchsia-950 bg-fuchsia-100">
+                            <div class="flex flex-col md:flex-row w-full my-1">
                                 <div class="flex justify-start w-full py-3 items-cente">
-                                    <h1 class="inline-block mr-3 font-sans text-xl text-black">Full Name: </h1>
-                                    <p class="inline-block mr-3 font-sans text-xl text-black">{{ auth()->user()->fullname }}</p>
+                                    <h1 class="inline-block mr-3 font-sans text-md md:text-xl text-black">Full Name: </h1>
+                                    <p class="inline-block mr-3 font-sans text-md md:text-xl text-black">{{ auth()->user()->fullname }}</p>
                                     @include('layouts.profile.edit.fullname')
                                 </div>
                                 <div class="flex justify-start w-full py-3 items-cente">
-                                    <h1 class="inline-block mr-3 font-sans text-xl text-black">Username: </h1>
-                                    <p class="inline-block mr-3 font-sans text-xl text-black">{{ auth()->user()->username }}</p>
+                                    <h1 class="inline-block mr-3 font-sans text-md md:text-xl text-black">Username: </h1>
+                                    <p class="inline-block mr-3 font-sans text-md md:text-xl text-black">{{ auth()->user()->username }}</p>
                                     @include('layouts.profile.edit.username')
                                 </div>
                             </div>
-                            <div class="flex w-full my-1">
+                            <div class="flex flex-col md:flex-row w-full my-1">
                                 <div class="flex justify-start w-full py-3 items-cente">
-                                    <h1 class="inline-block mr-3 font-sans text-xl text-black">Email: </h1>
-                                    <p class="inline-block mr-3 font-sans text-xl text-black">{{ auth()->user()->email }}</p>
+                                    <h1 class="inline-block mr-3 font-sans text-md md:text-xl text-black">Email: </h1>
+                                    <p class="inline-block mr-3 font-sans text-md md:text-xl text-black">{{ auth()->user()->email }}</p>
                                 </div>
                                 <div class="flex justify-start w-full py-3 items-cente">
-                                    <h1 class="inline-block mr-3 font-sans text-xl text-black">Password: </h1>
-                                    <p id="password" class="inline-block mr-3 font-sans text-xl text-black">************</p>
+                                    <h1 class="inline-block mr-3 font-sans text-md md:text-xl text-black">Password: </h1>
+                                    <p id="password" class="inline-block mr-3 font-sans text-md md:text-xl text-black">************</p>
                                     @include('layouts.profile.edit.password')
                                 </div>
                             </div>

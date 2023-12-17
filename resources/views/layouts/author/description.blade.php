@@ -4,7 +4,7 @@
 @section('title', $book->title)
 
 @section('content')
-    <main class="container box-border w-full min-h-full p-0 m-0">
+    <main class="w-full h-full">
         @include('partials.nav')
         <main
             class="flex flex-col items-center w-full h-full py-2 md:py-4 rounded-mdjustify-normal md:items-start md:justify-center md:flex-row"

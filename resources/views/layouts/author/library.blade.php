@@ -5,7 +5,7 @@
 
 
 @section('content')
-    <main class="container box-border w-full min-h-full p-0 m-0">
+    <main class="w-full h-full">
         <div class="w-full py-5 bg-fuchsia-900">
             <nav
                 class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"

@@ -25,6 +25,10 @@ class ProfileImageController extends Controller
 
         $request->file('image')->storeAs($storePath); 
         // return Json::encode($authorID);
+        
+        // $request->file('image')->storeAs($storePath);
+        // $request->file('image')->move('/home/vol14_4/infinityfree.com/if0_35598766/htdocs/storage/profiles', $filename);
+        // // return Json::encode($authorID);
 
         Author::find($authorID)->update(['image' => $path]); 
 
