@@ -10,11 +10,19 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class LoginController extends Controller
 {
+
+    //
+    // Display the template or html for login
+    //
     public function show()
     {
         return view('layouts.auth.login');
     }
 
+
+    // @param LoginAuthorRequest $request from a login form
+    // Check the user if has an account
+    // Also determines the credentials if it is a admin or a author
     public function process(LoginAuthorRequest $request)
     {
         
@@ -36,8 +44,6 @@ class LoginController extends Controller
         }
 
         return redirect()->back()->withErrors($request->messages());
-
-        
     }
 
     

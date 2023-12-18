@@ -22,17 +22,17 @@
                           <a href="/terms-and-agreement" class="hover:underline ">Terms &amp; Conditions</a>
                       </li>
                       <li>
-                          <a href="/" class="hover:underline">Privacy Policy</a>
+                          <a href="/terms-and-agreement" class="hover:underline">Privacy Policy</a>
                       </li>
                   </ul>
               </div>
               <div>
                   <ul class="font-medium text-white dark:text-gray-400">
                       <li class="mb-4">
-                          <a href="#" class="hover:underline">Content Guidelines</a>
+                          <a href="/terms-and-agreement" class="hover:underline">Content Guidelines</a>
                       </li>
                       <li>
-                          <a href="#" class="hover:underline">FAQ / FAQS</a>
+                          <a href="/terms-and-agreement" class="hover:underline">FAQ / FAQS</a>
                       </li>
                   </ul>
               </div>

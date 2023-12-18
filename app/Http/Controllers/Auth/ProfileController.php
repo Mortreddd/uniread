@@ -14,8 +14,9 @@ class ProfileController extends Controller
 {
 
 
-    // * Remove the Sessions and generate another token  
-    // * Redirect to login page
+    /**
+     * Remove the Sessions and generate another token
+     */
     public function logout(Request $request)
     {
         
@@ -27,13 +28,13 @@ class ProfileController extends Controller
         return redirect()->route('login');
     }
 
+    /**
+     * Display the profile page for the authenticated author.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
-        // $author = Author::find(Auth::id());
-        // $workCount = Book::where('authorID', $author->pluck('id'))->get(['id'])->count();
-        // $followerCount = Follower::where('followedAuthorID', $author->pluck('id'))->get(['followerAuthorID'])->count();
-        // $followedCount = Follower::where('followerAuthorID', $author->pluck('id'))->get(['followedAuthorID'])->count();
-        
         $author = Author::with(['books'])->findOrFail(Auth::id());
         $username = $author->username;
         $workCount = $author->books->count();
@@ -42,17 +43,13 @@ class ProfileController extends Controller
         $followerCount = $author->followers->count();
         $followedCount = $author->followed->count();
         $works = Book::with('genre')->where('authorID', $author->id)->get();
-        // return Json::encode($followers);
-        return view('layouts.profile.author',[
-                    'works' => $works, 
-                    'author' => $author,
-                    'followers' => $followers,
-                    'following' => $following
-                ], compact(
-                    ['username', 'workCount', 'followerCount', 'followedCount']
-                )
-            );
-        
+
+        return view('layouts.profile.author', [
+            'works' => $works, 
+            'author' => $author,
+            'followers' => $followers,
+            'following' => $following
+        ], compact(['username', 'workCount', 'followerCount', 'followedCount']));
     }
     
 }   

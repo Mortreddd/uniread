@@ -19,11 +19,15 @@ use Illuminate\Support\Str;
 class BookController extends Controller
 {
     
+    /**
+     * Display the index page with trending books and genres.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $trendingBooks = Book::with(['chapters', 'genre'])->limit(15)->get();
         $genres = Genre::with('books')->take(100)->get(['id', 'name']);
-        // return Json::encode($trendingBooks);
         return view('layouts.author.index', ['trendingBooks' => $trendingBooks, 'genres' => $genres]);
     }
 

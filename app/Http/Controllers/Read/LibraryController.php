@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LibraryController extends Controller
 {
+    /**
+     * Display the library page.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $library = Library::with(['books.genre'])->where('authorID', Auth::id())->get();
@@ -25,12 +30,14 @@ class LibraryController extends Controller
             'archives' => $archives->pluck('books')->collapse(),
             'bookmarks' => $bookmarks->pluck('chapters')->collapse()
         ]);
-
-        
-
-
     }
 
+    /**
+     * Store a new library entry.
+     *
+     * @param  \App\Http\Requests\LibraryRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(LibraryRequest $request)
     {
         Library::create([
@@ -40,6 +47,12 @@ class LibraryController extends Controller
         return redirect()->back()->with($request->messages());
     }
 
+    /**
+     * Remove a library entry.
+     *
+     * @param  \App\Http\Requests\LibraryRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(LibraryRequest $request)
     {
         Library::where('authorID', Auth::id())->where('bookID', $request->input('bookID'))->delete();

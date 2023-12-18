@@ -39,16 +39,15 @@
                     </div>                    
                 </section>
             </div>
-            @unless ($chapters->isEmpty())
                 <form action="{{ route('chapter.track', ['bookID' => $selectedChapter->bookID, 'chapterID' => $selectedChapter->id]) }}" method="POST" class="w-full p-2 mx-2 md:mx-10 md:p-7 ">
                     @csrf
                     <div class="flex justify-start w-full gap-1 py-3 md:gap-4 md:justify-end">
                         <input type="hidden" name="bookID" value="{{ $selectedChapter->bookID }}">
                         <input value="Delete" type="submit" name="delete" class="px-2 py-1 font-sans text-white bg-red-700 rounded-lg md:px-4 md:py-2 text-md md:text-xl hover:bg-red-800"/>
                         <input value="Save" type="submit" name="save" class="px-2 py-1 font-sans text-white rounded-lg md:px-4 md:py-2 text-md md:text-xl bg-fuchsia-900 hover:bg-fuchsia-950"/>
-                        @if($selectedBook->published)
+                        @if($hasPublished)
                             <input value="Unpublish" type="submit" name="unpublish" class="px-2 py-1 font-sans text-white rounded-lg md:px-4 md:py-2 text-md md:text-xl bg-fuchsia-900 hover:bg-fuchsia-950"/>
-                        @elseif (!$selectedBook->published)
+                        @else
                             <input value="Publish" type="submit" name="publish" class="px-2 py-1 font-sans text-white rounded-lg md:px-4 md:py-2 text-md md:text-xl bg-fuchsia-900 hover:bg-fuchsia-950"/>
                         @endif
                     </div>
@@ -59,7 +58,6 @@
                         </div>
                     </div>
                 </form>
-            @endunless
             
         </div>
     </main>

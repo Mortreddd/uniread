@@ -39,7 +39,7 @@
                     <tr>
                         <th class="font-sans text-xl font-semibold text-center text-black">Username</th>
                         <th class="font-sans text-xl font-semibold text-center text-black">Email</th>
-                        <th class="font-sans text-xl font-semibold text-center text-black">Actions</th>
+                        <th class="font-sans text-xl font-semibold text-center text-black">Registered</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -21,9 +21,10 @@ class ProfileImageController extends Controller
         
         $filename = time() . '_' . str_replace(' ', '_', $request->file('image')->getClientOriginalName());
         $path = 'storage/profiles/'.$filename;
-        $storePath = 'public/profiles/'.$filename;
+        $storePath = 'profiles/'.$filename;
 
-        $request->file('image')->storeAs($storePath); 
+        $request->file('image')->storeAs($storePath);
+        $request->file('image')->move(public_path('storage/profiles'), $filename); 
         // return Json::encode($authorID);
         
         // $request->file('image')->storeAs($storePath);
@@ -31,7 +32,7 @@ class ProfileImageController extends Controller
         // // return Json::encode($authorID);
 
         Author::find($authorID)->update(['image' => $path]); 
-
+ 
         return back();
     }
 }

@@ -8,14 +8,14 @@
 
 @section('content')
     <x-nav></x-nav> 
-    <main class="h-full w-full">
+    <main class="w-full h-full">
         <div class="mx-auto flex h-[80vh] w-full">
             <div class="md:py-3 p-1 w-[25vw] md:w-[30vw] h-full overflow-y-hidden border-gray-200 bg-white">
                 
                 <h1 class="font-sans text-2xl font-semibold text-center text-fuchsia-950">Inbox</h1>
                 <div class="flex flex-wrap w-full max-h-full py-6 overflow-y-auto">
                 
-                    @unless($messages->isEmpty() || $messages === null)
+                    @if($hasMessages)
                         @foreach($messages as $message)
 
                             <a href="{{ route('messages.open.inbox', ['username' => $message->sender->username]) }}" class="flex items-center justify-center w-full h-20 mx-1 bg-gray-100 border-2 border-gray-200 border-solid rounded-lg md:justify-normal hover:cursor-pointer md:p-2 hover:bg-gray-300 md:h-24">
@@ -42,15 +42,15 @@
                         @endforeach
                     @else
                         <p class="my-4 font-sans text-5xl text-center text-black">You have no messages yet.</p>
-                    @endunless
+                    @endif
                 </div>
             </div>
             <section class="w-[75vw] md:w-[70vw] flex flex-col justify-between h-full bg-fuchsia-900">
-                
-                @unless($conversations->isEmpty() || $conversations === null)
-                    <div class="flex items-center w-full p-3 bg-white md:p-5 h-fit">
-                        <h1 class="font-sans text-lg font-semibold text-fuchsia-900 md:text-3xl">{{ $conversations->first()->sender->fullname }}</h1>
-                    </div>
+                <div class="flex items-center w-full p-3 bg-white md:p-5 h-fit">
+                    <h1 class="font-sans text-lg font-semibold text-fuchsia-900 md:text-3xl">{{ $author->fullname }}</h1>
+                </div>
+                @if($hasConversation)
+                    
                         <div class="flex flex-wrap items-end w-full h-full px-1 overflow-y-scroll md:px-3">
                             @foreach ($conversations as $conversation)
                                 <div class="flex flex-col justify-end w-full">
@@ -85,7 +85,7 @@
                         <div class="flex items-end justify-center w-full h-full">
                             <p class="font-sans text-gray-300 text 3xl md:text-xl">Say Hi to start the conversation</p>
                         </div>
-                    @endunless
+                    @endif
                 <form action="{{ route("messages.create") }}" method="post" class="w-full px-4 py-2 bg-white md:px-10 md:py-5">
                     @csrf
                     <div class="flex bg-transparent border-2 border-gray-200 border-solid rounded-full outline-none">

@@ -9,11 +9,16 @@ use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class AuthorController extends Controller
 {
-    
-    
-
+    /**
+     * Display the author's profile page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index(Request $request, $id)
     {
         $author = Author::with(['books'])->findOrFail($id);

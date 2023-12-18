@@ -13,10 +13,23 @@ use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
+
+    
+    /**
+     * Show the registration form.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show()
     {
         return view('layouts.auth.register');
     }
+    /**
+     * Store a newly created author in storage.
+     *
+     * @param  \App\Http\Requests\CreateAuthorRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(CreateAuthorRequest $request)
     {
         $author = Author::create($request->validated());
@@ -24,12 +37,14 @@ class RegisterController extends Controller
         $request->session()->regenerate();
         Auth::login($author);
         return redirect()->route('home')->with(['success' => 'Welcome '.$author->username]);
-    
-        
-        // return view('layouts.auth.verify-email-token', compact('author'));
     }
 
-
+    /**
+     * Send a verification email to the author.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
     public function send(Request $request)
     {
         $token = Str::random(60);
