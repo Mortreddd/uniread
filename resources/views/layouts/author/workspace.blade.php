@@ -24,7 +24,7 @@
                 <section class="relative w-full h-full overflow-hidden overflow-y-hidden bg-gray-100 rounded-lg">
                     
                     <div class="flex flex-wrap w-full max-h-full overflow-y-scroll">
-                        @unless($chapters->isEmpty())
+                        @unless($chapters->isEmpty() || $selectedChapter === 0)
                             @foreach ($chapters as $chapter)
                                 <a href="{{ route("workspace", ["bookID" => $book->id, "chapterID" => $chapter->id]) }}" class="w-full h-24 px-3 py-2 border-b-2 border-solid md:h-32 line-clamp-1 hover:bg-gray-300 border-fuchsia-900">
                                     <h1 class="font-sans text-lg font-semibold text-left text-black md:text-2xl">Chapter {{ $chapter->chapter }}</h1>
@@ -39,7 +39,8 @@
                     </div>                    
                 </section>
             </div>
-                <form action="{{ route('chapter.track', ['bookID' => $selectedChapter->bookID, 'chapterID' => $selectedChapter->id]) }}" method="POST" class="w-full p-2 mx-2 md:mx-10 md:p-7 ">
+            
+                <form action="{{ route('chapter.track', ['bookID' => $book->id, 'chapterID' => $selectedChapter->id]) }}" method="POST" class="w-full p-2 mx-2 md:mx-10 md:p-7 ">
                     @csrf
                     <div class="flex justify-start w-full gap-1 py-3 md:gap-4 md:justify-end">
                         <input type="hidden" name="bookID" value="{{ $selectedChapter->bookID }}">

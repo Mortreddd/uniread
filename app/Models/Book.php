@@ -17,6 +17,7 @@ class Book extends Model
         'completed',
         'collaborative',
         'mature',
+        'published',
         'authorID',
         'copyright'
 

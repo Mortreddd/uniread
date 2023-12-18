@@ -58,8 +58,10 @@ class BookController extends Controller
         $copyright = $request->input('copyright');
         $filename = time().'_'.$request->file('image')->getClientOriginalName();
         $path = 'storage/covers/'.$filename;
-        $storePath = 'public/covers/'.$filename;
+        $storePath = 'covers/'.$filename;
+
         $request->file('image')->storeAs($storePath);
+        $request->file('image')->move(public_path('storage/covers'), $filename); 
         $book = Book::create([
             'title' => $title,
             'genreID' => $genreID,
@@ -69,6 +71,15 @@ class BookController extends Controller
             'published' => false,
             'authorID' => $authorID,
             'copyright' => $copyright,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        $chapter = Chapter::create([
+            'chapter' => 1,
+            'title' => " ",
+            'content' =>  " ",
+            'bookID' => $book->id,
+            'published' => false,
             'created_at' => now(),
             'updated_at' => now()
         ]);

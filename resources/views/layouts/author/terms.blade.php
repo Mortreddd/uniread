@@ -9,7 +9,6 @@
             <button class="md:py-4 py-2 mr-1 md:mr-3 font-sans text-lg md:text-2xl border-solid tab-button active" data-tab="#terms-and-conditions">Terms &amp; Conditions</button>
             <button class="md:py-4 py-2 mr-1 md:mr-3 font-sans text-lg md:text-2xl border-solid tab-button" data-tab="#privacy-policy">Privacy Policy</button>
             <button class="md:py-4 py-2 mr-1 md:mr-3 font-sans text-lg md:text-2xl border-solid tab-button" data-tab="#content-guidelines">Content Guidelines</button>
-            <button class="md:py-4 py-2 mr-1 md:mr-3 font-sans text-lg md:text-2xl border-solid tab-button" data-tab="#tags">FAQ/FAQS</button>
         </div>
     </section>
         <main class="flex w-full">

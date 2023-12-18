@@ -23,8 +23,7 @@ class FollowerController extends Controller
 
     public function destroy(Request $request)
     {
-        Follower::where('followerAuthorID', $request->input('followerAuthorID'))->where('followedAuthorID', $request->input('followingAuthorID'))->delete();
-
+        Follower::where('followerAuthorID', $request->input('followerAuthorID'))->where('followedAuthorID', $request->input('followedAuthorID'))->delete();
         return back();
     }
 }

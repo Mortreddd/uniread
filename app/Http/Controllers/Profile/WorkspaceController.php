@@ -67,7 +67,7 @@ class WorkspaceController extends Controller
     /**
      * Stores a new chapter.
      *
-     * @param Request $request The HTTP request object.
+     * @param Request $request The HTTP request object. 
      * @return \Illuminate\Http\RedirectResponse The redirect response.
      */
     public function store(Request $request)
@@ -95,7 +95,6 @@ class WorkspaceController extends Controller
     public function track(Request $request, $bookID, $chapterID)
     {
         // return Json::encode($request);
-
         // Check if the 'save' button is clicked
         if($request->input('save') === 'Save')
         {
@@ -111,7 +110,7 @@ class WorkspaceController extends Controller
                 ->update(['updated_at' => now()]);
         }
         // Check if the 'delete' button is clicked
-        else if($request->input('delete') === 'Delete')
+        else if($request->has('delete'))
         {
             // Delete the chapter's associated bookmarks and comments
             Bookmark::where('chapterID', $chapterID)->delete();

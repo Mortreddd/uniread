@@ -107,19 +107,6 @@
                         </button>
                     </form>
                 @endunless
-                <button data-popover-target="report" type="button" class="flex items-center p-3 mx-1 bg-transparent rounded-full md:p-5 md:mx-3 text-fuchsia-900 hover:text-fuchsia-950 hover:bg-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path fill-rule="evenodd" d="M3 2.25a.75.75 0 01.75.75v.54l1.838-.46a9.75 9.75 0 016.725.738l.108.054a8.25 8.25 0 005.58.652l3.109-.732a.75.75 0 01.917.81 47.784 47.784 0 00.005 10.337.75.75 0 01-.574.812l-3.114.733a9.75 9.75 0 01-6.594-.77l-.108-.054a8.25 8.25 0 00-5.69-.625l-2.202.55V21a.75.75 0 01-1.5 0V3A.75.75 0 013 2.25z" clip-rule="evenodd" />
-                    </svg>
-                    
-                </button>
-
-                <div data-popover id="report" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-fit">
-                    <div class="px-3 py-2">
-                        <p>Report</p>
-                    </div>
-                    <div data-popper-arrow></div>
-                </div>
             </div>
         </section>
         <article class="flex flex-col items-center w-full h-full py-5">
