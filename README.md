@@ -10,10 +10,6 @@ User Authentication and Profiles: Users can create accounts, log in, and manage 
 
     > Users can start new books and define the title, genre, and description. Books can be marked as collaborative or solo projects.
 
--   Collaborative Writing
-
-    > Collaborators can be invited to work on a book, allowing multiple users to contribute to the same project. Real-time editing with version control to track changes made by different collaborators.
-
 -   Private Messaging
 
     > Users can communicate with collaborators through a private messaging system to discuss ideas, plot points, and revisions.
@@ -21,14 +17,6 @@ User Authentication and Profiles: Users can create accounts, log in, and manage 
 -   Chapter Management
 
     > Books are organized into chapters, which can be created, edited, and reordered by the author(s). Collaborators can suggest edits to chapters.
-
--   Review and Approval Workflow
-
-    > Collaborators can suggest edits, which can be reviewed and approved by the book's author(s) before implementation.
-
--   Version History
-
-    > Keeps track of different versions of the book, allowing users to revert to previous states if needed.
 
 -   Comments and Feedback
 
