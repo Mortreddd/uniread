@@ -14,6 +14,7 @@ class Chapter extends Model
         'content',
         'published',
         'bookID',
+        'reads',
         'created_at',
         'updated_at'
     ];

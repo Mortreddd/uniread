@@ -19,6 +19,9 @@ class Author extends Model implements AuthenticatableContract
             'image',
             'email',
             'password',
+            'last_login',
+            'updated_at',
+            'created_at'
     ];
 
     protected $hidden = [

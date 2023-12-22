@@ -19,8 +19,9 @@ class Book extends Model
         'mature',
         'published',
         'authorID',
-        'copyright'
-
+        'copyright',
+        'updated_at',
+        'created_at'
     ];
 
     public function genre()
