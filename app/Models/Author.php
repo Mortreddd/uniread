@@ -58,8 +58,4 @@ class Author extends Model implements AuthenticatableContract
         return $this->hasOne(Library::class, 'authorID', 'id');
     }
 
-    public function vote()
-    {
-        return $this->belongsTo(Votes::class, 'id' , 'authorID');
-    }
 }
